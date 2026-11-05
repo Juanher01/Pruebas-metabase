@@ -1,0 +1,93 @@
+{
+  "info": {
+    "name": "TC-CON-003 - Consistencia entre listado y detalle",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /api/card (listado)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Codigo HTTP 200 OK\", () => pm.expect(pm.response.code).to.be.oneOf([200]));",
+              "pm.test(\"Content-Type es application/json\", () => pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\"));",
+              "pm.test(\"El cuerpo es JSON valido\", () => { pm.response.json(); });",
+              "pm.test(\"Respuesta en menos de 10 s\", () => pm.expect(pm.response.responseTime).to.be.below(10000));",
+              "const lista = pm.response.json();",
+              "pm.test(\"El listado es un arreglo\", () => pm.expect(lista).to.be.an(\"array\"));",
+              "const p1 = lista.filter(c => c.name === \"QA - Pedidos con subtotal mayor a 100\");",
+              "pm.test(\"P1 aparece una sola vez en el listado (seleccion por nombre)\", () => pm.expect(p1).to.have.lengthOf(1));",
+              "if (p1.length === 1) { pm.collectionVariables.set(\"idListado\", String(p1[0].id)); pm.collectionVariables.set(\"itemListado\", JSON.stringify(p1[0])); }"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Metabase-Session",
+            "value": "{{sessionId}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/card",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "card"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET /api/card/{{idListado}} (detalle)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Codigo HTTP 200 OK\", () => pm.expect(pm.response.code).to.be.oneOf([200]));",
+              "pm.test(\"Content-Type es application/json\", () => pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\"));",
+              "pm.test(\"El cuerpo es JSON valido\", () => { pm.response.json(); });",
+              "pm.test(\"Respuesta en menos de 10 s\", () => pm.expect(pm.response.responseTime).to.be.below(10000));",
+              "const det = pm.response.json();",
+              "const lis = JSON.parse(pm.collectionVariables.get(\"itemListado\") || \"{}\");",
+              "pm.test(\"La pregunta del listado se puede consultar por su identificador\", () => pm.expect(det.id).to.eql(lis.id));",
+              "pm.test(\"id equivalente entre listado y detalle\", () => pm.expect(det.id).to.eql(lis.id));",
+              "pm.test(\"name equivalente entre listado y detalle\", () => pm.expect(det.name).to.eql(lis.name));",
+              "const difs = []; const cmp = (a, b, ruta) => { if (a && b && typeof a === \"object\" && typeof b === \"object\" && !Array.isArray(a) && !Array.isArray(b)) { Object.keys(a).filter(k => k in b).forEach(k => cmp(a[k], b[k], ruta + \".\" + k)); } else if (JSON.stringify(a) !== JSON.stringify(b)) { difs.push(ruta); } }; Object.keys(lis).filter(k => k in det).forEach(k => cmp(lis[k], det[k], k));",
+              "pm.test(\"Todos los campos comunes (\" + Object.keys(lis).filter(k => k in det).length + \") son equivalentes entre listado y detalle\", () => pm.expect(difs, \"Difieren: \" + difs.join(\", \")).to.eql([]));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Metabase-Session",
+            "value": "{{sessionId}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/card/{{idListado}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "card",
+            "{{idListado}}"
+          ]
+        }
+      }
+    }
+  ]
+}

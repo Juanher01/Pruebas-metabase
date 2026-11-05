@@ -32,11 +32,12 @@
 #>
 param(
     [Parameter(Mandatory = $true)][ValidatePattern('^TC-(FUN|VAL|ERR|CON|REN)-\d{3}$')][string]$Caso,
-    [Parameter(Mandatory = $true)][ValidateSet('newman', 'jmeter')][string]$Herramienta,
+    [Parameter(Mandatory = $true)][ValidateSet('newman', 'jmeter', 'navegador')][string]$Herramienta,
     [Parameter(Mandatory = $true)][ValidateSet('juan', 'samuel')][string]$Integrante,
     [ValidateSet('admin', 'usuario-qa')][string]$Cuenta = 'admin',
     [int]$Iteraciones = 1,
     [switch]$SinSesion,
+    [switch]$SinCuerpos,
     [string]$JMeter = "jmeter.bat",
     [string]$Config = "",
     [switch]$SoloMostrar
@@ -50,6 +51,7 @@ $dirCaso = Join-Path $raiz ("pruebas\{0}\{1}" -f $categorias[$Caso.Split('-')[1]
 if (-not (Test-Path $dirCaso)) { throw "No existe la carpeta del caso: $dirCaso" }
 
 if ($Herramienta -eq 'newman') { $script = Join-Path $dirCaso "scripts\$Caso.postman_collection.json" }
+elseif ($Herramienta -eq 'navegador') { $script = Join-Path $dirCaso "scripts\$Caso.navegador.js" }
 else { $script = Join-Path $dirCaso "scripts\$Caso.jmx" }
 if (-not (Test-Path $script)) {
     if ($SoloMostrar) { Write-Host "[AVISO] Todavia no existe el script: $script" -ForegroundColor Yellow }
@@ -101,6 +103,9 @@ function Construir-Argumentos([string]$archivoVariables) {
             '--reporter-htmlextra-skipHeaders', 'X-Metabase-Session',
             '--reporter-htmlextra-skipEnvironmentVars', 'sessionId',
             '--reporter-htmlextra-skipSensitiveData'))
+    } elseif ($Herramienta -eq 'navegador') {
+        # Script de Node: <script> <archivo de variables> <carpeta de resultados> <carpeta de evidencias>
+        $lista.AddRange([string[]]@($script, $archivoVariables, $dirRes, $dirEvi))
     } else {
         $lista.AddRange([string[]]@('-n', '-t', $script, '-q', $archivoVariables,
             '-l', (Join-Path $dirRes 'resultados.jtl'),
@@ -118,11 +123,12 @@ function Contenido-Variables([string]$token) {
         $valores = @($todas.Keys | ForEach-Object { [ordered]@{ key = $_; value = $todas[$_]; type = 'default'; enabled = $true } })
         return ([ordered]@{ name = "mbqa-temporal"; values = $valores; _postman_variable_scope = "environment" } | ConvertTo-Json -Depth 5)
     }
+    if ($Herramienta -eq 'navegador') { return ($todas | ConvertTo-Json -Depth 3) }
     # Propiedades de JMeter (formato .properties: escapar \ y :)
     return (($todas.Keys | ForEach-Object { "{0}={1}" -f $_, ($todas[$_] -replace '\\', '\\' -replace ':', '\:') }) -join "`r`n")
 }
 
-$extTemporal = if ($Herramienta -eq 'newman') { '.json' } else { '.properties' }
+$extTemporal = if ($Herramienta -in @('newman', 'navegador')) { '.json' } else { '.properties' }
 
 if ($SoloMostrar) {
     $args0 = Construir-Argumentos "%TEMP%\mbqa-<aleatorio>$extTemporal"
@@ -139,6 +145,12 @@ if ($SoloMostrar) {
 if ($Herramienta -eq 'newman') {
     $exe = (Get-Command newman.cmd -ErrorAction SilentlyContinue).Source
     if (-not $exe) { throw "No se encontro newman. Instale con: npm install -g newman newman-reporter-htmlextra" }
+} elseif ($Herramienta -eq 'navegador') {
+    $exe = (Get-Command node.exe -ErrorAction SilentlyContinue).Source
+    if (-not $exe) { throw "No se encontro node. Instale Node.js LTS (ver docs/HERRAMIENTAS-NEWMAN-JMETER.md)." }
+    if (-not (Test-Path (Join-Path $raiz 'recursos-compartidos\navegador\node_modules\puppeteer-core'))) {
+        throw "Faltan las dependencias del navegador. Ejecute: cd recursos-compartidos\navegador; npm install"
+    }
 } else {
     $cmd = Get-Command $JMeter -ErrorAction SilentlyContinue
     if (-not $cmd) { throw "No se encontro JMeter ('$JMeter'). Indique la ruta con -JMeter C:\...\bin\jmeter.bat" }
@@ -169,6 +181,14 @@ try {
     $codigo = $p.ExitCode
     $fin = Get-Date
 
+    # Newman guarda el cuerpo completo de cada respuesta: con respuestas grandes el JSON supera el limite de GitHub.
+    $notaCuerpos = $null
+    if ($SinCuerpos -and $Herramienta -eq 'newman') {
+        $salidaRecorte = & node (Join-Path $PSScriptRoot 'recortar-cuerpos-newman.js') (Join-Path $dirRes 'newman-results.json')
+        Write-Host $salidaRecorte
+        $notaCuerpos = "cuerpos_respuesta=omitidos en newman-results.json (-SinCuerpos): $salidaRecorte"
+    }
+
     $version = "desconocida"
     try { $version = (Invoke-RestMethod -Uri "$($vars.baseUrl)/api/session/properties").version.tag } catch { }
     @(
@@ -179,6 +199,7 @@ try {
         "variables=$(($varsPresentes.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" }) -join ', ')",
         "comando=$(Split-Path $exe -Leaf) $($linea.Replace($temporal, '<archivo-temporal>'))"
     ) | Out-File -FilePath (Join-Path $dirRes 'ejecucion-info.txt') -Encoding utf8
+    if ($notaCuerpos) { Add-Content -Path (Join-Path $dirRes 'ejecucion-info.txt') -Value $notaCuerpos -Encoding utf8 }
 }
 finally {
     if ($temporal -and (Test-Path $temporal)) { Remove-Item $temporal -Force -ErrorAction SilentlyContinue }

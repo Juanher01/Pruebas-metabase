@@ -1,0 +1,12 @@
+Carga  1: 9948 ms  completa=true  consultas=202,202,202
+Carga  2: 6348 ms  completa=true  consultas=202,202,202
+Carga  3: 4095 ms  completa=true  consultas=202,202,202
+Carga  4: 4054 ms  completa=true  consultas=202,202,202
+Carga  5: 3976 ms  completa=true  consultas=202,202,202
+Carga  6: 3906 ms  completa=true  consultas=202,202,202
+Carga  7: 3755 ms  completa=true  consultas=202,202,202
+Carga  8: 3590 ms  completa=true  consultas=202,202,202
+Carga  9: 4008 ms  completa=true  consultas=202,202,202
+Carga 10: 4601 ms  completa=true  consultas=202,202,202
+
+Completadas: 10/10   Bajo 6000 ms: 8/10   Cumple SLO: false

@@ -1,0 +1,107 @@
+{
+  "info": {
+    "name": "TC-CON-004 - Estructura de resultados de consulta",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST /api/card/{{cardId}}/query",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Codigo HTTP 200 OK (esperado por el plan)\", () => pm.expect(pm.response.code, \"Codigo real: \" + pm.response.code).to.eql(200));",
+              "pm.test(\"Content-Type es application/json\", () => pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\"));",
+              "pm.test(\"Respuesta en menos de 30 s\", () => pm.expect(pm.response.responseTime).to.be.below(30000));",
+              "const r = pm.response.json();",
+              "pm.test(\"status = completed (consulta ejecutada sin error)\", () => pm.expect(r.status).to.eql(\"completed\"));",
+              "pm.test(\"data.rows es un arreglo de registros\", () => { pm.expect(r.data.rows).to.be.an(\"array\"); r.data.rows.forEach(f => pm.expect(f).to.be.an(\"array\")); });",
+              "pm.test(\"data.cols es un arreglo de metadatos de columnas (name y base_type)\", () => { pm.expect(r.data.cols).to.be.an(\"array\").that.is.not.empty; r.data.cols.forEach(c => { pm.expect(c.name).to.be.a(\"string\"); pm.expect(c.base_type).to.be.a(\"string\"); }); });",
+              "pm.test(\"Cada registro tiene tantos valores como columnas\", () => r.data.rows.forEach(f => pm.expect(f).to.have.lengthOf(r.data.cols.length)));",
+              "pm.test(\"row_count coincide con la cantidad de registros devueltos\", () => pm.expect(r.row_count).to.eql(r.data.rows.length));",
+              "const i = r.data.cols.findIndex(c => c.name === \"SUBTOTAL\");",
+              "pm.test(\"Coherencia con la consulta: existe la columna SUBTOTAL y todos los registros cumplen SUBTOTAL > 100\", () => { pm.expect(i).to.be.at.least(0); r.data.rows.forEach(f => pm.expect(f[i]).to.be.above(100)); });",
+              "pm.collectionVariables.set(\"filasDevueltas\", String(r.data.rows.length)); pm.collectionVariables.set(\"truncado\", String(r.data.rows_truncated || 0));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Metabase-Session",
+            "value": "{{sessionId}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/card/{{cardId}}/query",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "card",
+            "{{cardId}}",
+            "query"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST /api/dataset (referencia R02, apoyo)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"La consulta de referencia R02 se ejecuta (HTTP 200 o 202)\", () => pm.expect(pm.response.code).to.be.oneOf([200, 202]));",
+              "const r02 = pm.response.json().data.rows[0][0];",
+              "const filas = parseInt(pm.collectionVariables.get(\"filasDevueltas\"), 10);",
+              "pm.test(\"Cantidad de registros coherente con R02 (\" + r02 + \"): min(R02, limite de la interfaz) = \" + filas, () => pm.expect(filas).to.eql(Math.min(r02, 2000)));",
+              "pm.test(\"Si R02 supera el limite, la respuesta indica truncamiento\", () => { if (r02 > filas) pm.expect(parseInt(pm.collectionVariables.get(\"truncado\"), 10)).to.be.above(0); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Metabase-Session",
+            "value": "{{sessionId}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"database\": {{databaseId}}, \"type\": \"native\", \"native\": {\"query\": \"SELECT COUNT(*) AS PEDIDOS_SUBTOTAL_MAYOR_100 FROM ORDERS WHERE SUBTOTAL > 100\"}}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/dataset",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "dataset"
+          ]
+        }
+      }
+    }
+  ]
+}

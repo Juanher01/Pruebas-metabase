@@ -1,0 +1,3 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1793904679938,5306,Preparacion (no se mide),202,Accepted,1 usuario(s) virtual(es) 1-1,text,true,,290867,266,1,1,http://localhost:3000/api/card/40/query,4777,0,104
+1793904685480,2028,Medicion,202,Accepted,1 usuario(s) virtual(es) 1-1,text,true,,290867,266,1,1,http://localhost:3000/api/card/40/query,1575,0,4

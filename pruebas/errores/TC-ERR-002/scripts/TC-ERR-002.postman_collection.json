@@ -1,0 +1,45 @@
+{
+  "info": {
+    "name": "TC-ERR-002 - Formato de identificador invalido",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /api/dashboard/abc",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Codigo HTTP 400 o 404\",()=>pm.expect(pm.response.code).to.be.oneOf([400,404]));",
+              "pm.test(\"No hay error interno (la respuesta no es 5xx)\",()=>pm.expect(pm.response.code).to.be.below(500));",
+              "pm.test(\"Respuesta en menos de 5 s\",()=>pm.expect(pm.response.responseTime).to.be.below(5000));",
+              "pm.test(\"El cuerpo no expone trazas internas\",()=>pm.expect(pm.response.text()).to.not.match(/at (clojure|java|metabase).|Exception in/i));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Metabase-Session",
+            "value": "{{sessionId}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/dashboard/abc",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "dashboard",
+            "abc"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+newman
+
+TC-CON-003 - Consistencia entre listado y detalle
+
+→ GET /api/card (listado)
+  GET http://localhost:3000/api/card [200 OK, 272.27kB, 1437ms]
+  √  Codigo HTTP 200 OK
+  √  Content-Type es application/json
+  √  El cuerpo es JSON valido
+  √  Respuesta en menos de 10 s
+  √  El listado es un arreglo
+  √  P1 aparece una sola vez en el listado (seleccion por nombre)
+
+→ GET /api/card/{{idListado}} (detalle)
+  GET http://localhost:3000/api/card/40 [200 OK, 14.15kB, 313ms]
+  √  Codigo HTTP 200 OK
+  √  Content-Type es application/json
+  √  El cuerpo es JSON valido
+  √  Respuesta en menos de 10 s
+  √  La pregunta del listado se puede consultar por su identificador
+  √  id equivalente entre listado y detalle
+  √  name equivalente entre listado y detalle
+  √  Todos los campos comunes (46) son equivalentes entre listado y detalle
+
+┌─────────────────────────┬─────────────────────┬─────────────────────┐
+│                         │            executed │              failed │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              iterations │                   1 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│                requests │                   2 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│            test-scripts │                   2 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│      prerequest-scripts │                   0 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              assertions │                  14 │                   0 │
+├─────────────────────────┴─────────────────────┴─────────────────────┤
+│ total run duration: 2.2s                                            │
+├─────────────────────────────────────────────────────────────────────┤
+│ total data received: 282.81kB (approx)                              │
+├─────────────────────────────────────────────────────────────────────┤
+│ average response time: 875ms [min: 313ms, max: 1437ms, s.d.: 562ms] │
+└─────────────────────────────────────────────────────────────────────┘

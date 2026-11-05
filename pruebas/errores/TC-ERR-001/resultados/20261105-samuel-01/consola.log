@@ -1,0 +1,32 @@
+newman
+
+TC-ERR-001 - Recurso inexistente (dashboard no registrado)
+
+→ GET /api/dashboard/{{dashboardIdInexistente}}
+  GET http://localhost:3000/api/dashboard/100001 [404 Not Found, 1.82kB, 1332ms]
+  √  Variable dashboardIdInexistente definida
+  √  Codigo HTTP 404 Not Found
+  √  No retorna datos de otro dashboard
+  √  No hay error interno (la respuesta no es 5xx)
+  √  Respuesta en menos de 5 s
+  √  El cuerpo no expone trazas internas
+
+┌─────────────────────────┬─────────────────────┬─────────────────────┐
+│                         │            executed │              failed │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              iterations │                   1 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│                requests │                   1 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│            test-scripts │                   1 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│      prerequest-scripts │                   0 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              assertions │                   6 │                   0 │
+├─────────────────────────┴─────────────────────┴─────────────────────┤
+│ total run duration: 1524ms                                          │
+├─────────────────────────────────────────────────────────────────────┤
+│ total data received: 14B (approx)                                   │
+├─────────────────────────────────────────────────────────────────────┤
+│ average response time: 1332ms [min: 1332ms, max: 1332ms, s.d.: 0µs] │
+└─────────────────────────────────────────────────────────────────────┘

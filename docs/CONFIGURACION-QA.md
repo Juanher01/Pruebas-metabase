@@ -237,6 +237,8 @@ Endpoints auxiliares también verificados: `GET /api/health`, `GET /api/session/
 3. **TC-ERR-002** (`/api/dashboard/abc`): el parámetro `id` se valida como entero positivo o NanoID de 21 caracteres. Registre el código realmente obtenido; el plan admite 400 o 404.
 4. **Caché.** `POST /api/card/{id}/query` admite `{"ignore_cache": true}`. Para TC-REN, registre la política de caché configurada (Admin settings → Performance, si está disponible en la edición OSS) y decida en el piloto si se envía `ignore_cache`. Use la misma decisión en todas las ejecuciones comparables.
 
+> **Resultado del piloto (2026-11-05, instalación de Samuel):** el punto 1 **se confirmó**: `POST /api/card/40/query` y `POST /api/dataset` respondieron **202** con `status = "completed"`. TC-CON-004 quedó *No aprobado* por esa diferencia (hallazgo H-001) a la espera de la decisión del equipo. Detalle en [CONTRATOS-API-V0.64.1.md §3](CONTRATOS-API-V0.64.1.md#3-resultados-del-piloto-del-2026-11-05-samuel).
+
 ### Consultar la referencia de la API de la instancia instalada
 
 1. Con Metabase en ejecución, abra **`http://localhost:3000/api/docs`**. En v0.64.1, la ruta `/api/docs` está montada en el enrutador de la API y ofrece la documentación OpenAPI generada por la propia instancia. Si pide autenticación, inicie sesión primero en `http://localhost:3000`.

@@ -6,7 +6,7 @@ Herramientas de los casos de **Samuel**:
 |---|---|---|
 | Postman + **Newman** | TC-ERR-001 a 005, TC-CON-001 a 004, TC-REN-003 | `newman-results.json`, `newman-report.html` |
 | **Apache JMeter** | TC-REN-001, TC-REN-004, TC-REN-005 | `resultados.jtl`, `reporte-html/index.html` |
-| Navegador y herramientas de desarrollador | TC-REN-002 | Capturas y HAR en `evidencias/` |
+| Navegador (Chrome controlado por puppeteer-core) | TC-REN-002 | `mediciones.json` y capturas en `evidencias/` (ver [RENDIMIENTO-V0.64.1.md](RENDIMIENTO-V0.64.1.md)) |
 
 Juan usa Newman en TC-FUN-009 y TC-FUN-010, con el mismo procedimiento.
 
@@ -111,6 +111,13 @@ powershell -ExecutionPolicy Bypass -File .\scripts\ejecutar-herramienta.ps1 -Cas
 
 # JMeter (modo sin interfaz + reporte HTML)
 powershell -ExecutionPolicy Bypass -File .\scripts\ejecutar-herramienta.ps1 -Caso TC-REN-004 -Herramienta jmeter -Integrante samuel -JMeter "C:\herramientas\apache-jmeter-5.6.3\bin\jmeter.bat"
+
+# TC-REN-003 sin los cuerpos de respuesta (el JSON de Newman puede superar los 100 MB de GitHub)
+powershell -ExecutionPolicy Bypass -File .\scripts\ejecutar-herramienta.ps1 -Caso TC-REN-003 -Herramienta newman -Integrante samuel -Iteraciones 30 -SinCuerpos
+
+# TC-REN-002: 10 cargas del dashboard en Chrome (requiere: cd recursos-compartidos
+avegador; npm install)
+powershell -ExecutionPolicy Bypass -File .\scripts\ejecutar-herramienta.ps1 -Caso TC-REN-002 -Herramienta navegador -Integrante samuel
 
 # Ver el comando y las variables sin ejecutar nada
 powershell -ExecutionPolicy Bypass -File .\scripts\ejecutar-herramienta.ps1 -Caso TC-REN-004 -Herramienta jmeter -Integrante samuel -SoloMostrar

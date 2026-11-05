@@ -1,0 +1,56 @@
+{
+  "info": {
+    "name": "TC-CON-002 - Validacion de tipos de datos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /api/card/{{cardId}}",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Codigo HTTP 200 OK\", () => pm.expect(pm.response.code).to.be.oneOf([200]));",
+              "pm.test(\"Content-Type es application/json\", () => pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\"));",
+              "pm.test(\"El cuerpo es JSON valido\", () => { pm.response.json(); });",
+              "pm.test(\"Respuesta en menos de 10 s\", () => pm.expect(pm.response.responseTime).to.be.below(10000));",
+              "const c = pm.response.json();",
+              "pm.test(\"id es un entero\", () => pm.expect(Number.isInteger(c.id)).to.be.true);",
+              "pm.test(\"name es una cadena de texto\", () => pm.expect(c.name).to.be.a(\"string\"));",
+              "pm.test(\"display es una cadena de texto\", () => pm.expect(c.display).to.be.a(\"string\"));",
+              "pm.test(\"dataset_query es un objeto JSON (no nulo ni arreglo)\", () => { pm.expect(c.dataset_query).to.be.an(\"object\"); pm.expect(Array.isArray(c.dataset_query)).to.be.false; });",
+              "const Ajv = require(\"ajv\"); const ajv = new Ajv({ allErrors: true });",
+              "const schema = {\"type\":\"object\",\"required\":[\"id\",\"name\",\"display\",\"dataset_query\"],\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"display\":{\"type\":\"string\"},\"dataset_query\":{\"type\":\"object\"}}};",
+              "pm.test(\"Cumple el esquema de tipos (id, name, display, dataset_query)\", () => { const ok = ajv.validate(schema, pm.response.json()); pm.expect(ok, JSON.stringify(ajv.errors)).to.be.true; });",
+              "pm.test(\"id corresponde a la pregunta solicitada\", () => pm.expect(c.id).to.eql(parseInt(pm.variables.get(\"cardId\"), 10)));",
+              "pm.test(\"name corresponde a la pregunta de referencia P1\", () => pm.expect(c.name).to.eql(\"QA - Pedidos con subtotal mayor a 100\"));",
+              "pm.test(\"dataset_query referencia la base de datos de la instalacion\", () => pm.expect(c.dataset_query.database).to.eql(parseInt(pm.variables.get(\"databaseId\"), 10)));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Metabase-Session",
+            "value": "{{sessionId}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/card/{{cardId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "card",
+            "{{cardId}}"
+          ]
+        }
+      }
+    }
+  ]
+}

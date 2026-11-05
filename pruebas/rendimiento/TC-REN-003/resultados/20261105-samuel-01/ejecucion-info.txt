@@ -1,0 +1,13 @@
+﻿caso=TC-REN-003
+herramienta=newman
+integrante=samuel
+ejecucion=20261105-samuel-01
+cuenta=admin
+inicio=2026-11-05 13:51:38
+fin=2026-11-05 13:52:21
+codigo_salida=1
+version_metabase=v0.64.1
+equipo=ROGELIO
+variables=baseUrl=http://localhost:3000, cardId=40, cardIdConteo=41, dashboardId=2, dashboardPrivadoId=3, collectionId=6, databaseId=1, dashboardIdInexistente=100001
+comando=newman.cmd run C:\Users\samue\Documents\USCO\9Semestre\PruebasMantenimiento\Metabase\Pruebas-metabase\pruebas\rendimiento\TC-REN-003\scripts\TC-REN-003.postman_collection.json -e <archivo-temporal> -n 30 --timeout-request 120000 -r cli,json,htmlextra --reporter-json-export C:\Users\samue\Documents\USCO\9Semestre\PruebasMantenimiento\Metabase\Pruebas-metabase\pruebas\rendimiento\TC-REN-003\resultados\20261105-samuel-01\newman-results.json --reporter-htmlextra-export C:\Users\samue\Documents\USCO\9Semestre\PruebasMantenimiento\Metabase\Pruebas-metabase\pruebas\rendimiento\TC-REN-003\resultados\20261105-samuel-01\newman-report.html --reporter-htmlextra-title TC-REN-003 --reporter-htmlextra-skipHeaders X-Metabase-Session --reporter-htmlextra-skipEnvironmentVars sessionId --reporter-htmlextra-skipSensitiveData
+cuerpos_respuesta=omitidos en newman-results.json (aplicado despues de la ejecucion con scripts/recortar-cuerpos-newman.js, antes de subir a GitHub): Cuerpos de respuesta omitidos: 30. Tamano: 151.0 MB -> 0.41 MB

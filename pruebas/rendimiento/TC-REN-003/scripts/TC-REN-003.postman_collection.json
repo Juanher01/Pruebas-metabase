@@ -1,0 +1,55 @@
+{
+  "info": {
+    "name": "TC-REN-003 - Estabilidad bajo solicitudes repetitivas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST /api/card/{{cardId}}/query",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Codigo HTTP 200 OK (esperado por el plan)\", () => pm.expect(pm.response.code, \"Codigo real: \" + pm.response.code).to.eql(200));",
+              "pm.test(\"Solicitud finalizada correctamente (2xx)\", () => pm.expect(pm.response.code).to.be.within(200, 299));",
+              "const r = pm.response.json();",
+              "pm.test(\"status = completed (ejecucion exitosa)\", () => pm.expect(r.status).to.eql(\"completed\"));",
+              "pm.test(\"data.rows es un arreglo (resultados validos)\", () => pm.expect(r.data.rows).to.be.an(\"array\"));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Metabase-Session",
+            "value": "{{sessionId}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"ignore_cache\": true}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/card/{{cardId}}/query",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "card",
+            "{{cardId}}",
+            "query"
+          ]
+        }
+      }
+    }
+  ]
+}

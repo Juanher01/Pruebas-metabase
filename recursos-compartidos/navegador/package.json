@@ -1,0 +1,6 @@
+{
+  "name": "mbqa-navegador",
+  "private": true,
+  "description": "Dependencias para medir la carga de dashboards con un navegador real (TC-REN-002). node_modules no se versiona.",
+  "dependencies": { "puppeteer-core": "23.11.1" }
+}

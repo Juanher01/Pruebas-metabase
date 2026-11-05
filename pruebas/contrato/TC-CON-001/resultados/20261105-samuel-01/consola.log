@@ -1,0 +1,36 @@
+newman
+
+TC-CON-001 - Presencia de campos esperados
+
+→ GET /api/dashboard/{{dashboardId}}
+  GET http://localhost:3000/api/dashboard/2 [200 OK, 18.53kB, 552ms]
+  √  Codigo HTTP 200 OK
+  √  Content-Type es application/json
+  √  El cuerpo es JSON valido
+  √  Respuesta en menos de 10 s
+  √  Contiene los campos id y name
+  √  id corresponde al dashboard solicitado
+  √  name corresponde al dashboard solicitado (QA - Dashboard Principal)
+  √  Cumple el esquema del contrato (campos y tipos de v0.64.1)
+  √  dashcards: 3 visualizaciones, todas con dashboard_id = id
+  √  parameters: un filtro vinculado a las 3 tarjetas
+
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                  0 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                 10 │                 0 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 1531ms                                       │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 16.66kB (approx)                            │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 552ms [min: 552ms, max: 552ms, s.d.: 0µs] │
+└──────────────────────────────────────────────────────────────────┘

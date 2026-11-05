@@ -1,0 +1,34 @@
+{
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 156,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 1845.6602564102566,
+    "medianResTime" : 1899.0,
+    "minResTime" : 206.0,
+    "maxResTime" : 5467.0,
+    "pct1ResTime" : 3317.3,
+    "pct2ResTime" : 3914.2000000000016,
+    "pct3ResTime" : 5020.690000000005,
+    "throughput" : 2.5348542458808616,
+    "receivedKBytesPerSec" : 720.0234729178853,
+    "sentKBytesPerSec" : 0.6584679974651457
+  },
+  "Consulta P1" : {
+    "transaction" : "Consulta P1",
+    "sampleCount" : 156,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 1845.6602564102566,
+    "medianResTime" : 1899.0,
+    "minResTime" : 206.0,
+    "maxResTime" : 5467.0,
+    "pct1ResTime" : 3317.3,
+    "pct2ResTime" : 3914.2000000000016,
+    "pct3ResTime" : 5020.690000000005,
+    "throughput" : 2.5348542458808616,
+    "receivedKBytesPerSec" : 720.0234729178853,
+    "sentKBytesPerSec" : 0.6584679974651457
+  }
+}
