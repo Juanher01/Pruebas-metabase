@@ -1,0 +1,24 @@
+{
+  "_instrucciones": "Copie este archivo como configuracion/recursos-locales.json (no versionado) o genérelo con scripts/obtener-ids-recursos.ps1. Los IDs son propios de CADA instalación: no los copie del compañero. No agregue contraseñas ni tokens aquí.",
+  "integrante": "NOMBRE_DEL_INTEGRANTE",
+  "fecha_registro": "AAAA-MM-DD",
+  "base_url": "http://localhost:3000",
+  "version_metabase": "v0.64.1",
+  "sample_database_id": null,
+  "coleccion_qa_id": null,
+  "dashboard_principal_id": null,
+  "preguntas": {
+    "pedidos_subtotal_mayor_100": null,
+    "conteo_pedidos": null,
+    "productos_por_categoria": null,
+    "precio_promedio_por_categoria": null,
+    "detalle_productos": null
+  },
+  "recursos_restringidos": {
+    "coleccion_restringida_id": null,
+    "dashboard_privado_id": null
+  },
+  "ids_inexistentes_verificados": {
+    "dashboard_id_inexistente": null
+  }
+}

@@ -1,0 +1,69 @@
+# ---------------------------------------------------------------
+# Secretos y variables locales
+# ---------------------------------------------------------------
+# .env contiene MB_SESSION_SECRET_KEY y las credenciales QA_* de cada integrante.
+.env
+.env.*
+!.env.example
+*.secret
+*.token
+*credenciales*
+*credentials*
+cookies*.txt
+
+# Configuración local de cada integrante (IDs, URL). Se versiona solo la plantilla.
+configuracion/*.json
+!configuracion/*.example.json
+
+# Variables locales de Cypress (si se usaran, contendrían credenciales)
+cypress.env.json
+**/cypress.env.json
+
+# Entornos de Postman con valores reales (pueden contener sesión o contraseña).
+# Se versiona solo la plantilla *.example.postman_environment.json
+*.postman_environment.json
+!*.example.postman_environment.json
+**/postman/globals*.json
+
+# ---------------------------------------------------------------
+# Datos internos de Metabase (base de aplicación H2) y respaldos
+# ---------------------------------------------------------------
+*.mv.db
+*.trace.db
+*.h2.db
+*.lock.db
+metabase-data/
+metabase.db/
+respaldos/
+*.tar.gz
+
+# ---------------------------------------------------------------
+# Node.js (Newman / Cypress)
+# ---------------------------------------------------------------
+node_modules/
+npm-debug.log*
+.npm/
+
+# Artefactos temporales de Cypress en la configuración compartida.
+# Las evidencias y resultados formales se guardan en pruebas/<categoria>/<ID>/ y SÍ se versionan.
+recursos-compartidos/cypress/videos/
+recursos-compartidos/cypress/screenshots/
+recursos-compartidos/cypress/downloads/
+
+# ---------------------------------------------------------------
+# JMeter: ensayos no formales (los resultados formales van en pruebas/.../resultados/)
+# ---------------------------------------------------------------
+recursos-compartidos/jmeter/resultados-temporales/
+jmeter.log
+
+# ---------------------------------------------------------------
+# Sistema operativo y editores
+# ---------------------------------------------------------------
+Thumbs.db
+Desktop.ini
+.DS_Store
+~$*
+*.tmp
+*.bak
+.vscode/
+.idea/

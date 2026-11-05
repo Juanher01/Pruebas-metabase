@@ -1,0 +1,7 @@
+referencia_id,descripcion,consulta_sql,usada_en,valor_juan,fecha_juan,valor_samuel,fecha_samuel,coinciden,observaciones
+R01,Registros por tabla (Orders/Products/People/Reviews),"SELECT 'ORDERS' AS TABLA, COUNT(*) AS REGISTROS FROM PUBLIC.ORDERS UNION ALL SELECT 'PRODUCTS', COUNT(*) FROM PUBLIC.PRODUCTS UNION ALL SELECT 'PEOPLE', COUNT(*) FROM PUBLIC.PEOPLE UNION ALL SELECT 'REVIEWS', COUNT(*) FROM PUBLIC.REVIEWS",Preparacion / integracion Metabase y fuente de datos,,,,,,
+R02,Pedidos con subtotal mayor a 100,SELECT COUNT(*) AS PEDIDOS_SUBTOTAL_MAYOR_100 FROM PUBLIC.ORDERS WHERE SUBTOTAL > 100,P1 / TC-FUN-002 / TC-FUN-010,,,,,,
+R03,Conteo total de pedidos,SELECT COUNT(*) AS TOTAL_PEDIDOS FROM PUBLIC.ORDERS,P2 / TC-FUN-003,,,,,,
+R04,Productos por categoria,"SELECT CATEGORY, COUNT(*) AS PRODUCTOS FROM PUBLIC.PRODUCTS GROUP BY CATEGORY ORDER BY CATEGORY",P3 / TC-FUN-005 / integracion consultas y dashboards,,,,,,
+R05,Precio promedio por categoria,"SELECT CATEGORY, AVG(PRICE) AS PRECIO_PROMEDIO FROM PUBLIC.PRODUCTS GROUP BY CATEGORY ORDER BY CATEGORY",P4,,,,,,
+R06,Precondicion TC-VAL-004 (debe ser 0),SELECT COUNT(*) AS COINCIDENCIAS FROM PUBLIC.PRODUCTS WHERE TITLE = 'QA_VALOR_INEXISTENTE_2026',TC-VAL-004,,,,,,
