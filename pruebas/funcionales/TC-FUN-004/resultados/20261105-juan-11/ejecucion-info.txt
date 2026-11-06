@@ -1,0 +1,12 @@
+﻿caso=TC-FUN-004
+herramienta=cypress
+integrante=juan
+ejecucion=20261105-juan-11
+cuenta=usuario-qa (credenciales entregadas a Cypress; la especificacion define como inicia sesion)
+inicio=2026-11-05 10:56:09
+fin=2026-11-05 10:56:54
+codigo_salida=0
+version_metabase=v0.64.1
+equipo=JUANHER01
+variables=baseUrl=http://localhost:3000, cardId=40, cardIdConteo=41, dashboardId=2, collectionId=6, databaseId=1
+comando=cypress.cmd run --project C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas --config-file C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\recursos-compartidos\cypress\cypress.config.js --spec C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-004\scripts\TC-FUN-004.cy.js --browser electron --reporter junit --reporter-options mochaFile=C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-004\resultados\20261105-juan-11\cypress-junit.xml

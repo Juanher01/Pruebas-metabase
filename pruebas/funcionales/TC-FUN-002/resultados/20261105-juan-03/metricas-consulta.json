@@ -1,0 +1,9 @@
+{
+  "total_origen_subtotal_mayor_100": 5244,
+  "total_origen_subtotal_menor_igual_100": 13516,
+  "filas_devueltas_interfaz": 2000,
+  "row_count": 2000,
+  "limite_filas_ui": 2000,
+  "subtotal_minimo_devuelto": 101.01691728415972,
+  "valores_visibles_comprobados": 18
+}

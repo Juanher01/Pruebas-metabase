@@ -1,0 +1,26 @@
+{
+  "pregunta": {
+    "id": 41,
+    "nombre": "QA - Conteo de pedidos"
+  },
+  "ejecucion_newman_comparada": "20261105-juan-01",
+  "api_newman": {
+    "codigo": 202,
+    "estado": "Accepted",
+    "status": "completed",
+    "valor": 18760,
+    "columna": "total_pedidos",
+    "tipo": "type/Integer",
+    "filas": 1
+  },
+  "interfaz": {
+    "texto_presentado": "18,760",
+    "valor": 18760,
+    "codigo_http_consulta_interfaz": 202,
+    "valor_respuesta_interfaz": 18760
+  },
+  "referencia_sql_fuente": 18760,
+  "historico_preparacion": 18760,
+  "coinciden_api_e_interfaz": true,
+  "pregunta_sin_modificar": true
+}

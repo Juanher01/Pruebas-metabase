@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="17.034" tests="6" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-06T01:08:37" tests="0" file="pruebas\validacion\TC-VAL-002\scripts\TC-VAL-002.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-VAL-002 - Parametro invalido en filtro numerico" timestamp="2026-11-06T01:08:37" tests="6" time="17.031" failures="0">
+    <testcase name="TC-VAL-002 - Parametro invalido en filtro numerico 1. Metabase disponible, sesion de Usuario QA y Subtotal es una columna numerica" time="3.249" classname="1. Metabase disponible, sesion de Usuario QA y Subtotal es una columna numerica">
+    </testcase>
+    <testcase name="TC-VAL-002 - Parametro invalido en filtro numerico 2. Editor grafico: Orders, filtro sobre Subtotal con el operador Mayor que (selector numerico)" time="10.344" classname="2. Editor grafico: Orders, filtro sobre Subtotal con el operador Mayor que (selector numerico)">
+    </testcase>
+    <testcase name="TC-VAL-002 - Parametro invalido en filtro numerico 3. Se intenta introducir &quot;abc&quot; (interaccion real, tecla por tecla) y se registra la reaccion" time="1.343" classname="3. Se intenta introducir &quot;abc&quot; (interaccion real, tecla por tecla) y se registra la reaccion">
+    </testcase>
+    <testcase name="TC-VAL-002 - Parametro invalido en filtro numerico 4. Se intenta confirmar el filtro (si la interfaz lo permite) y se registra el resultado" time="1.367" classname="4. Se intenta confirmar el filtro (si la interfaz lo permite) y se registra el resultado">
+    </testcase>
+    <testcase name="TC-VAL-002 - Parametro invalido en filtro numerico 5. Control: el mismo campo admite un numero valido (sin confirmarlo)" time="0.301" classname="5. Control: el mismo campo admite un numero valido (sin confirmarlo)">
+    </testcase>
+    <testcase name="TC-VAL-002 - Parametro invalido en filtro numerico 6. Clasificacion: &quot;abc&quot; no se aplica como numero valido, sin consultas con el valor ni errores inesperados" time="0.026" classname="6. Clasificacion: &quot;abc&quot; no se aplica como numero valido, sin consultas con el valor ni errores inesperados">
+    </testcase>
+  </testsuite>
+</testsuites>

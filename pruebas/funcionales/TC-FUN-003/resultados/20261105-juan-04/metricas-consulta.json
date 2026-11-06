@@ -1,0 +1,21 @@
+{
+  "consulta_sql": "SELECT COUNT(*) AS total_pedidos\nFROM orders;",
+  "motor_base_datos": "sqlite",
+  "codigo_http_consulta": 202,
+  "estado_consulta": "completed",
+  "columnas": [
+    {
+      "name": "total_pedidos",
+      "base_type": "type/Integer"
+    }
+  ],
+  "filas_devueltas": 1,
+  "row_count": 1,
+  "valor_respuesta": 18760,
+  "valor_tabla_interfaz": 18760,
+  "valor_vista_numerica_interfaz": 18760,
+  "texto_contador_filas": "Mostrando 1 fila",
+  "referencia_mbql_count": 18760,
+  "historico_r03": 18760,
+  "coincide_con_historico": true
+}

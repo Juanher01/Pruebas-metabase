@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="26.241" tests="11" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-05T23:49:05" tests="0" file="pruebas\funcionales\TC-FUN-007\scripts\TC-FUN-007.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-FUN-007 - Aplicacion de filtros en dashboard" timestamp="2026-11-05T23:49:05" tests="11" time="26.238" failures="0">
+    <testcase name="TC-FUN-007 - Aplicacion de filtros en dashboard 1. Disponibilidad, sesion, recursos locales y referencia de la fuente (solo lectura)" time="2.484" classname="1. Disponibilidad, sesion, recursos locales y referencia de la fuente (solo lectura)">
+    </testcase>
+    <testcase name="TC-FUN-007 - Aplicacion de filtros en dashboard 2. Nombre del dashboard sin duplicados (solo lectura)" time="0.200" classname="2. Nombre del dashboard sin duplicados (solo lectura)">
+    </testcase>
+    <testcase name="TC-FUN-007 - Aplicacion de filtros en dashboard 3. Se crea el dashboard de prueba en QA - Metabase desde la interfaz" time="7.374" classname="3. Se crea el dashboard de prueba en QA - Metabase desde la interfaz">
+    </testcase>
+    <testcase name="TC-FUN-007 - Aplicacion de filtros en dashboard 4. Se incorporan las tres preguntas desde Anadir preguntas" time="4.398" classname="4. Se incorporan las tres preguntas desde Anadir preguntas">
+    </testcase>
+    <testcase name="TC-FUN-007 - Aplicacion de filtros en dashboard 5. Se configura el filtro Categoria (Texto o categoria, Es, lista) y se vincula a Products.Category en las tres preguntas" time="2.909" classname="5. Se configura el filtro Categoria (Texto o categoria, Es, lista) y se vincula a Products.Category en las tres preguntas">
+    </testcase>
+    <testcase name="TC-FUN-007 - Aplicacion de filtros en dashboard 6. Se guarda el dashboard: filtro y vinculaciones registrados (PUT /api/dashboard)" time="0.707" classname="6. Se guarda el dashboard: filtro y vinculaciones registrados (PUT /api/dashboard)">
+    </testcase>
+    <testcase name="TC-FUN-007 - Aplicacion de filtros en dashboard 7. Estado inicial sin filtro: las tres visualizaciones muestran todas las categorias" time="3.577" classname="7. Estado inicial sin filtro: las tres visualizaciones muestran todas las categorias">
+    </testcase>
+    <testcase name="TC-FUN-007 - Aplicacion de filtros en dashboard 8. Se abre el selector Categoria y se elige Gadget (lista desplegable)" time="1.014" classname="8. Se abre el selector Categoria y se elige Gadget (lista desplegable)">
+    </testcase>
+    <testcase name="TC-FUN-007 - Aplicacion de filtros en dashboard 9. Al aplicar Gadget las tres visualizaciones se actualizan solo con datos de Gadget" time="1.099" classname="9. Al aplicar Gadget las tres visualizaciones se actualizan solo con datos de Gadget">
+    </testcase>
+    <testcase name="TC-FUN-007 - Aplicacion de filtros en dashboard 10. Al eliminar el filtro las visualizaciones regresan al estado sin filtro" time="1.535" classname="10. Al eliminar el filtro las visualizaciones regresan al estado sin filtro">
+    </testcase>
+    <testcase name="TC-FUN-007 - Aplicacion de filtros en dashboard 11. Persistencia de la configuracion y recursos protegidos (lectura complementaria por API)" time="0.424" classname="11. Persistencia de la configuracion y recursos protegidos (lectura complementaria por API)">
+    </testcase>
+  </testsuite>
+</testsuites>

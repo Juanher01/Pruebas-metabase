@@ -1,0 +1,70 @@
+
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        16.2.1                                                                         │
+  │ Browser:        Electron 146 (headless) (deprecated)                                           │
+  │ Node Version:   v22.15.1 (C:\nvm4w\nodejs\node.exe)                                            │
+  │ Specs:          1 found (TC-FUN-008.cy.js)                                                     │
+  │ Searched:       C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN │
+  │                 -008\scripts\TC-FUN-008.cy.js                                                  │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Warning: The Electron browser is deprecated as a test browser and will be removed in a future version of Cypress.
+
+Switch to Chrome or another installed browser to avoid a breaking change when you upgrade.
+
+Read more about supported browsers: https://on.cypress.io/launching-browsers
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  TC-FUN-008.cy.js                                                                (1 of 1)
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        11                                                                               │
+  │ Passing:      11                                                                               │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  7                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     38 seconds                                                                       │
+  │ Spec Ran:     TC-FUN-008.cy.js                                                                 │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     08\evidencias\20261105-juan-06\01-pregunta-en-coleccion-origen.png                             
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     08\evidencias\20261105-juan-06\02-creacion-de-coleccion.png                                    
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     08\evidencias\20261105-juan-06\03-seleccion-de-destino.png                                     
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     08\evidencias\20261105-juan-06\04-pregunta-en-coleccion-destino.png                            
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     08\evidencias\20261105-juan-06\05-pregunta-abierta-tras-traslado.png                           
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     08\evidencias\20261105-juan-06\06-configuracion-conservada.png                                 
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     08\evidencias\20261105-juan-06\07-origen-sin-la-pregunta.png                                   
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ √  TC-FUN-008.cy.js                         00:38       11       11        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    √  All specs passed!                        00:38       11       11        -        -        -  
+

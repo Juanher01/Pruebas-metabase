@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="28.512" tests="7" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-06T01:12:46" tests="0" file="pruebas\validacion\TC-VAL-003\scripts\TC-VAL-003.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-VAL-003 - Campo obligatorio incompleto en autenticacion" timestamp="2026-11-06T01:12:46" tests="7" time="28.509" failures="0">
+    <testcase name="TC-VAL-003 - Campo obligatorio incompleto en autenticacion 1. Metabase disponible y el contexto de Cypress no tiene sesion autenticada" time="0.613" classname="1. Metabase disponible y el contexto de Cypress no tiene sesion autenticada">
+    </testcase>
+    <testcase name="TC-VAL-003 - Campo obligatorio incompleto en autenticacion 2. La pantalla de inicio de sesion muestra el formulario" time="2.481" classname="2. La pantalla de inicio de sesion muestra el formulario">
+    </testcase>
+    <testcase name="TC-VAL-003 - Campo obligatorio incompleto en autenticacion 3. Se introduce el correo registrado de Usuario QA y la contrasena queda vacia" time="2.326" classname="3. Se introduce el correo registrado de Usuario QA y la contrasena queda vacia">
+    </testcase>
+    <testcase name="TC-VAL-003 - Campo obligatorio incompleto en autenticacion 4. Se intenta enviar el formulario con el mecanismo normal de la interfaz" time="1.962" classname="4. Se intenta enviar el formulario con el mecanismo normal de la interfaz">
+    </testcase>
+    <testcase name="TC-VAL-003 - Campo obligatorio incompleto en autenticacion 5. La autenticacion no se completa y existe una senal verificable de informacion obligatoria" time="0.050" classname="5. La autenticacion no se completa y existe una senal verificable de informacion obligatoria">
+    </testcase>
+    <testcase name="TC-VAL-003 - Campo obligatorio incompleto en autenticacion 6. No se establece una sesion autenticada" time="0.067" classname="6. No se establece una sesion autenticada">
+    </testcase>
+    <testcase name="TC-VAL-003 - Campo obligatorio incompleto en autenticacion 7. Los recursos protegidos no son accesibles: la API los rechaza y la interfaz redirige al inicio de sesion" time="20.786" classname="7. Los recursos protegidos no son accesibles: la API los rechaza y la interfaz redirige al inicio de sesion">
+    </testcase>
+  </testsuite>
+</testsuites>

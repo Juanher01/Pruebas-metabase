@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="18.465" tests="8" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-05T14:56:36" tests="0" file="pruebas\funcionales\TC-FUN-002\scripts\TC-FUN-002.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-FUN-002 - Ejecucion de consulta mediante editor grafico" timestamp="2026-11-05T14:56:36" tests="8" time="18.456" failures="0">
+    <testcase name="TC-FUN-002 - Ejecucion de consulta mediante editor grafico 1. Metabase disponible y sesion de Usuario QA activa" time="2.773" classname="1. Metabase disponible y sesion de Usuario QA activa">
+    </testcase>
+    <testcase name="TC-FUN-002 - Ejecucion de consulta mediante editor grafico 2. Nuevo &gt; Pregunta abre el editor grafico y permite elegir Sample Database &gt; Orders" time="8.341" classname="2. Nuevo &gt; Pregunta abre el editor grafico y permite elegir Sample Database &gt; Orders">
+    </testcase>
+    <testcase name="TC-FUN-002 - Ejecucion de consulta mediante editor grafico 3. Se configura el filtro Subtotal &quot;Mayor que&quot; 100 en el paso Filtro" time="2.019" classname="3. Se configura el filtro Subtotal &quot;Mayor que&quot; 100 en el paso Filtro">
+    </testcase>
+    <testcase name="TC-FUN-002 - Ejecucion de consulta mediante editor grafico 4. Visualizar ejecuta la consulta y Metabase responde con resultados completados" time="3.561" classname="4. Visualizar ejecuta la consulta y Metabase responde con resultados completados">
+    </testcase>
+    <testcase name="TC-FUN-002 - Ejecucion de consulta mediante editor grafico 5. La consulta ejecutada corresponde al escenario: Orders, Subtotal, mayor que, 100" time="0.022" classname="5. La consulta ejecutada corresponde al escenario: Orders, Subtotal, mayor que, 100">
+    </testcase>
+    <testcase name="TC-FUN-002 - Ejecucion de consulta mediante editor grafico 6. Se muestran registros y todos los devueltos cumplen Subtotal &gt; 100" time="0.018" classname="6. Se muestran registros y todos los devueltos cumplen Subtotal &gt; 100">
+    </testcase>
+    <testcase name="TC-FUN-002 - Ejecucion de consulta mediante editor grafico 7. Los valores de Subtotal visibles en la tabla de la interfaz cumplen la condicion" time="0.017" classname="7. Los valores de Subtotal visibles en la tabla de la interfaz cumplen la condicion">
+    </testcase>
+    <testcase name="TC-FUN-002 - Ejecucion de consulta mediante editor grafico 8. Correspondencia con los datos de origen (recuento SQL de solo lectura como referencia)" time="1.075" classname="8. Correspondencia con los datos de origen (recuento SQL de solo lectura como referencia)">
+    </testcase>
+  </testsuite>
+</testsuites>

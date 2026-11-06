@@ -1,0 +1,68 @@
+{
+  "cuenta": "usuario-qa (Usuario QA); solo se introdujo el correo; contrasena vacia",
+  "formulario_inicial": {
+    "ruta": "/auth/login",
+    "correo_introducido": false,
+    "contrasena_vacia": true,
+    "contrasena_required": false,
+    "contrasena_valida_nativa": true,
+    "contrasena_value_missing": false,
+    "contrasena_mensaje_nativo": "",
+    "contrasena_aria_invalid": "false",
+    "formulario_novalidate": false,
+    "boton_texto": "Iniciar sesión",
+    "boton_habilitado": false,
+    "mensajes_visibles": []
+  },
+  "formulario_con_correo": {
+    "ruta": "/auth/login",
+    "correo_introducido": true,
+    "contrasena_vacia": true,
+    "contrasena_required": false,
+    "contrasena_valida_nativa": true,
+    "contrasena_value_missing": false,
+    "contrasena_mensaje_nativo": "",
+    "contrasena_aria_invalid": "false",
+    "formulario_novalidate": false,
+    "boton_texto": "Iniciar sesión",
+    "boton_habilitado": false,
+    "mensajes_visibles": []
+  },
+  "intento_de_envio": "boton deshabilitado: se intenta enviar con la tecla Enter en el campo de contrasena",
+  "formulario_tras_intento": {
+    "ruta": "/auth/login",
+    "correo_introducido": true,
+    "contrasena_vacia": true,
+    "contrasena_required": false,
+    "contrasena_valida_nativa": true,
+    "contrasena_value_missing": false,
+    "contrasena_mensaje_nativo": "",
+    "contrasena_aria_invalid": "true",
+    "formulario_novalidate": false,
+    "boton_texto": "Iniciar sesión",
+    "boton_habilitado": false,
+    "mensajes_visibles": [
+      "Obligatorio"
+    ]
+  },
+  "solicitudes_post_api_session": 0,
+  "mecanismos_de_validacion": [
+    "boton de envio deshabilitado mientras falta la contrasena",
+    "campo marcado como invalido (aria-invalid)",
+    "mensaje de Metabase: Obligatorio"
+  ],
+  "cookies_tras_intento": [
+    "metabase.DEVICE"
+  ],
+  "api_user_current": 401,
+  "recursos_protegidos_api": {
+    "/api/card/{id}": 401,
+    "/api/dashboard/{id}": 401,
+    "/api/collection/{id}": 401
+  },
+  "paginas_protegidas_redirigen_a": {
+    "/collection/{id}": "/auth/login",
+    "/dashboard/{id}": "/auth/login?redirect=%2Fdashboard%2F2"
+  },
+  "excepciones_no_controladas": []
+}

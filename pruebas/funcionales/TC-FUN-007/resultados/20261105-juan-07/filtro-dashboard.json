@@ -1,0 +1,209 @@
+{
+  "id_ejecucion": "20261105-juan-07",
+  "dashboard": {
+    "id": 37,
+    "nombre": "QA - TC-FUN-007 - Filtro de categoría - 20261105-juan-07",
+    "coleccion_id": 6
+  },
+  "nombre_ya_existia": true,
+  "preguntas": {
+    "recuento": {
+      "id": 42,
+      "nombre": "QA - Productos por categoría"
+    },
+    "promedio": {
+      "id": 43,
+      "nombre": "QA - Precio promedio por categoría"
+    },
+    "detalle": {
+      "id": 44,
+      "nombre": "QA - Detalle de productos"
+    }
+  },
+  "filtro": {
+    "id": "8d7b53e",
+    "etiqueta": "Categoría",
+    "tipo": "string/=",
+    "seccion": "string",
+    "valor_probado": "Gadget"
+  },
+  "vinculaciones": [
+    {
+      "card_id": 42,
+      "target": [
+        "dimension",
+        [
+          "field",
+          18,
+          {
+            "base-type": "type/Text"
+          }
+        ],
+        {
+          "stage-number": 0
+        }
+      ]
+    },
+    {
+      "card_id": 43,
+      "target": [
+        "dimension",
+        [
+          "field",
+          18,
+          {
+            "base-type": "type/Text"
+          }
+        ],
+        {
+          "stage-number": 0
+        }
+      ]
+    },
+    {
+      "card_id": 44,
+      "target": [
+        "dimension",
+        [
+          "field",
+          18,
+          {
+            "base-type": "type/Text"
+          }
+        ],
+        {
+          "stage-number": 0
+        }
+      ]
+    }
+  ],
+  "boton_eliminar_filtro": null,
+  "referencia_fuente_sql": {
+    "Doohickey": {
+      "recuento": 42,
+      "promedio": 52.04430453374854
+    },
+    "Gadget": {
+      "recuento": 53,
+      "promedio": 56.96577359222534
+    },
+    "Gizmo": {
+      "recuento": 51,
+      "promedio": 55.58662658036945
+    },
+    "Widget": {
+      "recuento": 54,
+      "promedio": 57.57991087370233
+    }
+  },
+  "sin_filtro": {
+    "recuento": [
+      [
+        "Doohickey",
+        42
+      ],
+      [
+        "Gadget",
+        53
+      ],
+      [
+        "Gizmo",
+        51
+      ],
+      [
+        "Widget",
+        54
+      ]
+    ],
+    "precio_promedio": [
+      [
+        "Doohickey",
+        52.04430453374854
+      ],
+      [
+        "Gadget",
+        56.96577359222534
+      ],
+      [
+        "Gizmo",
+        55.58662658036945
+      ],
+      [
+        "Widget",
+        57.57991087370233
+      ]
+    ],
+    "detalle_productos": 200,
+    "detalle_categorias": [
+      "Doohickey",
+      "Gadget",
+      "Gizmo",
+      "Widget"
+    ]
+  },
+  "con_gadget": {
+    "recuento": [
+      [
+        "Gadget",
+        53
+      ]
+    ],
+    "precio_promedio": [
+      [
+        "Gadget",
+        56.96577359222534
+      ]
+    ],
+    "detalle_productos": 53,
+    "detalle_categorias": [
+      "Gadget"
+    ]
+  },
+  "tras_eliminar_filtro": {
+    "recuento": [
+      [
+        "Doohickey",
+        42
+      ],
+      [
+        "Gadget",
+        53
+      ],
+      [
+        "Gizmo",
+        51
+      ],
+      [
+        "Widget",
+        54
+      ]
+    ],
+    "precio_promedio": [
+      [
+        "Doohickey",
+        52.04430453374854
+      ],
+      [
+        "Gadget",
+        56.96577359222534
+      ],
+      [
+        "Gizmo",
+        55.58662658036945
+      ],
+      [
+        "Widget",
+        57.57991087370233
+      ]
+    ],
+    "detalle_productos": 200,
+    "detalle_categorias": [
+      "Doohickey",
+      "Gadget",
+      "Gizmo",
+      "Widget"
+    ]
+  },
+  "recursos_protegidos_sin_cambios": true,
+  "conservado_como_evidencia": true
+}

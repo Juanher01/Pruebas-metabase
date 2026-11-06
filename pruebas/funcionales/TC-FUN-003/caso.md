@@ -11,7 +11,7 @@
 | Responsable asignado | Juan (reasignado por el equipo el 2026-11-05; el plan v1.0 asignaba: Samuel) |
 | Fecha programada (cronograma del plan) | 2026-11-09 |
 | Código HTTP esperado (plan) | N/A |
-| Estado | **No ejecutado** |
+| Estado | **Aprobado**: ejecución `20261105-juan-04`, ver [reporte.md](reporte.md) |
 
 ## Objetivo
 
@@ -31,6 +31,7 @@ Comprobar que una consulta SQL de lectura con agregación se ejecuta y que su re
 
 - Metabase v0.64.1 disponible (`scripts/verificar-ambiente.ps1` sin fallos).
 - Propuesta del equipo: `SELECT COUNT(*) AS TOTAL_PEDIDOS FROM PUBLIC.ORDERS;` y referencia R03 registrada durante la preparación.
+  - *Nota de ejecución (2026-11-05):* en v0.64.1 Sample Database usa SQLite y no admite el prefijo `PUBLIC.`. Se ejecutó `SELECT COUNT(*) AS total_pedidos FROM orders;` (ver [reporte.md](reporte.md)).
 
 ## Procedimiento / solicitud (plan)
 

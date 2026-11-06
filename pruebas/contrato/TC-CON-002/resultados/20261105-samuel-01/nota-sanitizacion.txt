@@ -1,0 +1,25 @@
+NOTA DE SANITIZACIÓN - newman-results.json
+Fecha: 2026-11-05
+
+Motivo: esta ejecución es anterior a la redacción automática de correos de scripts/ejecutar-herramienta.ps1.
+Los cuerpos de respuesta que Newman guarda como bytes ("type":"Buffer") contenían el correo personal
+de la cuenta que creó y editó los recursos (campos creator.email y last-edit-info.email).
+
+Cambio realizado: el correo se sustituyó por <correo-redactadoxxxxx>, un texto de la misma longitud,
+de modo que responseSize y la longitud de cada cuerpo no cambian. No se modificó nada más.
+Se conservó internal@metabase.com, la cuenta interna del sistema, que no es personal.
+
+Sustituciones:
+  - ejecución 0 (GET /api/card/{{cardId}}): 2 ocurrencia(s)
+
+Comprobaciones posteriores, todas superadas:
+  - El JSON sigue siendo válido y conserva su formato (2 espacios, CRLF).
+  - Fuera de los bytes de los cuerpos, el archivo es idéntico al original.
+  - Dentro de los cuerpos solo cambiaron los campos *.email que contenían ese correo.
+  - Códigos HTTP, estados, aserciones, errores, tiempos, responseSize y estadísticas: idénticos.
+  - Ya no queda ningún correo personal en el archivo.
+
+SHA-256 del original:   5e8332530fa666776153e53df4036cedd2acd97ebbbd4c62c962e244af165625
+SHA-256 del sanitizado: a37c52f4a2249ba0169a726a40808e1b207669354ada02412cfee04304611b2f
+Los SHA-256 se calcularon sobre el archivo con saltos CRLF, como queda en Windows con core.autocrlf=true.
+El original se guardó como respaldo local fuera del repositorio; no se versiona.

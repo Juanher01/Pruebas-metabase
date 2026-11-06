@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="38.971" tests="11" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-06T00:11:07" tests="0" file="pruebas\funcionales\TC-FUN-008\scripts\TC-FUN-008.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-FUN-008 - Creacion y organizacion de colecciones" timestamp="2026-11-06T00:11:07" tests="11" time="38.966" failures="0">
+    <testcase name="TC-FUN-008 - Creacion y organizacion de colecciones 1. Disponibilidad, cuenta, permisos sobre la coleccion de origen y referencia de la fuente (solo lectura)" time="4.094" classname="1. Disponibilidad, cuenta, permisos sobre la coleccion de origen y referencia de la fuente (solo lectura)">
+    </testcase>
+    <testcase name="TC-FUN-008 - Creacion y organizacion de colecciones 2. Nombres libres para la pregunta y la coleccion (solo lectura)" time="1.730" classname="2. Nombres libres para la pregunta y la coleccion (solo lectura)">
+    </testcase>
+    <testcase name="TC-FUN-008 - Creacion y organizacion de colecciones 3. Preparacion: se crea y guarda en QA - Metabase la pregunta temporal (Products, sin filtros, tabla)" time="13.639" classname="3. Preparacion: se crea y guarda en QA - Metabase la pregunta temporal (Products, sin filtros, tabla)">
+    </testcase>
+    <testcase name="TC-FUN-008 - Creacion y organizacion de colecciones 4. La pregunta temporal aparece en QA - Metabase y se abre mostrando resultados" time="3.591" classname="4. La pregunta temporal aparece en QA - Metabase y se abre mostrando resultados">
+    </testcase>
+    <testcase name="TC-FUN-008 - Creacion y organizacion de colecciones 5. Se crea la coleccion de prueba dentro de QA - Metabase desde la interfaz" time="4.124" classname="5. Se crea la coleccion de prueba dentro de QA - Metabase desde la interfaz">
+    </testcase>
+    <testcase name="TC-FUN-008 - Creacion y organizacion de colecciones 6. La coleccion aparece en la ubicacion seleccionada (QA - Metabase)" time="0.908" classname="6. La coleccion aparece en la ubicacion seleccionada (QA - Metabase)">
+    </testcase>
+    <testcase name="TC-FUN-008 - Creacion y organizacion de colecciones 7. Acciones &gt; Mover: se selecciona la coleccion nueva como destino y se confirma el traslado" time="2.526" classname="7. Acciones &gt; Mover: se selecciona la coleccion nueva como destino y se confirma el traslado">
+    </testcase>
+    <testcase name="TC-FUN-008 - Creacion y organizacion de colecciones 8. La pregunta aparece en la coleccion de destino" time="1.269" classname="8. La pregunta aparece en la coleccion de destino">
+    </testcase>
+    <testcase name="TC-FUN-008 - Creacion y organizacion de colecciones 9. Abierta desde la nueva ubicacion: conserva nombre, fuente, visualizacion y resultados" time="3.847" classname="9. Abierta desde la nueva ubicacion: conserva nombre, fuente, visualizacion y resultados">
+    </testcase>
+    <testcase name="TC-FUN-008 - Creacion y organizacion de colecciones 10. La pregunta ya no es elemento directo de QA - Metabase" time="0.747" classname="10. La pregunta ya no es elemento directo de QA - Metabase">
+    </testcase>
+    <testcase name="TC-FUN-008 - Creacion y organizacion de colecciones 11. Traslado y no copia: misma identidad, definicion conservada y recursos protegidos (solo lectura)" time="1.802" classname="11. Traslado y no copia: misma identidad, definicion conservada y recursos protegidos (solo lectura)">
+    </testcase>
+  </testsuite>
+</testsuites>

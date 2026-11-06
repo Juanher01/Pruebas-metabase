@@ -1,0 +1,84 @@
+{
+  "info": {
+    "name": "TC-FUN-009 - Consulta de dashboard mediante API REST",
+    "description": "Plan de pruebas Metabase v1.0. GET /api/dashboard/{id} con un identificador existente y una sesion autorizada. Esperado: HTTP 200 OK y JSON con el identificador y el nombre del dashboard solicitado.\n\nEjecutar SIEMPRE con scripts/ejecutar-herramienta.ps1 -Caso TC-FUN-009 -Herramienta newman: el script inicia la sesion fuera de Newman y entrega baseUrl, dashboardId (configuracion/recursos-locales.json -> dashboard_principal_id) y sessionId en un entorno temporal. Esta coleccion no contiene credenciales, tokens, inicio de sesion ni IDs fijos.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /api/dashboard/{id} - QA - Dashboard Principal",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Precondicion: variables del entorno local entregadas por scripts/ejecutar-herramienta.ps1",
+              "['baseUrl', 'dashboardId', 'sessionId'].forEach((v) => {",
+              "  if (!pm.variables.get(v)) { throw new Error(`Variable de entorno no definida: ${v} (ejecutar con scripts/ejecutar-herramienta.ps1)`); }",
+              "});"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const NOMBRE_ESPERADO = 'QA - Dashboard Principal';",
+              "const idSolicitado = Number(pm.variables.get('dashboardId'));",
+              "let cuerpo = null;",
+              "try { cuerpo = pm.response.json(); } catch (e) { cuerpo = null; }",
+              "",
+              "pm.test('1. Codigo HTTP 200 OK', () => {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('2. El cuerpo es JSON valido', () => {",
+              "  pm.expect(pm.response.headers.get('Content-Type') || '', 'Content-Type').to.include('application/json');",
+              "  pm.expect(cuerpo, 'JSON interpretable como objeto').to.be.an('object');",
+              "});",
+              "",
+              "pm.test('3. La respuesta contiene el identificador del dashboard (id)', () => {",
+              "  pm.expect(cuerpo).to.have.property('id');",
+              "  pm.expect(cuerpo.id, 'id numerico').to.be.a('number');",
+              "});",
+              "",
+              "pm.test('4. El id devuelto coincide con el solicitado', () => {",
+              "  pm.expect(cuerpo.id).to.eql(idSolicitado);",
+              "});",
+              "",
+              "pm.test('5. Existe el campo name', () => {",
+              "  pm.expect(cuerpo).to.have.property('name');",
+              "  pm.expect(cuerpo.name, 'name de tipo texto').to.be.a('string');",
+              "});",
+              "",
+              "pm.test('6. El nombre corresponde a QA - Dashboard Principal', () => {",
+              "  pm.expect(cuerpo.name).to.eql(NOMBRE_ESPERADO);",
+              "});",
+              "",
+              "pm.test('7. Es el recurso dashboard solicitado y no un mensaje de error', () => {",
+              "  ['message', 'errors', 'error'].forEach((k) => pm.expect(cuerpo, `sin campo de error \"${k}\"`).to.not.have.property(k));",
+              "  pm.expect(cuerpo.dashcards, 'dashcards: tarjetas del dashboard').to.be.an('array');",
+              "  pm.expect(cuerpo.parameters, 'parameters: filtros del dashboard').to.be.an('array');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "X-Metabase-Session", "value": "{{sessionId}}", "type": "text" },
+          { "key": "Accept", "value": "application/json", "type": "text" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/dashboard/{{dashboardId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "dashboard", "{{dashboardId}}"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

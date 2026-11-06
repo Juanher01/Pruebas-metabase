@@ -23,6 +23,7 @@ Hay **un repositorio GitHub compartido** y **dos instalaciones locales independi
 | Verificar el ambiente | `powershell -ExecutionPolicy Bypass -File .\scripts\verificar-ambiente.ps1` |
 | Preparar usuarios, colecciones, preguntas y dashboards | [docs/DATOS-Y-RECURSOS-PRUEBA.md](docs/DATOS-Y-RECURSOS-PRUEBA.md) |
 | Crear de una vez colecciones, preguntas y dashboards QA | `.\scripts\preparar-recursos-qa.ps1` (idempotente; ver [docs/DATOS-Y-RECURSOS-PRUEBA.md](docs/DATOS-Y-RECURSOS-PRUEBA.md)) |
+| Informe formal de la preparación del ambiente (evidencia para el informe final) | [docs/INFORME-PREPARACION-AMBIENTE-QA.md](docs/INFORME-PREPARACION-AMBIENTE-QA.md) |
 | Ejecutar y registrar un caso | [docs/EJECUCION-PRUEBAS.md](docs/EJECUCION-PRUEBAS.md) |
 | Pruebas de contrato (TC-CON): contratos y resultados | [docs/CONTRATOS-API-V0.64.1.md](docs/CONTRATOS-API-V0.64.1.md) |
 | Pruebas de rendimiento (TC-REN): herramientas, decisiones y resultados | [docs/RENDIMIENTO-V0.64.1.md](docs/RENDIMIENTO-V0.64.1.md) |

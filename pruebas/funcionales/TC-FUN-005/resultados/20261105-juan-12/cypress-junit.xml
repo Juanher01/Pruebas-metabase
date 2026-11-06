@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="16.178" tests="8" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-05T16:51:29" tests="0" file="pruebas\funcionales\TC-FUN-005\scripts\TC-FUN-005.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-FUN-005 - Visualizacion grafica de resultados" timestamp="2026-11-05T16:51:29" tests="8" time="16.176" failures="0">
+    <testcase name="TC-FUN-005 - Visualizacion grafica de resultados 1. Metabase disponible, sesion de Usuario QA y referencia de origen por categoria (solo lectura)" time="2.742" classname="1. Metabase disponible, sesion de Usuario QA y referencia de origen por categoria (solo lectura)">
+    </testcase>
+    <testcase name="TC-FUN-005 - Visualizacion grafica de resultados 2. Editor grafico: Products, Resumir Recuento de filas por Category" time="6.482" classname="2. Editor grafico: Products, Resumir Recuento de filas por Category">
+    </testcase>
+    <testcase name="TC-FUN-005 - Visualizacion grafica de resultados 3. Visualizar ejecuta la consulta y devuelve el recuento por categoria" time="0.929" classname="3. Visualizar ejecuta la consulta y devuelve el recuento por categoria">
+    </testcase>
+    <testcase name="TC-FUN-005 - Visualizacion grafica de resultados 4. Vista de Tabla seleccionada: la interfaz muestra los mismos recuentos" time="2.831" classname="4. Vista de Tabla seleccionada: la interfaz muestra los mismos recuentos">
+    </testcase>
+    <testcase name="TC-FUN-005 - Visualizacion grafica de resultados 5. Se selecciona Barra y se representa un grafico de barras" time="0.696" classname="5. Se selecciona Barra y se representa un grafico de barras">
+    </testcase>
+    <testcase name="TC-FUN-005 - Visualizacion grafica de resultados 6. Las categorias del eje X son exactamente las de la consulta, sin faltantes ni sobrantes" time="0.009" classname="6. Las categorias del eje X son exactamente las de la consulta, sin faltantes ni sobrantes">
+    </testcase>
+    <testcase name="TC-FUN-005 - Visualizacion grafica de resultados 7. La altura de cada barra corresponde al recuento de su categoria (escala del eje Y)" time="0.018" classname="7. La altura de cada barra corresponde al recuento de su categoria (escala del eje Y)">
+    </testcase>
+    <testcase name="TC-FUN-005 - Visualizacion grafica de resultados 8. El tooltip de cada barra muestra su categoria y su recuento" time="2.073" classname="8. El tooltip de cada barra muestra su categoria y su recuento">
+    </testcase>
+  </testsuite>
+</testsuites>

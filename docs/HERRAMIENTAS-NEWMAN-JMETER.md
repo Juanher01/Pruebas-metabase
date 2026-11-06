@@ -14,7 +14,10 @@ Juan usa Newman en TC-FUN-009 y TC-FUN-010, con el mismo procedimiento.
 > - inicia la sesión fuera de la herramienta con la cuenta indicada (`-Cuenta admin` o `usuario-qa`, credenciales del `.env` local: ver [AUTENTICACION-QA.md](AUTENTICACION-QA.md)), de modo que la contraseña nunca llega a Newman ni a JMeter;
 > - entrega las variables y el token en un archivo temporal, nunca en la línea de comandos;
 > - cierra la sesión al terminar, con lo que el token deja de ser válido;
-> - reemplaza el token por `<SESION-REDACTADA>` en todos los archivos generados.
+> - reemplaza el token por `<SESION-REDACTADA>` en todos los archivos generados;
+> - en Newman, redacta además los correos de usuarios y las cookies `metabase.*` (por ejemplo `metabase.DEVICE`), también dentro de los cuerpos de respuesta que `newman-results.json` guarda como bytes (`"type":"Buffer","data":[…]`). Las respuestas de Metabase incluyen correos, por ejemplo en `last-edit-info.email`; se comprobó el 2026-11-05 en TC-FUN-009. `scripts/revisar-secretos.ps1` decodifica esos cuerpos y detecta los correos de las cuentas del `.env`.
+>
+> **Sanitización posterior (2026-11-05).** Las ejecuciones `20261105-samuel-01` de TC-CON-001, TC-CON-002 y TC-CON-003 se hicieron antes de que existiera esta redacción. Por eso sus `newman-results.json` guardaban, dentro de los cuerpos de respuesta, el correo personal de la cuenta que creó y editó los recursos (`creator.email` y `last-edit-info.email`). Ese correo se sustituyó por `<correo-redactadoxxxxx>`, un texto de la misma longitud, y no se tocó ningún otro dato. Se mantuvo `internal@metabase.com`, la cuenta interna de Metabase. Los códigos HTTP, las aserciones, los tiempos, los tamaños (`responseSize`) y los estados quedaron idénticos; el procedimiento y las comprobaciones están en el archivo `nota-sanitizacion.txt` de cada una de esas carpetas.
 
 ---
 

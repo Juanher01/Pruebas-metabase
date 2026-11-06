@@ -1,0 +1,50 @@
+{
+  "id_ejecucion": "20261105-juan-06",
+  "cuenta": "usuario-qa (Usuario QA, no administradora; escritura sobre QA - Metabase)",
+  "coleccion_origen": {
+    "id": 6,
+    "nombre": "QA - Metabase"
+  },
+  "coleccion_creada": {
+    "id": 37,
+    "name": "QA - TC-FUN-008 - Colección de prueba - 20261105-juan-06",
+    "location": "/6/",
+    "entity_id": "Ip9kiEUBxK7JmBD36XkcS"
+  },
+  "pregunta_antes_del_traslado": {
+    "id": 76,
+    "entity_id": "UOLZgON7Pc9g9HsbhZUmO",
+    "created_at": "2026-11-06T00:11:25.425306Z",
+    "name": "QA - TC-FUN-008 - Detalle de productos - 20261105-juan-06",
+    "collection_id": 6,
+    "display": "table",
+    "definicion": {
+      "database": 1,
+      "tabla": 3,
+      "filtros": 0,
+      "agregaciones": 0,
+      "agrupaciones": 0
+    }
+  },
+  "pregunta_despues_del_traslado": {
+    "id": 76,
+    "entity_id": "UOLZgON7Pc9g9HsbhZUmO",
+    "created_at": "2026-11-06T00:11:25.425306Z",
+    "name": "QA - TC-FUN-008 - Detalle de productos - 20261105-juan-06",
+    "collection_id": 37,
+    "display": "table",
+    "definicion": {
+      "database": 1,
+      "tabla": 3,
+      "filtros": 0,
+      "agregaciones": 0,
+      "agrupaciones": 0
+    }
+  },
+  "registros_desde_origen": 200,
+  "registros_desde_destino": 200,
+  "registros_fuente_sql": 200,
+  "traslado_no_copia": true,
+  "recursos_protegidos_sin_cambios": true,
+  "conservados_como_evidencia": true
+}

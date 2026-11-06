@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="13.768" tests="10" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-05T17:10:09" tests="0" file="pruebas\funcionales\TC-FUN-006\scripts\TC-FUN-006.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-FUN-006 - Creacion de dashboard" timestamp="2026-11-05T17:10:09" tests="10" time="13.764" failures="0">
+    <testcase name="TC-FUN-006 - Creacion de dashboard 1. Disponibilidad, sesion y recursos de la configuracion local (solo lectura)" time="1.683" classname="1. Disponibilidad, sesion y recursos de la configuracion local (solo lectura)">
+    </testcase>
+    <testcase name="TC-FUN-006 - Creacion de dashboard 2. Nombre del dashboard sin duplicados en la coleccion (solo lectura)" time="0.168" classname="2. Nombre del dashboard sin duplicados en la coleccion (solo lectura)">
+    </testcase>
+    <testcase name="TC-FUN-006 - Creacion de dashboard 3. Nuevo &gt; Dashboard: nombre y coleccion QA - Metabase en el dialogo" time="5.544" classname="3. Nuevo &gt; Dashboard: nombre y coleccion QA - Metabase en el dialogo">
+    </testcase>
+    <testcase name="TC-FUN-006 - Creacion de dashboard 4. Crear: el dashboard se registra en la coleccion con el nombre asignado" time="1.216" classname="4. Crear: el dashboard se registra en la coleccion con el nombre asignado">
+    </testcase>
+    <testcase name="TC-FUN-006 - Creacion de dashboard 5. Anadir preguntas: se busca e incorpora QA - Productos por categoria con su grafico de barras" time="1.348" classname="5. Anadir preguntas: se busca e incorpora QA - Productos por categoria con su grafico de barras">
+    </testcase>
+    <testcase name="TC-FUN-006 - Creacion de dashboard 6. Guardar: los cambios se registran (PUT /api/dashboard) y se sale del modo edicion" time="1.172" classname="6. Guardar: los cambios se registran (PUT /api/dashboard) y se sale del modo edicion">
+    </testcase>
+    <testcase name="TC-FUN-006 - Creacion de dashboard 7. Navegar fuera (Inicio) y localizar el dashboard en la coleccion QA - Metabase" time="1.360" classname="7. Navegar fuera (Inicio) y localizar el dashboard en la coleccion QA - Metabase">
+    </testcase>
+    <testcase name="TC-FUN-006 - Creacion de dashboard 8. Reabierto desde la coleccion: conserva el nombre y la pregunta, con datos de la pregunta original" time="0.741" classname="8. Reabierto desde la coleccion: conserva el nombre y la pregunta, con datos de la pregunta original">
+    </testcase>
+    <testcase name="TC-FUN-006 - Creacion de dashboard 9. El grafico de barras reabierto es coherente con la pregunta original (categorias y valores)" time="0.037" classname="9. El grafico de barras reabierto es coherente con la pregunta original (categorias y valores)">
+    </testcase>
+    <testcase name="TC-FUN-006 - Creacion de dashboard 10. Persistencia y recursos protegidos (lectura complementaria por API)" time="0.216" classname="10. Persistencia y recursos protegidos (lectura complementaria por API)">
+    </testcase>
+  </testsuite>
+</testsuites>

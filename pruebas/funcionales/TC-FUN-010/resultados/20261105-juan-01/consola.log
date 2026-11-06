@@ -1,0 +1,34 @@
+newman
+
+TC-FUN-010 - Ejecucion de pregunta guardada mediante API REST
+
+→ POST /api/card/{card-id}/query - QA - Conteo de pedidos
+  POST http://localhost:3000/api/card/41/query [202 Accepted, 3.87kB, 969ms]
+  √  1. La solicitud se envia al endpoint correcto (POST /api/card/{cardId}/query)
+  √  2. Codigo HTTP de exito: 200 OK (plan) o 202 Accepted con status completed (desviacion aprobada)
+  √  3. El cuerpo es JSON valido
+  √  4. La respuesta contiene resultados de consulta completados
+  √  5. data.rows es un arreglo
+  √  6. data.cols es un arreglo
+  √  7. Resultado agregado esperado: una fila con un valor en la columna total_pedidos (entero)
+  √  8. El recuento es un valor numerico valido (entero positivo)
+
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                  8 │                 0 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 1124ms                                       │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 2.01kB (approx)                             │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 969ms [min: 969ms, max: 969ms, s.d.: 0µs] │
+└──────────────────────────────────────────────────────────────────┘
