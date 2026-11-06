@@ -1,0 +1,33 @@
+newman
+
+TC-FUN-009 - Consulta de dashboard mediante API REST
+
+→ GET /api/dashboard/{id} - QA - Dashboard Principal
+  GET http://localhost:3000/api/dashboard/2 [200 OK, 19.41kB, 430ms]
+  √  1. Codigo HTTP 200 OK
+  √  2. El cuerpo es JSON valido
+  √  3. La respuesta contiene el identificador del dashboard (id)
+  √  4. El id devuelto coincide con el solicitado
+  √  5. Existe el campo name
+  √  6. El nombre corresponde a QA - Dashboard Principal
+  √  7. Es el recurso dashboard solicitado y no un mensaje de error
+
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                  7 │                 0 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 774ms                                        │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 17.6kB (approx)                             │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 430ms [min: 430ms, max: 430ms, s.d.: 0µs] │
+└──────────────────────────────────────────────────────────────────┘

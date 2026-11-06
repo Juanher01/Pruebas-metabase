@@ -1,0 +1,64 @@
+
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        16.2.1                                                                         │
+  │ Browser:        Electron 146 (headless) (deprecated)                                           │
+  │ Node Version:   v22.15.1 (C:\nvm4w\nodejs\node.exe)                                            │
+  │ Specs:          1 found (TC-FUN-005.cy.js)                                                     │
+  │ Searched:       C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN │
+  │                 -005\scripts\TC-FUN-005.cy.js                                                  │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Warning: The Electron browser is deprecated as a test browser and will be removed in a future version of Cypress.
+
+Switch to Chrome or another installed browser to avoid a breaking change when you upgrade.
+
+Read more about supported browsers: https://on.cypress.io/launching-browsers
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  TC-FUN-005.cy.js                                                                (1 of 1)
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        8                                                                                │
+  │ Passing:      8                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  4                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     16 seconds                                                                       │
+  │ Spec Ran:     TC-FUN-005.cy.js                                                                 │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     05\evidencias\20261105-juan-12\01-editor-grafico-recuento-por-categoria.png                    
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     05\evidencias\20261105-juan-12\02-resultados-en-tabla.png                                      
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     05\evidencias\20261105-juan-12\03-grafico-de-barras.png                                        
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     05\evidencias\20261105-juan-12\04-hover-barra-gadget.png                                       
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ √  TC-FUN-005.cy.js                         00:16        8        8        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    √  All specs passed!                        00:16        8        8        -        -        -  
+

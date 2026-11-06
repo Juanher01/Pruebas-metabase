@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="29.682" tests="6" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-06T01:32:04" tests="0" file="pruebas\validacion\TC-VAL-004\scripts\TC-VAL-004.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-VAL-004 - Parametro inexistente en consulta" timestamp="2026-11-06T01:32:04" tests="6" time="29.680" failures="0">
+    <testcase name="TC-VAL-004 - Parametro inexistente en consulta 1. Disponibilidad, sesion, campos de texto y comprobacion previa: el valor no existe (solo lectura)" time="5.494" classname="1. Disponibilidad, sesion, campos de texto y comprobacion previa: el valor no existe (solo lectura)">
+    </testcase>
+    <testcase name="TC-VAL-004 - Parametro inexistente en consulta 2. Registro: con Products.Title el selector &quot;Es&quot; es una lista cerrada y no admite el valor inexistente" time="14.172" classname="2. Registro: con Products.Title el selector &quot;Es&quot; es una lista cerrada y no admite el valor inexistente">
+    </testcase>
+    <testcase name="TC-VAL-004 - Parametro inexistente en consulta 3. Escenario formal: People.Name, operador Es, se introduce QA_VALOR_INEXISTENTE_2026 y se acepta" time="6.452" classname="3. Escenario formal: People.Name, operador Es, se introduce QA_VALOR_INEXISTENTE_2026 y se acepta">
+    </testcase>
+    <testcase name="TC-VAL-004 - Parametro inexistente en consulta 4. Se confirma el filtro: Name Es QA_VALOR_INEXISTENTE_2026" time="0.600" classname="4. Se confirma el filtro: Name Es QA_VALOR_INEXISTENTE_2026">
+    </testcase>
+    <testcase name="TC-VAL-004 - Parametro inexistente en consulta 5. La consulta termina correctamente (completed) con 0 registros y la definicion enviada es la esperada" time="1.085" classname="5. La consulta termina correctamente (completed) con 0 registros y la definicion enviada es la esperada">
+    </testcase>
+    <testcase name="TC-VAL-004 - Parametro inexistente en consulta 6. La interfaz representa la ausencia de resultados sin errores" time="1.154" classname="6. La interfaz representa la ausencia de resultados sin errores">
+    </testcase>
+  </testsuite>
+</testsuites>

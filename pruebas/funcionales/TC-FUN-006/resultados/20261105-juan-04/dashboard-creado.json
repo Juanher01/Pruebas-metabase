@@ -1,0 +1,55 @@
+{
+  "id_ejecucion": "20261105-juan-04",
+  "dashboard": {
+    "id": 35,
+    "name": "QA - TC-FUN-006 - Dashboard de prueba - 20261105-juan-04",
+    "collection_id": 6,
+    "entity_id": "O6ZndgSSmOE1pP2W7SrLb",
+    "dashcard_id": 69,
+    "card_id": 42,
+    "size": [
+      12,
+      6
+    ]
+  },
+  "url_relativa": "/dashboard/35",
+  "nombre_ya_existia": true,
+  "coleccion": {
+    "id": 6,
+    "nombre": "QA - Metabase"
+  },
+  "pregunta": {
+    "id": 42,
+    "nombre": "QA - Productos por categoría",
+    "display": "bar"
+  },
+  "codigo_http_creacion": 200,
+  "codigo_http_guardado": 200,
+  "codigo_http_tarjeta_reabierta": 202,
+  "resultados_pregunta_original": {
+    "Doohickey": 42,
+    "Gadget": 53,
+    "Gizmo": 51,
+    "Widget": 54
+  },
+  "barras_dashboard_reabierto": [
+    {
+      "categoria": "Doohickey",
+      "valor": 42
+    },
+    {
+      "categoria": "Gadget",
+      "valor": 53
+    },
+    {
+      "categoria": "Gizmo",
+      "valor": 51
+    },
+    {
+      "categoria": "Widget",
+      "valor": 54
+    }
+  ],
+  "recursos_protegidos_sin_cambios": true,
+  "conservado_como_evidencia": true
+}

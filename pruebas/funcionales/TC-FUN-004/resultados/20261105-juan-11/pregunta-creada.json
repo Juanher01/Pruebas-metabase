@@ -1,0 +1,25 @@
+{
+  "id_ejecucion": "20261105-juan-11",
+  "pregunta": {
+    "id": 74,
+    "name": "QA - TC-FUN-004 - Productos Gadget - 20261105-juan-11",
+    "collection_id": 6,
+    "display": "table",
+    "entity_id": "mJB9QFspt-3Jmj1mSotet"
+  },
+  "coleccion": {
+    "id": 6,
+    "nombre": "QA - Metabase"
+  },
+  "url_relativa": "/question/74",
+  "nombre_ya_existia": true,
+  "codigo_http_guardado": 200,
+  "filas_consulta_original": 53,
+  "filas_pregunta_recuperada": 53,
+  "mismos_registros": true,
+  "recuento_origen_sql": 53,
+  "valores_category_visibles_comprobados": 19,
+  "texto_contador_filas": "Mostrando 53 filas",
+  "codigo_http_recuperacion": 202,
+  "conservada_como_evidencia": true
+}

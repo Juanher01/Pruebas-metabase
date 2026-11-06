@@ -1,0 +1,64 @@
+{
+  "valor_invalido": "abc",
+  "columna": {
+    "nombre": "Subtotal",
+    "tipo": "type/Float",
+    "selector": "number-filter-picker"
+  },
+  "operador": "Mayor que",
+  "control": {
+    "tag": "INPUT",
+    "inputmode": null,
+    "aria_invalid": "false"
+  },
+  "boton_confirmar_antes_de_escribir": {
+    "texto": "Añadir filtro",
+    "habilitado": false
+  },
+  "pulsaciones": [
+    {
+      "tecla": "a",
+      "valor_del_control": "a",
+      "aria_invalid": "false",
+      "mensajes": [],
+      "boton_confirmar_habilitado": false
+    },
+    {
+      "tecla": "b",
+      "valor_del_control": "ab",
+      "aria_invalid": "false",
+      "mensajes": [],
+      "boton_confirmar_habilitado": false
+    },
+    {
+      "tecla": "c",
+      "valor_del_control": "abc",
+      "aria_invalid": "false",
+      "mensajes": [],
+      "boton_confirmar_habilitado": false
+    }
+  ],
+  "tras_escribir_abc": {
+    "valor_del_control": "abc",
+    "contiene_letras": true,
+    "aria_invalid": "false",
+    "mensajes": [],
+    "boton_confirmar_habilitado": false,
+    "texto_boton": "Añadir filtro"
+  },
+  "intento_de_confirmar": "boton deshabilitado: se intenta confirmar con la tecla Enter",
+  "tras_intentar_confirmar": {
+    "selector_sigue_abierto": true,
+    "texto_paso_filtro": "Filtro To pick up a draggable item, press the space bar. While dragging, use the arrow keys to move the item. Press space again to drop the item in its new position, or press escape to cancel. Añade f",
+    "paso_filtro_sin_filtros": true,
+    "paso_filtro_contiene_abc": false
+  },
+  "control_numero_valido": {
+    "valor_del_control": "100",
+    "boton_confirmar_habilitado": true
+  },
+  "consultas_observadas": 0,
+  "consultas_con_valor_invalido": 0,
+  "excepciones_no_controladas": [],
+  "escenario": "B"
+}

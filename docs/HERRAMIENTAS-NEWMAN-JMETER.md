@@ -14,7 +14,8 @@ Juan usa Newman en TC-FUN-009 y TC-FUN-010, con el mismo procedimiento.
 > - inicia la sesión fuera de la herramienta con la cuenta indicada (`-Cuenta admin` o `usuario-qa`, credenciales del `.env` local: ver [AUTENTICACION-QA.md](AUTENTICACION-QA.md)), de modo que la contraseña nunca llega a Newman ni a JMeter;
 > - entrega las variables y el token en un archivo temporal, nunca en la línea de comandos;
 > - cierra la sesión al terminar, con lo que el token deja de ser válido;
-> - reemplaza el token por `<SESION-REDACTADA>` en todos los archivos generados.
+> - reemplaza el token por `<SESION-REDACTADA>` en todos los archivos generados;
+> - en Newman, redacta además los correos de usuarios y las cookies `metabase.*` (por ejemplo `metabase.DEVICE`), también dentro de los cuerpos de respuesta que `newman-results.json` guarda como bytes (`"type":"Buffer","data":[…]`). Las respuestas de Metabase incluyen correos, por ejemplo en `last-edit-info.email`; se comprobó el 2026-11-05 en TC-FUN-009. `scripts/revisar-secretos.ps1` decodifica esos cuerpos y detecta los correos de las cuentas del `.env`.
 
 ---
 

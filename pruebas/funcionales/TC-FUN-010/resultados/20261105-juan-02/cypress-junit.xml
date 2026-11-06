@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="20.216" tests="4" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-06T00:46:25" tests="0" file="pruebas\funcionales\TC-FUN-010\scripts\TC-FUN-010.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-FUN-010 - Verificacion complementaria: resultado de la pregunta en la interfaz vs API (Newman)" timestamp="2026-11-06T00:46:25" tests="4" time="20.211" failures="0">
+    <testcase name="TC-FUN-010 - Verificacion complementaria: resultado de la pregunta en la interfaz vs API (Newman) 1. Disponibilidad, sesion y pregunta de la configuracion local (solo lectura)" time="3.049" classname="1. Disponibilidad, sesion y pregunta de la configuracion local (solo lectura)">
+    </testcase>
+    <testcase name="TC-FUN-010 - Verificacion complementaria: resultado de la pregunta en la interfaz vs API (Newman) 2. Valor devuelto por la API en la ejecucion principal de Newman (newman-results.json)" time="0.079" classname="2. Valor devuelto por la API en la ejecucion principal de Newman (newman-results.json)">
+    </testcase>
+    <testcase name="TC-FUN-010 - Verificacion complementaria: resultado de la pregunta en la interfaz vs API (Newman) 3. La misma pregunta abierta desde la interfaz presenta su resultado" time="16.171" classname="3. La misma pregunta abierta desde la interfaz presenta su resultado">
+    </testcase>
+    <testcase name="TC-FUN-010 - Verificacion complementaria: resultado de la pregunta en la interfaz vs API (Newman) 4. El valor de la API (Newman) coincide con el presentado en la interfaz y con la fuente" time="0.527" classname="4. El valor de la API (Newman) coincide con el presentado en la interfaz y con la fuente">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,32 @@
+{
+  "dato_introducido": 100,
+  "columna": {
+    "nombre": "Subtotal",
+    "campo_id": 10,
+    "tipo": "type/Float"
+  },
+  "filtro_enviado_por_la_interfaz": {
+    "operador": ">",
+    "campo": 10,
+    "valor": 100,
+    "tipo": "number"
+  },
+  "texto_paso_filtro": "FiltroSubtotal es mayor que 100 To pick up a draggable item, press the space bar. While dragging, use the arrow keys to move the item. Press space again to drop the item in its new position, or press escape to cancel.",
+  "pildora_filtro": "Subtotal es mayor que 100",
+  "contador_filas_interfaz": "Mostrando las primeras 2,000 filas",
+  "filas_devueltas": 2000,
+  "row_count": 2000,
+  "limite_filas_ui": 2000,
+  "subtotal_minimo_devuelto": 101.01691728415972,
+  "subtotal_maximo_devuelto": 148.22900526552291,
+  "valores_visibles_comprobados": 18,
+  "ejemplos_valores_visibles": [
+    "110.93",
+    "109.22",
+    "127.88",
+    "148.23",
+    "114.42"
+  ],
+  "fuente_cumplen_subtotal_mayor_100": 5244,
+  "fuente_excluidos_subtotal_menor_igual_100": 13516
+}

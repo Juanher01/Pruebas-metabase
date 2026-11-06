@@ -1,0 +1,77 @@
+{
+    "nota":  "Resumen sanitizado generado a partir de newman-results.json (sin correos, tokens ni cookies). No es un reporte nativo.",
+    "solicitud":  {
+                      "metodo":  "GET",
+                      "url":  "http://localhost:3000/api/dashboard/2",
+                      "dashboardId_solicitado":  2,
+                      "cabecera_sesion":  "\u003cSESION-REDACTADA\u003e"
+                  },
+    "respuesta":  {
+                      "codigo_http":  200,
+                      "estado":  "OK",
+                      "tiempo_ms":  430,
+                      "tamano_bytes":  17597,
+                      "content_type":  "application/json;charset=utf-8",
+                      "id":  2,
+                      "name":  "QA - Dashboard Principal",
+                      "collection_id":  6,
+                      "archived":  false,
+                      "tarjetas":  [
+                                       {
+                                           "dashcard_id":  37,
+                                           "card_id":  42,
+                                           "card_name":  "QA - Productos por categoría",
+                                           "display":  "bar"
+                                       },
+                                       {
+                                           "dashcard_id":  38,
+                                           "card_id":  43,
+                                           "card_name":  "QA - Precio promedio por categoría",
+                                           "display":  "bar"
+                                       },
+                                       {
+                                           "dashcard_id":  39,
+                                           "card_id":  44,
+                                           "card_name":  "QA - Detalle de productos",
+                                           "display":  "table"
+                                       }
+                                   ],
+                      "parametros":  [
+                                         {
+                                             "name":  "Categoría",
+                                             "type":  "string/="
+                                         }
+                                     ],
+                      "campos_de_nivel_superior":  41
+                  },
+    "aserciones":  [
+                       {
+                           "asercion":  "1. Codigo HTTP 200 OK",
+                           "resultado":  "OK"
+                       },
+                       {
+                           "asercion":  "2. El cuerpo es JSON valido",
+                           "resultado":  "OK"
+                       },
+                       {
+                           "asercion":  "3. La respuesta contiene el identificador del dashboard (id)",
+                           "resultado":  "OK"
+                       },
+                       {
+                           "asercion":  "4. El id devuelto coincide con el solicitado",
+                           "resultado":  "OK"
+                       },
+                       {
+                           "asercion":  "5. Existe el campo name",
+                           "resultado":  "OK"
+                       },
+                       {
+                           "asercion":  "6. El nombre corresponde a QA - Dashboard Principal",
+                           "resultado":  "OK"
+                       },
+                       {
+                           "asercion":  "7. Es el recurso dashboard solicitado y no un mensaje de error",
+                           "resultado":  "OK"
+                       }
+                   ]
+}

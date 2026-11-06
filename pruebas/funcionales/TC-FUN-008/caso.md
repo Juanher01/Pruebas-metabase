@@ -11,7 +11,7 @@
 | Responsable asignado | Juan (reasignado por el equipo el 2026-11-05; el plan v1.0 asignaba: Samuel) |
 | Fecha programada (cronograma del plan) | 2026-11-10 |
 | Código HTTP esperado (plan) | N/A |
-| Estado | **No ejecutado** |
+| Estado | **Aprobado**: ejecución `20261105-juan-06`, colección creada ID 37 y pregunta trasladada ID 76, ver [reporte.md](reporte.md) |
 
 ## Objetivo
 

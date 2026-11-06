@@ -1,0 +1,38 @@
+{
+  "valor": "QA_VALOR_INEXISTENTE_2026",
+  "comprobacion_previa_sql": {
+    "products_title_igual_valor": 0,
+    "people_name_igual_valor": 0,
+    "total_people": 2500
+  },
+  "campo_propuesto_products_title": {
+    "id": 17,
+    "base_type": "type/Text",
+    "has_field_values": "list",
+    "comportamiento": {
+      "has_field_values": "list",
+      "tipo_de_control": "Buscar en la lista",
+      "texto_mostrado": "TitleEsNo se encontró nadaAñadir filtro",
+      "casillas_coincidentes": 0,
+      "boton_anadir_filtro_habilitado": false,
+      "boton_tras_enter_habilitado": false
+    }
+  },
+  "campo_utilizado_people_name": {
+    "id": 48,
+    "base_type": "type/Text",
+    "has_field_values": "search"
+  },
+  "aviso_al_buscar": "NameEsAñadir filtro",
+  "paso_filtro": "FiltroName is QA_VALOR_INEXISTENTE_2026",
+  "pildora_filtro": "Name is QA_VALOR_INEXISTENTE_2026",
+  "respuesta_consulta": {
+    "codigo": 202,
+    "status": "completed",
+    "row_count": 0,
+    "filas": 0,
+    "columnas": 13
+  },
+  "estado_vacio_interfaz": "Sin resultadosPuede que esta sea la respuesta que buscas. Si no, prueba a quitar o cambiar los filtros para que sean menos específicos.Volver a los resultados anteriores",
+  "excepciones_no_controladas": []
+}

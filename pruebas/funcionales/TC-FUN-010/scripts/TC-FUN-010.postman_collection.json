@@ -1,0 +1,102 @@
+{
+  "info": {
+    "name": "TC-FUN-010 - Ejecucion de pregunta guardada mediante API REST",
+    "description": "Plan de pruebas Metabase v1.0. POST /api/card/{card-id}/query con una pregunta guardada existente y una sesion autorizada. Esperado (plan): HTTP 200 OK y resultados correspondientes a la pregunta. Desviacion aprobada por el equipo (2026-11-05): se acepta tambien HTTP 202 Accepted (respuesta en streaming de v0.64.1) siempre que status = completed.\n\nPregunta: 'QA - Conteo de pedidos' (SELECT COUNT(*) AS total_pedidos FROM orders). Su ID se toma de configuracion/recursos-locales.json (preguntas.conteo_pedidos), que scripts/ejecutar-herramienta.ps1 entrega como la variable cardIdConteo; el script previo la asigna a {{cardId}} solo dentro de esta coleccion. Sin credenciales, tokens, inicio de sesion ni IDs fijos.\n\nEjecutar SIEMPRE con scripts/ejecutar-herramienta.ps1 -Caso TC-FUN-010 -Herramienta newman. La comparacion con la interfaz web se hace despues con la verificacion complementaria Cypress (scripts/TC-FUN-010.cy.js), que lee newman-results.json.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST /api/card/{card-id}/query - QA - Conteo de pedidos",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Precondicion: variables del entorno local entregadas por scripts/ejecutar-herramienta.ps1",
+              "['baseUrl', 'cardIdConteo', 'sessionId'].forEach((v) => {",
+              "  if (!pm.variables.get(v)) { throw new Error(`Variable de entorno no definida: ${v} (ejecutar con scripts/ejecutar-herramienta.ps1)`); }",
+              "});",
+              "// cardId de ESTA solicitud = pregunta 'QA - Conteo de pedidos' de la instalacion local (preguntas.conteo_pedidos)",
+              "pm.variables.set('cardId', pm.variables.get('cardIdConteo'));"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const cardId = String(pm.variables.get('cardIdConteo'));",
+              "let cuerpo = null;",
+              "try { cuerpo = pm.response.json(); } catch (e) { cuerpo = null; }",
+              "const datos = cuerpo && cuerpo.data;",
+              "",
+              "pm.test('1. La solicitud se envia al endpoint correcto (POST /api/card/{cardId}/query)', () => {",
+              "  pm.expect(pm.request.method).to.eql('POST');",
+              "  pm.expect('/' + pm.request.url.path.join('/')).to.eql(`/api/card/${cardId}/query`);",
+              "});",
+              "",
+              "// Desviacion del plan aprobada por el equipo el 2026-11-05: en v0.64.1 las consultas se responden en",
+              "// streaming con HTTP 202 Accepted por defecto. Se acepta 200 (plan) o 202, siempre con status = completed.",
+              "pm.test('2. Codigo HTTP de exito: 200 OK (plan) o 202 Accepted con status completed (desviacion aprobada)', () => {",
+              "  pm.expect(pm.response.code, 'codigo HTTP').to.be.oneOf([200, 202]);",
+              "  pm.expect(cuerpo && cuerpo.status, 'status de la consulta').to.eql('completed');",
+              "});",
+              "",
+              "pm.test('3. El cuerpo es JSON valido', () => {",
+              "  pm.expect(pm.response.headers.get('Content-Type') || '', 'Content-Type').to.include('application/json');",
+              "  pm.expect(cuerpo, 'JSON interpretable como objeto').to.be.an('object');",
+              "});",
+              "",
+              "pm.test('4. La respuesta contiene resultados de consulta completados', () => {",
+              "  pm.expect(cuerpo.status, 'status de la consulta').to.eql('completed');",
+              "  pm.expect(cuerpo, 'sin campo error').to.not.have.property('error');",
+              "  pm.expect(datos, 'objeto data').to.be.an('object');",
+              "});",
+              "",
+              "pm.test('5. data.rows es un arreglo', () => {",
+              "  pm.expect(datos.rows).to.be.an('array');",
+              "});",
+              "",
+              "pm.test('6. data.cols es un arreglo', () => {",
+              "  pm.expect(datos.cols).to.be.an('array');",
+              "});",
+              "",
+              "pm.test('7. Resultado agregado esperado: una fila con un valor en la columna total_pedidos (entero)', () => {",
+              "  pm.expect(datos.rows.length, 'filas').to.eql(1);",
+              "  pm.expect(datos.rows[0].length, 'valores en la fila').to.eql(1);",
+              "  pm.expect(cuerpo.row_count, 'row_count').to.eql(1);",
+              "  pm.expect(datos.cols.length, 'columnas').to.eql(1);",
+              "  pm.expect(datos.cols[0].name, 'nombre de la columna').to.eql('total_pedidos');",
+              "  pm.expect(datos.cols[0].base_type, 'tipo de la columna').to.be.oneOf(['type/Integer', 'type/BigInteger']);",
+              "});",
+              "",
+              "pm.test('8. El recuento es un valor numerico valido (entero positivo)', () => {",
+              "  const n = datos.rows[0][0];",
+              "  pm.expect(n, 'tipo numerico').to.be.a('number');",
+              "  pm.expect(Number.isInteger(n), 'entero').to.eql(true);",
+              "  pm.expect(n, 'positivo').to.be.above(0);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "X-Metabase-Session", "value": "{{sessionId}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "Accept", "value": "application/json", "type": "text" }
+        ],
+        "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+        "url": {
+          "raw": "{{baseUrl}}/api/card/{{cardId}}/query",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "card", "{{cardId}}", "query"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

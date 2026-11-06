@@ -1,0 +1,12 @@
+﻿caso=TC-FUN-009
+herramienta=newman
+integrante=juan
+ejecucion=20261105-juan-01
+cuenta=usuario-qa
+inicio=2026-11-05 19:29:18
+fin=2026-11-05 19:29:22
+codigo_salida=0
+version_metabase=v0.64.1
+equipo=JUANHER01
+variables=baseUrl=http://localhost:3000, cardId=40, cardIdConteo=41, dashboardId=2, collectionId=6, databaseId=1
+comando=newman.cmd run C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-009\scripts\TC-FUN-009.postman_collection.json -e <archivo-temporal> -n 1 --timeout-request 120000 -r cli,json,htmlextra --reporter-json-export C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-009\resultados\20261105-juan-01\newman-results.json --reporter-htmlextra-export C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-009\resultados\20261105-juan-01\newman-report.html --reporter-htmlextra-title TC-FUN-009 --reporter-htmlextra-skipHeaders X-Metabase-Session --reporter-htmlextra-skipEnvironmentVars sessionId --reporter-htmlextra-skipSensitiveData

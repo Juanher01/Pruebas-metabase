@@ -1,0 +1,12 @@
+﻿caso=TC-VAL-004
+herramienta=cypress
+integrante=juan
+ejecucion=20261105-juan-01
+cuenta=usuario-qa (credenciales entregadas a Cypress; la especificacion define como inicia sesion)
+inicio=2026-11-05 20:31:50
+fin=2026-11-05 20:32:36
+codigo_salida=0
+version_metabase=v0.64.1
+equipo=JUANHER01
+variables=baseUrl=http://localhost:3000, cardId=40, cardIdConteo=41, dashboardId=2, collectionId=6, databaseId=1
+comando=cypress.cmd run --project C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas --config-file C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\recursos-compartidos\cypress\cypress.config.js --spec C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\validacion\TC-VAL-004\scripts\TC-VAL-004.cy.js --browser electron --reporter junit --reporter-options mochaFile=C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\validacion\TC-VAL-004\resultados\20261105-juan-01\cypress-junit.xml

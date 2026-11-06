@@ -1,0 +1,10 @@
+{
+  "name": "metabase-pruebas-cypress",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependencia compartida de Cypress para los casos de interfaz de Metabase-Pruebas. Ejecutar siempre con scripts/ejecutar-herramienta.ps1 -Herramienta cypress.",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "cypress": "16.2.1"
+  }
+}

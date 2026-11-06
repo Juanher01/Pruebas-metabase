@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="37.704" tests="7" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-06T01:04:18" tests="0" file="pruebas\validacion\TC-VAL-001\scripts\TC-VAL-001.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-VAL-001 - Parametro valido en filtro de consulta" timestamp="2026-11-06T01:04:18" tests="7" time="37.701" failures="0">
+    <testcase name="TC-VAL-001 - Parametro valido en filtro de consulta 1. Metabase disponible, sesion de Usuario QA y columna numerica Subtotal disponible" time="2.920" classname="1. Metabase disponible, sesion de Usuario QA y columna numerica Subtotal disponible">
+    </testcase>
+    <testcase name="TC-VAL-001 - Parametro valido en filtro de consulta 2. Nuevo &gt; Pregunta (editor grafico): Sample Database &gt; Orders" time="6.364" classname="2. Nuevo &gt; Pregunta (editor grafico): Sample Database &gt; Orders">
+    </testcase>
+    <testcase name="TC-VAL-001 - Parametro valido en filtro de consulta 3. Filtro: columna numerica Subtotal, operador Mayor que, entrada 100 aceptada" time="22.523" classname="3. Filtro: columna numerica Subtotal, operador Mayor que, entrada 100 aceptada">
+    </testcase>
+    <testcase name="TC-VAL-001 - Parametro valido en filtro de consulta 4. La consulta se ejecuta sin errores con el filtro Subtotal &gt; 100 (valor numerico)" time="5.056" classname="4. La consulta se ejecuta sin errores con el filtro Subtotal &gt; 100 (valor numerico)">
+    </testcase>
+    <testcase name="TC-VAL-001 - Parametro valido en filtro de consulta 5. Todos los registros devueltos tienen Subtotal numerico y mayor que 100" time="0.018" classname="5. Todos los registros devueltos tienen Subtotal numerico y mayor que 100">
+    </testcase>
+    <testcase name="TC-VAL-001 - Parametro valido en filtro de consulta 6. Los valores de Subtotal visibles en la tabla son numericos y mayores que 100" time="0.017" classname="6. Los valores de Subtotal visibles en la tabla son numericos y mayores que 100">
+    </testcase>
+    <testcase name="TC-VAL-001 - Parametro valido en filtro de consulta 7. Correspondencia con la fuente: numero de registros = recuento de Subtotal &gt; 100 (limite de filas)" time="0.245" classname="7. Correspondencia con la fuente: numero de registros = recuento de Subtotal &gt; 100 (limite de filas)">
+    </testcase>
+  </testsuite>
+</testsuites>

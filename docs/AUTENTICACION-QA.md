@@ -110,11 +110,22 @@ powershell -ExecutionPolicy Bypass -File .\scripts\revisar-secretos.ps1
 
 ---
 
-## 5. Cypress (fase de automatización, todavía no implementada)
+## 5. Cypress
 
-Cypress usará **las mismas variables de `.env`**, sin otro mecanismo:
+Cypress usa **las mismas variables de `.env`**, sin otro mecanismo. Está implementado desde TC-FUN-001 (2026-11-05):
 
-1. Cuando se desarrollen sus pruebas, `ejecutar-herramienta.ps1` se ampliará con `-Herramienta cypress`, reutilizando `Get-CredencialQA` y `Protect-CarpetaResultados`. En cada ejecución:
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\ejecutar-herramienta.ps1 -Caso TC-FUN-001 -Herramienta cypress -Integrante juan -Cuenta usuario-qa
+```
+
+- **Dependencia:** Cypress 16.2.1 en `recursos-compartidos/cypress/`. En un equipo nuevo, instálela con `npm ci --prefix recursos-compartidos\cypress`.
+- **Configuración compartida:** `recursos-compartidos/cypress/cypress.config.js`. Resultados: `cypress-junit.xml` y `consola.log` en `resultados/<id-ejecucion>/`, y capturas en `evidencias/<id-ejecucion>/`.
+- **Especificaciones:** Cypress 16 ya no ofrece `Cypress.env()`. Las especificaciones leen las credenciales con `cy.env(['QA_EMAIL', 'QA_PASSWORD'], { log: false })`.
+- **Variable `ELECTRON_RUN_AS_NODE`:** si se ejecuta desde VS Code, el entorno la define y Cypress no arranca. El script la quita solo para el proceso de Cypress.
+
+Funcionamiento:
+
+1. `ejecutar-herramienta.ps1 -Herramienta cypress` reutiliza `Get-CredencialQA` y `Protect-CarpetaResultados`. En cada ejecución:
    - definirá `CYPRESS_QA_EMAIL` y `CYPRESS_QA_PASSWORD` **solo para el proceso de Cypress**, nunca en la línea de comandos ni de forma permanente;
    - al terminar, borrará esas variables y redactará la contraseña y los tokens en los resultados.
 2. Reglas para las especificaciones (`<ID>.cy.js`):

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="24.778" tests="7" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-06T01:42:17" tests="0" file="pruebas\validacion\TC-VAL-005\scripts\TC-VAL-005.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-VAL-005 - Caracteres especiales en campo de texto" timestamp="2026-11-06T01:42:17" tests="7" time="24.775" failures="0">
+    <testcase name="TC-VAL-005 - Caracteres especiales en campo de texto 1. Disponibilidad, sesion, coleccion de destino y nombre libre (solo lectura)" time="2.847" classname="1. Disponibilidad, sesion, coleccion de destino y nombre libre (solo lectura)">
+    </testcase>
+    <testcase name="TC-VAL-005 - Caracteres especiales en campo de texto 2. Editor grafico: Sample Database &gt; Products, consulta valida con resultados en tabla" time="6.357" classname="2. Editor grafico: Sample Database &gt; Products, consulta valida con resultados en tabla">
+    </testcase>
+    <testcase name="TC-VAL-005 - Caracteres especiales en campo de texto 3. Formulario Guardar: el campo Nombre acepta y contiene exactamente el nombre con caracteres especiales" time="4.143" classname="3. Formulario Guardar: el campo Nombre acepta y contiene exactamente el nombre con caracteres especiales">
+    </testcase>
+    <testcase name="TC-VAL-005 - Caracteres especiales en campo de texto 4. Se guarda la pregunta: POST /api/card 200 con el nombre exacto en QA - Metabase" time="1.665" classname="4. Se guarda la pregunta: POST /api/card 200 con el nombre exacto en QA - Metabase">
+    </testcase>
+    <testcase name="TC-VAL-005 - Caracteres especiales en campo de texto 5. Navegar fuera (Inicio) y localizar la pregunta en QA - Metabase por su nombre exacto" time="5.696" classname="5. Navegar fuera (Inicio) y localizar la pregunta en QA - Metabase por su nombre exacto">
+    </testcase>
+    <testcase name="TC-VAL-005 - Caracteres especiales en campo de texto 6. Se reabre desde la coleccion: nombre exacto, misma consulta y visualizacion, ejecucion correcta" time="2.768" classname="6. Se reabre desde la coleccion: nombre exacto, misma consulta y visualizacion, ejecucion correcta">
+    </testcase>
+    <testcase name="TC-VAL-005 - Caracteres especiales en campo de texto 7. Lectura por API del recurso: nombre exacto, consulta y visualizacion conservadas; referencias intactas" time="0.663" classname="7. Lectura por API del recurso: nombre exacto, consulta y visualizacion conservadas; referencias intactas">
+    </testcase>
+  </testsuite>
+</testsuites>

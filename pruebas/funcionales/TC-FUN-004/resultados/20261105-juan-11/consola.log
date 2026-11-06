@@ -1,0 +1,68 @@
+
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        16.2.1                                                                         │
+  │ Browser:        Electron 146 (headless) (deprecated)                                           │
+  │ Node Version:   v22.15.1 (C:\nvm4w\nodejs\node.exe)                                            │
+  │ Specs:          1 found (TC-FUN-004.cy.js)                                                     │
+  │ Searched:       C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN │
+  │                 -004\scripts\TC-FUN-004.cy.js                                                  │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Warning: The Electron browser is deprecated as a test browser and will be removed in a future version of Cypress.
+
+Switch to Chrome or another installed browser to avoid a breaking change when you upgrade.
+
+Read more about supported browsers: https://on.cypress.io/launching-browsers
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  TC-FUN-004.cy.js                                                                (1 of 1)
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        11                                                                               │
+  │ Passing:      11                                                                               │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  6                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     30 seconds                                                                       │
+  │ Spec Ran:     TC-FUN-004.cy.js                                                                 │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     04\evidencias\20261105-juan-11\01-consulta-antes-de-guardar.png                                
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     04\evidencias\20261105-juan-11\02-dialogo-guardar.png                                          
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     04\evidencias\20261105-juan-11\03-confirmacion-guardado.png                                    
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     04\evidencias\20261105-juan-11\04-pregunta-en-coleccion.png                                    
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     04\evidencias\20261105-juan-11\05-pregunta-recuperada-resultados.png                           
+  -  C:\Users\yoloh\OneDrive\Escritorio\Metabase-Pruebas\pruebas\funcionales\TC-FUN-0     (1280x720)
+     04\evidencias\20261105-juan-11\06-configuracion-recuperada.png                                 
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ √  TC-FUN-004.cy.js                         00:30       11       11        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    √  All specs passed!                        00:30       11       11        -        -        -  
+

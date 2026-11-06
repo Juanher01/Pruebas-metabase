@@ -11,7 +11,7 @@
 | Responsable asignado | Juan (reasignado por el equipo el 2026-11-05; el plan v1.0 asignaba: Samuel) |
 | Fecha programada (cronograma del plan) | 2026-11-11 |
 | Código HTTP esperado (plan) | N/A |
-| Estado | **No ejecutado** |
+| Estado | **Aprobado**: ejecución `20261105-juan-01` (People.Name Es `QA_VALOR_INEXISTENTE_2026` → 0 registros, "Sin resultados"; Products.Title no admite el valor por su lista cerrada), ver [reporte.md](reporte.md) |
 
 ## Objetivo
 

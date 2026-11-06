@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="29.997" tests="11" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-05T15:56:22" tests="0" file="pruebas\funcionales\TC-FUN-004\scripts\TC-FUN-004.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-FUN-004 - Guardado y recuperacion de una pregunta" timestamp="2026-11-05T15:56:22" tests="11" time="29.995" failures="0">
+    <testcase name="TC-FUN-004 - Guardado y recuperacion de una pregunta 1. Metabase disponible, sesion de Usuario QA y coleccion QA - Metabase autorizada (configuracion local)" time="3.067" classname="1. Metabase disponible, sesion de Usuario QA y coleccion QA - Metabase autorizada (configuracion local)">
+    </testcase>
+    <testcase name="TC-FUN-004 - Guardado y recuperacion de una pregunta 2. Nombre de la pregunta sin duplicados en la coleccion (solo lectura)" time="0.427" classname="2. Nombre de la pregunta sin duplicados en la coleccion (solo lectura)">
+    </testcase>
+    <testcase name="TC-FUN-004 - Guardado y recuperacion de una pregunta 3. Nuevo &gt; Pregunta: Sample Database &gt; Products con el filtro Category Es Gadget" time="7.272" classname="3. Nuevo &gt; Pregunta: Sample Database &gt; Products con el filtro Category Es Gadget">
+    </testcase>
+    <testcase name="TC-FUN-004 - Guardado y recuperacion de una pregunta 4. Visualizar ejecuta la consulta: registros devueltos, todos de categoria Gadget, en tabla" time="2.689" classname="4. Visualizar ejecuta la consulta: registros devueltos, todos de categoria Gadget, en tabla">
+    </testcase>
+    <testcase name="TC-FUN-004 - Guardado y recuperacion de una pregunta 5. Guardar: nombre establecido y coleccion QA - Metabase en el dialogo" time="9.537" classname="5. Guardar: nombre establecido y coleccion QA - Metabase en el dialogo">
+    </testcase>
+    <testcase name="TC-FUN-004 - Guardado y recuperacion de una pregunta 6. El guardado finaliza correctamente (respuesta real de POST /api/card)" time="2.506" classname="6. El guardado finaliza correctamente (respuesta real de POST /api/card)">
+    </testcase>
+    <testcase name="TC-FUN-004 - Guardado y recuperacion de una pregunta 7. Navegar fuera (Inicio) y llegar a la coleccion QA - Metabase desde la barra lateral" time="0.681" classname="7. Navegar fuera (Inicio) y llegar a la coleccion QA - Metabase desde la barra lateral">
+    </testcase>
+    <testcase name="TC-FUN-004 - Guardado y recuperacion de una pregunta 8. La pregunta se localiza por su nombre en la coleccion" time="0.937" classname="8. La pregunta se localiza por su nombre en la coleccion">
+    </testcase>
+    <testcase name="TC-FUN-004 - Guardado y recuperacion de una pregunta 9. Se reabre desde la coleccion y presenta resultados sin errores" time="1.416" classname="9. Se reabre desde la coleccion y presenta resultados sin errores">
+    </testcase>
+    <testcase name="TC-FUN-004 - Guardado y recuperacion de una pregunta 10. La pregunta recuperada conserva la tabla Products, el filtro y la visualizacion de tabla" time="0.641" classname="10. La pregunta recuperada conserva la tabla Products, el filtro y la visualizacion de tabla">
+    </testcase>
+    <testcase name="TC-FUN-004 - Guardado y recuperacion de una pregunta 11. Los resultados recuperados corresponden a la consulta original" time="0.081" classname="11. Los resultados recuperados corresponden a la consulta original">
+    </testcase>
+  </testsuite>
+</testsuites>

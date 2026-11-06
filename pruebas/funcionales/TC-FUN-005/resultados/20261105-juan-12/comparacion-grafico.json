@@ -1,0 +1,47 @@
+{
+  "consulta": "Products: Recuento de filas agrupado por Category",
+  "codigo_http_consulta": 202,
+  "escala_px_por_unidad": 8.408333333333333,
+  "comparacion": [
+    {
+      "categoria": "Doohickey",
+      "referencia_sql": 42,
+      "resultado_consulta": 42,
+      "tabla_interfaz": 42,
+      "barra_alto_px": 353.15,
+      "barra_valor_por_escala": 42,
+      "tooltip": 42,
+      "coincide": true
+    },
+    {
+      "categoria": "Gadget",
+      "referencia_sql": 53,
+      "resultado_consulta": 53,
+      "tabla_interfaz": 53,
+      "barra_alto_px": 445.6417,
+      "barra_valor_por_escala": 53,
+      "tooltip": 53,
+      "coincide": true
+    },
+    {
+      "categoria": "Gizmo",
+      "referencia_sql": 51,
+      "resultado_consulta": 51,
+      "tabla_interfaz": 51,
+      "barra_alto_px": 428.825,
+      "barra_valor_por_escala": 51,
+      "tooltip": 51,
+      "coincide": true
+    },
+    {
+      "categoria": "Widget",
+      "referencia_sql": 54,
+      "resultado_consulta": 54,
+      "tabla_interfaz": 54,
+      "barra_alto_px": 454.05,
+      "barra_valor_por_escala": 54,
+      "tooltip": 54,
+      "coincide": true
+    }
+  ]
+}

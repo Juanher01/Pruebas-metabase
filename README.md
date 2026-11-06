@@ -22,6 +22,7 @@ Hay **un repositorio GitHub compartido** y **dos instalaciones locales independi
 | Equipo de **Juan** (contenedor existente creado con `docker run`) | `docker start metabase-qa`. **No** ejecutar `docker compose up` ([docs/CONFIGURACION-QA.md](docs/CONFIGURACION-QA.md)) |
 | Verificar el ambiente | `powershell -ExecutionPolicy Bypass -File .\scripts\verificar-ambiente.ps1` |
 | Preparar usuarios, colecciones, preguntas y dashboards | [docs/DATOS-Y-RECURSOS-PRUEBA.md](docs/DATOS-Y-RECURSOS-PRUEBA.md) |
+| Informe formal de la preparación del ambiente (evidencia para el informe final) | [docs/INFORME-PREPARACION-AMBIENTE-QA.md](docs/INFORME-PREPARACION-AMBIENTE-QA.md) |
 | Ejecutar y registrar un caso | [docs/EJECUCION-PRUEBAS.md](docs/EJECUCION-PRUEBAS.md) |
 | Instalar y ejecutar Newman / JMeter (reportes nativos) | [docs/HERRAMIENTAS-NEWMAN-JMETER.md](docs/HERRAMIENTAS-NEWMAN-JMETER.md) |
 | Configurar las cuentas QA en `.env` y comprobarlas | [docs/AUTENTICACION-QA.md](docs/AUTENTICACION-QA.md) · `.\scripts\probar-cuentas.ps1` |

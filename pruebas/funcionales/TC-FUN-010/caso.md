@@ -11,7 +11,7 @@
 | Responsable asignado | Juan (reasignado por el equipo el 2026-11-05; el plan v1.0 asignaba: Samuel) |
 | Fecha programada (cronograma del plan) | 2026-11-11 |
 | Código HTTP esperado (plan) | 200 OK |
-| Estado | **No ejecutado** |
+| Estado | **Aprobado** (con la desviación documentada del 2026-11-05: se acepta HTTP 202 con `status = completed`, ver `docs/CONFIGURACION-QA.md` §7): ejecuciones `20261105-juan-01` (Newman, 8/8) y `20261105-juan-02` (Cypress complementaria, 4/4), ver [reporte.md](reporte.md) |
 
 ## Objetivo
 

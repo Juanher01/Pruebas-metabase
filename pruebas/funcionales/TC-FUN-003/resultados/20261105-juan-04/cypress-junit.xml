@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="24.500" tests="8" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-05T15:31:27" tests="0" file="pruebas\funcionales\TC-FUN-003\scripts\TC-FUN-003.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-FUN-003 - Ejecucion de consulta SQL" timestamp="2026-11-05T15:31:27" tests="8" time="24.496" failures="0">
+    <testcase name="TC-FUN-003 - Ejecucion de consulta SQL 1. Metabase disponible, sesion de Usuario QA y permiso SQL sobre Sample Database" time="2.406" classname="1. Metabase disponible, sesion de Usuario QA y permiso SQL sobre Sample Database">
+    </testcase>
+    <testcase name="TC-FUN-003 - Ejecucion de consulta SQL 2. Nuevo &gt; Consulta SQL abre el editor SQL con Sample Database seleccionada" time="16.266" classname="2. Nuevo &gt; Consulta SQL abre el editor SQL con Sample Database seleccionada">
+    </testcase>
+    <testcase name="TC-FUN-003 - Ejecucion de consulta SQL 3. El editor SQL acepta la consulta definida" time="2.516" classname="3. El editor SQL acepta la consulta definida">
+    </testcase>
+    <testcase name="TC-FUN-003 - Ejecucion de consulta SQL 4. Obtener respuesta ejecuta la consulta sin errores" time="0.956" classname="4. Obtener respuesta ejecuta la consulta sin errores">
+    </testcase>
+    <testcase name="TC-FUN-003 - Ejecucion de consulta SQL 5. Se presenta una tabla de resultados con la columna total_pedidos de tipo entero" time="1.244" classname="5. Se presenta una tabla de resultados con la columna total_pedidos de tipo entero">
+    </testcase>
+    <testcase name="TC-FUN-003 - Ejecucion de consulta SQL 6. Se devuelve una unica fila con el recuento agregado" time="0.022" classname="6. Se devuelve una unica fila con el recuento agregado">
+    </testcase>
+    <testcase name="TC-FUN-003 - Ejecucion de consulta SQL 7. El valor presentado en la interfaz coincide con el devuelto por la consulta" time="0.009" classname="7. El valor presentado en la interfaz coincide con el devuelto por la consulta">
+    </testcase>
+    <testcase name="TC-FUN-003 - Ejecucion de consulta SQL 8. El valor coincide con la referencia calculada sobre la misma fuente (mecanismo independiente)" time="0.413" classname="8. El valor coincide con la referencia calculada sobre la misma fuente (mecanismo independiente)">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="9.515" tests="6" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-05T07:33:08" tests="0" file="pruebas\funcionales\TC-FUN-001\scripts\TC-FUN-001.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="TC-FUN-001 - Inicio de sesion con credenciales validas" timestamp="2026-11-05T07:33:08" tests="6" time="9.512" failures="0">
+    <testcase name="TC-FUN-001 - Inicio de sesion con credenciales validas 1. Metabase esta disponible (GET /api/health = ok)" time="1.113" classname="1. Metabase esta disponible (GET /api/health = ok)">
+    </testcase>
+    <testcase name="TC-FUN-001 - Inicio de sesion con credenciales validas 2. La pagina de inicio de sesion muestra los campos de correo y contrasena" time="3.303" classname="2. La pagina de inicio de sesion muestra los campos de correo y contrasena">
+    </testcase>
+    <testcase name="TC-FUN-001 - Inicio de sesion con credenciales validas 3. El formulario envia credenciales validas de Usuario QA y la autenticacion responde 200" time="0.976" classname="3. El formulario envia credenciales validas de Usuario QA y la autenticacion responde 200">
+    </testcase>
+    <testcase name="TC-FUN-001 - Inicio de sesion con credenciales validas 4. Se accede a una pagina autenticada (fuera de /auth/login y con la barra principal)" time="1.673" classname="4. Se accede a una pagina autenticada (fuera de /auth/login y con la barra principal)">
+    </testcase>
+    <testcase name="TC-FUN-001 - Inicio de sesion con credenciales validas 5. La sesion corresponde a Usuario QA (GET /api/user/current con la sesion del navegador)" time="0.279" classname="5. La sesion corresponde a Usuario QA (GET /api/user/current con la sesion del navegador)">
+    </testcase>
+    <testcase name="TC-FUN-001 - Inicio de sesion con credenciales validas 6. No se permanece en el formulario ni aparece un error de autenticacion" time="1.939" classname="6. No se permanece en el formulario ni aparece un error de autenticacion">
+    </testcase>
+  </testsuite>
+</testsuites>
