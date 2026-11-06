@@ -1,0 +1,156 @@
+{
+  "caso": "TC-REN-002",
+  "url": "<baseUrl>/dashboard/2",
+  "navegador": "Chrome/156.0.8078.80",
+  "modo": "headless (Chrome DevTools Protocol, puppeteer-core)",
+  "cache_navegador": "vacia en cada carga (contexto nuevo, cache deshabilitada)",
+  "cache_consultas_servidor": "sin cambios (desactivada por defecto)",
+  "limite_ms": 6000,
+  "criterio": "al menos 9 de 10 cargas < 6000 ms y las 10 completadas correctamente",
+  "cargas_totales": 10,
+  "cargas_completadas": 10,
+  "cargas_bajo_limite": 9,
+  "cumple_slo": true,
+  "cargas": [
+    {
+      "n": 1,
+      "tiempo_ms": 7067,
+      "completa": true,
+      "consultas_tarjetas": 3,
+      "estados_consultas": [
+        202,
+        202,
+        202
+      ],
+      "solicitudes_fallidas": [],
+      "errores_consola": 4,
+      "error": null
+    },
+    {
+      "n": 2,
+      "tiempo_ms": 4964,
+      "completa": true,
+      "consultas_tarjetas": 3,
+      "estados_consultas": [
+        202,
+        202,
+        202
+      ],
+      "solicitudes_fallidas": [],
+      "errores_consola": 4,
+      "error": null
+    },
+    {
+      "n": 3,
+      "tiempo_ms": 4541,
+      "completa": true,
+      "consultas_tarjetas": 3,
+      "estados_consultas": [
+        202,
+        202,
+        202
+      ],
+      "solicitudes_fallidas": [],
+      "errores_consola": 4,
+      "error": null
+    },
+    {
+      "n": 4,
+      "tiempo_ms": 4222,
+      "completa": true,
+      "consultas_tarjetas": 3,
+      "estados_consultas": [
+        202,
+        202,
+        202
+      ],
+      "solicitudes_fallidas": [],
+      "errores_consola": 4,
+      "error": null
+    },
+    {
+      "n": 5,
+      "tiempo_ms": 3438,
+      "completa": true,
+      "consultas_tarjetas": 3,
+      "estados_consultas": [
+        202,
+        202,
+        202
+      ],
+      "solicitudes_fallidas": [],
+      "errores_consola": 4,
+      "error": null
+    },
+    {
+      "n": 6,
+      "tiempo_ms": 3379,
+      "completa": true,
+      "consultas_tarjetas": 3,
+      "estados_consultas": [
+        202,
+        202,
+        202
+      ],
+      "solicitudes_fallidas": [],
+      "errores_consola": 4,
+      "error": null
+    },
+    {
+      "n": 7,
+      "tiempo_ms": 4837,
+      "completa": true,
+      "consultas_tarjetas": 3,
+      "estados_consultas": [
+        202,
+        202,
+        202
+      ],
+      "solicitudes_fallidas": [],
+      "errores_consola": 4,
+      "error": null
+    },
+    {
+      "n": 8,
+      "tiempo_ms": 4832,
+      "completa": true,
+      "consultas_tarjetas": 3,
+      "estados_consultas": [
+        202,
+        202,
+        202
+      ],
+      "solicitudes_fallidas": [],
+      "errores_consola": 4,
+      "error": null
+    },
+    {
+      "n": 9,
+      "tiempo_ms": 3239,
+      "completa": true,
+      "consultas_tarjetas": 3,
+      "estados_consultas": [
+        202,
+        202,
+        202
+      ],
+      "solicitudes_fallidas": [],
+      "errores_consola": 4,
+      "error": null
+    },
+    {
+      "n": 10,
+      "tiempo_ms": 3604,
+      "completa": true,
+      "consultas_tarjetas": 3,
+      "estados_consultas": [
+        202,
+        202,
+        202
+      ],
+      "solicitudes_fallidas": [],
+      "errores_consola": 4,
+      "error": null
+    }
+  ]
+}

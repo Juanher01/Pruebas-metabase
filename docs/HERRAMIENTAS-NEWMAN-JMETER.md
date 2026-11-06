@@ -6,7 +6,7 @@ Herramientas de los casos de **Samuel**:
 |---|---|---|
 | Postman + **Newman** | TC-ERR-001 a 005, TC-CON-001 a 004, TC-REN-003 | `newman-results.json`, `newman-report.html` |
 | **Apache JMeter** | TC-REN-001, TC-REN-004, TC-REN-005 | `resultados.jtl`, `reporte-html/index.html` |
-| Navegador y herramientas de desarrollador | TC-REN-002 | Capturas y HAR en `evidencias/` |
+| Navegador (Chrome controlado por puppeteer-core) | TC-REN-002 | `mediciones.json` y capturas en `evidencias/` (ver [RENDIMIENTO-V0.64.1.md](RENDIMIENTO-V0.64.1.md)) |
 
 Juan usa Newman en TC-FUN-009 y TC-FUN-010, con el mismo procedimiento.
 
@@ -16,6 +16,8 @@ Juan usa Newman en TC-FUN-009 y TC-FUN-010, con el mismo procedimiento.
 > - cierra la sesión al terminar, con lo que el token deja de ser válido;
 > - reemplaza el token por `<SESION-REDACTADA>` en todos los archivos generados;
 > - en Newman, redacta además los correos de usuarios y las cookies `metabase.*` (por ejemplo `metabase.DEVICE`), también dentro de los cuerpos de respuesta que `newman-results.json` guarda como bytes (`"type":"Buffer","data":[…]`). Las respuestas de Metabase incluyen correos, por ejemplo en `last-edit-info.email`; se comprobó el 2026-11-05 en TC-FUN-009. `scripts/revisar-secretos.ps1` decodifica esos cuerpos y detecta los correos de las cuentas del `.env`.
+>
+> **Sanitización posterior (2026-11-05).** Las ejecuciones `20261105-samuel-01` de TC-CON-001, TC-CON-002 y TC-CON-003 se hicieron antes de que existiera esta redacción. Por eso sus `newman-results.json` guardaban, dentro de los cuerpos de respuesta, el correo personal de la cuenta que creó y editó los recursos (`creator.email` y `last-edit-info.email`). Ese correo se sustituyó por `<correo-redactadoxxxxx>`, un texto de la misma longitud, y no se tocó ningún otro dato. Se mantuvo `internal@metabase.com`, la cuenta interna de Metabase. Los códigos HTTP, las aserciones, los tiempos, los tamaños (`responseSize`) y los estados quedaron idénticos; el procedimiento y las comprobaciones están en el archivo `nota-sanitizacion.txt` de cada una de esas carpetas.
 
 ---
 
@@ -112,6 +114,13 @@ powershell -ExecutionPolicy Bypass -File .\scripts\ejecutar-herramienta.ps1 -Cas
 
 # JMeter (modo sin interfaz + reporte HTML)
 powershell -ExecutionPolicy Bypass -File .\scripts\ejecutar-herramienta.ps1 -Caso TC-REN-004 -Herramienta jmeter -Integrante samuel -JMeter "C:\herramientas\apache-jmeter-5.6.3\bin\jmeter.bat"
+
+# TC-REN-003 sin los cuerpos de respuesta (el JSON de Newman puede superar los 100 MB de GitHub)
+powershell -ExecutionPolicy Bypass -File .\scripts\ejecutar-herramienta.ps1 -Caso TC-REN-003 -Herramienta newman -Integrante samuel -Iteraciones 30 -SinCuerpos
+
+# TC-REN-002: 10 cargas del dashboard en Chrome (requiere: cd recursos-compartidos
+avegador; npm install)
+powershell -ExecutionPolicy Bypass -File .\scripts\ejecutar-herramienta.ps1 -Caso TC-REN-002 -Herramienta navegador -Integrante samuel
 
 # Ver el comando y las variables sin ejecutar nada
 powershell -ExecutionPolicy Bypass -File .\scripts\ejecutar-herramienta.ps1 -Caso TC-REN-004 -Herramienta jmeter -Integrante samuel -SoloMostrar

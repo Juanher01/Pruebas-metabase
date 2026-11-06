@@ -1,0 +1,57 @@
+newman
+
+TC-CON-004 - Estructura de resultados de consulta
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.82kB, 2.6s]
+  1. Codigo HTTP 200 OK (esperado por el plan)
+  √  Content-Type es application/json
+  √  Respuesta en menos de 30 s
+  √  status = completed (consulta ejecutada sin error)
+  √  data.rows es un arreglo de registros
+  √  data.cols es un arreglo de metadatos de columnas (name y base_type)
+  √  Cada registro tiene tantos valores como columnas
+  √  row_count coincide con la cantidad de registros devueltos
+  √  Coherencia con la consulta: existe la columna SUBTOTAL y todos los registros cumplen SUBTOTAL > 100
+
+→ POST /api/dataset (referencia R02, apoyo)
+  POST http://localhost:3000/api/dataset [400 Bad Request, 14.35kB, 13.8s]
+  2. La consulta de referencia R02 se ejecuta (HTTP 200 o 202)
+  3⠄ TypeError in test-script
+
+┌─────────────────────────┬───────────────────┬───────────────────┐
+│                         │          executed │            failed │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│              iterations │                 1 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│                requests │                 2 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│            test-scripts │                 2 │                 1 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│      prerequest-scripts │                 0 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│              assertions │                10 │                 2 │
+├─────────────────────────┴───────────────────┴───────────────────┤
+│ total run duration: 18.4s                                       │
+├─────────────────────────────────────────────────────────────────┤
+│ total data received: 301.47kB (approx)                          │
+├─────────────────────────────────────────────────────────────────┤
+│ average response time: 8.2s [min: 2.6s, max: 13.8s, s.d.: 5.5s] │
+└─────────────────────────────────────────────────────────────────┘
+
+[31m  # [39m[31m failure        [39m[31m detail                                                    [39m
+[90m    [39m[90m                [39m[90m                                                           [39m
+ 1.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)                 
+                     Codigo real: 202: expected 202 to deeply equal 200        
+                     at assertion:0 in test-script                             
+                     inside "POST /api/card/{{cardId}}/query"                  
+[90m    [39m[90m                [39m[90m                                                           [39m
+ 2.  AssertionError  La consulta de referencia R02 se ejecuta (HTTP 200 o 202) 
+                     expected 400 to be one of [ 200, 202 ]                    
+                     at assertion:0 in test-script                             
+                     inside "POST /api/dataset (referencia R02, apoyo)"        
+[90m    [39m[90m                [39m[90m                                                           [39m
+ 3.  TypeError                                                                 
+                     Cannot read properties of undefined (reading '0')         
+                     at test-script                                            
+                     inside "POST /api/dataset (referencia R02, apoyo)"        

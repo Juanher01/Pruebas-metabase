@@ -1,0 +1,22 @@
+{
+    "caso":  "TC-REN-002",
+    "ejecucion":  "20261105-samuel-03",
+    "fuente":  "mediciones.json (navegador)",
+    "metodo_percentil":  "nearest-rank",
+    "solicitudes":  10,
+    "fallidas":  0,
+    "tasa_error_pct":  0,
+    "min_ms":  3590,
+    "max_ms":  9948,
+    "media_ms":  4828.1,
+    "mediana_ms":  4031,
+    "desv_estandar_ms":  1861.3,
+    "p90_ms":  6348,
+    "p95_ms":  9948,
+    "p99_ms":  9948,
+    "duracion_s":  null,
+    "throughput_req_s":  null,
+    "codigos_http":  {
+
+                     }
+}

@@ -1,0 +1,44 @@
+{
+  "info": {
+    "name": "TC-ERR-004 - Metodo HTTP no admitido",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /api/session",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Codigo HTTP 404 o 405\",()=>pm.expect(pm.response.code).to.be.oneOf([404,405]));",
+              "pm.test(\"No hay error interno (la respuesta no es 5xx)\",()=>pm.expect(pm.response.code).to.be.below(500));",
+              "pm.test(\"Respuesta en menos de 5 s\",()=>pm.expect(pm.response.responseTime).to.be.below(5000));",
+              "pm.test(\"El cuerpo no expone trazas internas\",()=>pm.expect(pm.response.text()).to.not.match(/at (clojure|java|metabase).|Exception in/i));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Metabase-Session",
+            "value": "{{sessionId}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/session",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "session"
+          ]
+        }
+      }
+    }
+  ]
+}

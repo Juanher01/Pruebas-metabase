@@ -1,0 +1,43 @@
+{
+  "info": {
+    "name": "TC-ERR-005 - Solicitud sin autenticacion",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /api/dashboard/{{dashboardPrivadoId}}",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Variable dashboardPrivadoId definida\",()=>pm.expect(pm.variables.get(\"dashboardPrivadoId\")).to.not.be.oneOf([undefined,null,\"\",\"null\"]));",
+              "pm.test(\"La solicitud no lleva cabecera de sesion\",()=>pm.expect(pm.request.headers.has(\"X-Metabase-Session\")).to.be.false);",
+              "pm.test(\"Codigo HTTP 401 Unauthorized\",()=>pm.response.to.have.status(401));",
+              "pm.test(\"No entrega datos del dashboard\",()=>{const t=pm.response.text();pm.expect(t).to.not.include(\"dashcards\");pm.expect(t).to.not.include(\"QA - Dashboard Restringido\");});",
+              "pm.test(\"No hay error interno (la respuesta no es 5xx)\",()=>pm.expect(pm.response.code).to.be.below(500));",
+              "pm.test(\"Respuesta en menos de 5 s\",()=>pm.expect(pm.response.responseTime).to.be.below(5000));",
+              "pm.test(\"El cuerpo no expone trazas internas\",()=>pm.expect(pm.response.text()).to.not.match(/at (clojure|java|metabase).|Exception in/i));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/dashboard/{{dashboardPrivadoId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "dashboard",
+            "{{dashboardPrivadoId}}"
+          ]
+        }
+      }
+    }
+  ]
+}

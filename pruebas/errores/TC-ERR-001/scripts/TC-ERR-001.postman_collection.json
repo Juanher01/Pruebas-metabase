@@ -1,0 +1,47 @@
+{
+  "info": {
+    "name": "TC-ERR-001 - Recurso inexistente (dashboard no registrado)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /api/dashboard/{{dashboardIdInexistente}}",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Variable dashboardIdInexistente definida\",()=>pm.expect(pm.variables.get(\"dashboardIdInexistente\")).to.not.be.oneOf([undefined,null,\"\",\"null\"]));",
+              "pm.test(\"Codigo HTTP 404 Not Found\",()=>pm.response.to.have.status(404));",
+              "pm.test(\"No retorna datos de otro dashboard\",()=>{const t=pm.response.text();pm.expect(t).to.not.include(\"dashcards\");pm.expect(t).to.not.include(\"\\\"ordered_cards\\\"\");});",
+              "pm.test(\"No hay error interno (la respuesta no es 5xx)\",()=>pm.expect(pm.response.code).to.be.below(500));",
+              "pm.test(\"Respuesta en menos de 5 s\",()=>pm.expect(pm.response.responseTime).to.be.below(5000));",
+              "pm.test(\"El cuerpo no expone trazas internas\",()=>pm.expect(pm.response.text()).to.not.match(/at (clojure|java|metabase).|Exception in/i));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Metabase-Session",
+            "value": "{{sessionId}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/dashboard/{{dashboardIdInexistente}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "dashboard",
+            "{{dashboardIdInexistente}}"
+          ]
+        }
+      }
+    }
+  ]
+}

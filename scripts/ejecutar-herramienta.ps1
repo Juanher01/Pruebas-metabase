@@ -1,13 +1,15 @@
 <#
 .SYNOPSIS
-  Ejecuta el script Newman o JMeter de UN caso de prueba guardando los resultados
-  nativos en pruebas/<categoria>/<ID>/resultados/<AAAAMMDD>-<integrante>-<NN>/
+  Ejecuta el script Newman, JMeter, Cypress o de navegador (Node) de UN caso de prueba
+  guardando los resultados nativos en pruebas/<categoria>/<ID>/resultados/<AAAAMMDD>-<integrante>-<NN>/
   sin exponer credenciales ni tokens.
 
 .DESCRIPTION
   1. Localiza el script del caso:
-       newman -> pruebas/<cat>/<ID>/scripts/<ID>.postman_collection.json
-       jmeter -> pruebas/<cat>/<ID>/scripts/<ID>.jmx
+       newman    -> pruebas/<cat>/<ID>/scripts/<ID>.postman_collection.json
+       jmeter    -> pruebas/<cat>/<ID>/scripts/<ID>.jmx
+       cypress   -> pruebas/<cat>/<ID>/scripts/<ID>.cy.js (credenciales como variables del proceso CYPRESS_QA_*)
+       navegador -> pruebas/<cat>/<ID>/scripts/<ID>.navegador.js (Node + puppeteer-core)
   2. Lee los IDs LOCALES de configuracion/recursos-locales.json (nunca IDs fijos).
   3. Si no se indica -SinSesion: lee el correo y la contrasena de la cuenta (-Cuenta)
      del archivo .env local (QA_ADMIN_* o QA_USER_*) e inicia sesion con
@@ -32,11 +34,12 @@
 #>
 param(
     [Parameter(Mandatory = $true)][ValidatePattern('^TC-(FUN|VAL|ERR|CON|REN)-\d{3}$')][string]$Caso,
-    [Parameter(Mandatory = $true)][ValidateSet('newman', 'jmeter', 'cypress')][string]$Herramienta,
+    [Parameter(Mandatory = $true)][ValidateSet('newman', 'jmeter', 'cypress', 'navegador')][string]$Herramienta,
     [Parameter(Mandatory = $true)][ValidateSet('juan', 'samuel')][string]$Integrante,
     [ValidateSet('admin', 'usuario-qa')][string]$Cuenta = 'admin',
     [int]$Iteraciones = 1,
     [switch]$SinSesion,
+    [switch]$SinCuerpos,
     [string]$JMeter = "jmeter.bat",
     [string]$Config = "",
     [switch]$SoloMostrar
@@ -51,6 +54,7 @@ if (-not (Test-Path $dirCaso)) { throw "No existe la carpeta del caso: $dirCaso"
 
 if ($Herramienta -eq 'newman') { $script = Join-Path $dirCaso "scripts\$Caso.postman_collection.json" }
 elseif ($Herramienta -eq 'cypress') { $script = Join-Path $dirCaso "scripts\$Caso.cy.js" }
+elseif ($Herramienta -eq 'navegador') { $script = Join-Path $dirCaso "scripts\$Caso.navegador.js" }
 else { $script = Join-Path $dirCaso "scripts\$Caso.jmx" }
 $esCypress = ($Herramienta -eq 'cypress')
 $dirCypress = Join-Path $raiz "recursos-compartidos\cypress"
@@ -111,6 +115,9 @@ function Construir-Argumentos([string]$archivoVariables) {
             '--config-file', (Join-Path $dirCypress 'cypress.config.js'),
             '--spec', $script, '--browser', 'electron',
             '--reporter', 'junit', '--reporter-options', ("mochaFile={0}" -f (Join-Path $dirRes 'cypress-junit.xml'))))
+    } elseif ($Herramienta -eq 'navegador') {
+        # Script de Node: <script> <archivo de variables> <carpeta de resultados> <carpeta de evidencias>
+        $lista.AddRange([string[]]@($script, $archivoVariables, $dirRes, $dirEvi))
     } else {
         $lista.AddRange([string[]]@('-n', '-t', $script, '-q', $archivoVariables,
             '-l', (Join-Path $dirRes 'resultados.jtl'),
@@ -128,11 +135,12 @@ function Contenido-Variables([string]$token) {
         $valores = @($todas.Keys | ForEach-Object { [ordered]@{ key = $_; value = $todas[$_]; type = 'default'; enabled = $true } })
         return ([ordered]@{ name = "mbqa-temporal"; values = $valores; _postman_variable_scope = "environment" } | ConvertTo-Json -Depth 5)
     }
+    if ($Herramienta -eq 'navegador') { return ($todas | ConvertTo-Json -Depth 3) }
     # Propiedades de JMeter (formato .properties: escapar \ y :)
     return (($todas.Keys | ForEach-Object { "{0}={1}" -f $_, ($todas[$_] -replace '\\', '\\' -replace ':', '\:') }) -join "`r`n")
 }
 
-$extTemporal = if ($Herramienta -eq 'newman') { '.json' } else { '.properties' }
+$extTemporal = if ($Herramienta -in @('newman', 'navegador')) { '.json' } else { '.properties' }
 
 if ($SoloMostrar) {
     $args0 = Construir-Argumentos "%TEMP%\mbqa-<aleatorio>$extTemporal"
@@ -142,7 +150,7 @@ if ($SoloMostrar) {
     Write-Host "Variables locales:    $(($varsPresentes.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" }) -join ', ')$(if (-not $SinSesion -and -not $esCypress) { ', sessionId=<token>' })"
     if ($esCypress) { Write-Host "Credenciales:         variables CYPRESS_QA_EMAIL / CYPRESS_QA_PASSWORD solo para el proceso (se eliminan al terminar)" }
     else { Write-Host "Archivo temporal:     variables y token en %TEMP% (se borra al terminar)" }
-    Write-Host "Comando:              $(if ($Herramienta -eq 'newman') { 'newman' } elseif ($esCypress) { 'cypress.cmd' } else { $JMeter }) $(($args0 | ForEach-Object { Comillas $_ }) -join ' ')"
+    Write-Host "Comando:              $(if ($Herramienta -eq 'newman') { 'newman' } elseif ($esCypress) { 'cypress.cmd' } elseif ($Herramienta -eq 'navegador') { 'node' } else { $JMeter }) $(($args0 | ForEach-Object { Comillas $_ }) -join ' ')"
     exit 0
 }
 
@@ -153,6 +161,12 @@ if ($Herramienta -eq 'newman') {
 } elseif ($esCypress) {
     $exe = Join-Path $dirCypress "node_modules\.bin\cypress.cmd"
     if (-not (Test-Path $exe)) { throw "No se encontro Cypress. Instale con: npm ci --prefix recursos-compartidos\cypress" }
+} elseif ($Herramienta -eq 'navegador') {
+    $exe = (Get-Command node.exe -ErrorAction SilentlyContinue).Source
+    if (-not $exe) { throw "No se encontro node. Instale Node.js LTS (ver docs/HERRAMIENTAS-NEWMAN-JMETER.md)." }
+    if (-not (Test-Path (Join-Path $raiz 'recursos-compartidos\navegador\node_modules\puppeteer-core'))) {
+        throw "Faltan las dependencias del navegador. Ejecute: cd recursos-compartidos\navegador; npm install"
+    }
 } else {
     $cmd = Get-Command $JMeter -ErrorAction SilentlyContinue
     if (-not $cmd) { throw "No se encontro JMeter ('$JMeter'). Indique la ruta con -JMeter C:\...\bin\jmeter.bat" }
@@ -200,6 +214,14 @@ try {
     $codigo = $p.ExitCode
     $fin = Get-Date
 
+    # Newman guarda el cuerpo completo de cada respuesta: con respuestas grandes el JSON supera el limite de GitHub.
+    $notaCuerpos = $null
+    if ($SinCuerpos -and $Herramienta -eq 'newman') {
+        $salidaRecorte = & node (Join-Path $PSScriptRoot 'recortar-cuerpos-newman.js') (Join-Path $dirRes 'newman-results.json')
+        Write-Host $salidaRecorte
+        $notaCuerpos = "cuerpos_respuesta=omitidos en newman-results.json (-SinCuerpos): $salidaRecorte"
+    }
+
     $version = "desconocida"
     try { $version = (Invoke-RestMethod -Uri "$($vars.baseUrl)/api/session/properties").version.tag } catch { }
     @(
@@ -210,6 +232,7 @@ try {
         "variables=$(($varsPresentes.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" }) -join ', ')",
         "comando=$(Split-Path $exe -Leaf) $(if ($temporal) { $linea.Replace($temporal, '<archivo-temporal>') } else { $linea })"
     ) | Out-File -FilePath (Join-Path $dirRes 'ejecucion-info.txt') -Encoding utf8
+    if ($notaCuerpos) { Add-Content -Path (Join-Path $dirRes 'ejecucion-info.txt') -Value $notaCuerpos -Encoding utf8 }
 }
 finally {
     if ($temporal -and (Test-Path $temporal)) { Remove-Item $temporal -Force -ErrorAction SilentlyContinue }

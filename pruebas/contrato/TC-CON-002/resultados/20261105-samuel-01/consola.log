@@ -1,0 +1,38 @@
+newman
+
+TC-CON-002 - Validacion de tipos de datos
+
+→ GET /api/card/{{cardId}}
+  GET http://localhost:3000/api/card/40 [200 OK, 14.28kB, 254ms]
+  √  Codigo HTTP 200 OK
+  √  Content-Type es application/json
+  √  El cuerpo es JSON valido
+  √  Respuesta en menos de 10 s
+  √  id es un entero
+  √  name es una cadena de texto
+  √  display es una cadena de texto
+  √  dataset_query es un objeto JSON (no nulo ni arreglo)
+  √  Cumple el esquema de tipos (id, name, display, dataset_query)
+  √  id corresponde a la pregunta solicitada
+  √  name corresponde a la pregunta de referencia P1
+  √  dataset_query referencia la base de datos de la instalacion
+
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                  0 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                 12 │                 0 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 464ms                                        │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 12.41kB (approx)                            │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 254ms [min: 254ms, max: 254ms, s.d.: 0µs] │
+└──────────────────────────────────────────────────────────────────┘

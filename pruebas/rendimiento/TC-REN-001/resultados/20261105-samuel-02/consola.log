@@ -1,0 +1,11 @@
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+Creating summariser <summary>
+Created the tree successfully using C:\Users\samue\Documents\USCO\9Semestre\PruebasMantenimiento\Metabase\Pruebas-metabase\pruebas\rendimiento\TC-REN-001\scripts\TC-REN-001.jmx
+Starting standalone test @ 2026 Nov 5 13:51:19 COT (1793904679082)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary =      2 in 00:00:08 =    0.2/s Avg:  3667 Min:  2028 Max:  5306 Err:     0 (0.00%)
+Tidying up ...    @ 2026 Nov 5 13:51:27 COT (1793904687540)
+... end of run

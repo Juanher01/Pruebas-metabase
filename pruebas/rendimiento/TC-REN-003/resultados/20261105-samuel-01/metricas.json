@@ -1,0 +1,22 @@
+{
+    "caso":  "TC-REN-003",
+    "ejecucion":  "20261105-samuel-01",
+    "fuente":  "newman-results.json (Newman)",
+    "metodo_percentil":  "nearest-rank",
+    "solicitudes":  30,
+    "fallidas":  0,
+    "tasa_error_pct":  0,
+    "min_ms":  197,
+    "max_ms":  3580,
+    "media_ms":  814.9,
+    "mediana_ms":  727,
+    "desv_estandar_ms":  641.4,
+    "p90_ms":  1322,
+    "p95_ms":  1734,
+    "p99_ms":  3580,
+    "duracion_s":  28.59,
+    "throughput_req_s":  1.049,
+    "codigos_http":  {
+                         "202":  30
+                     }
+}

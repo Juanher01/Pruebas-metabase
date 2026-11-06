@@ -1,0 +1,445 @@
+newman
+
+TC-REN-003 - Estabilidad bajo solicitudes repetitivas
+
+Iteration 1/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.81kB, 838ms]
+  1. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 2/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 1110ms]
+  2. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 3/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 397ms]
+  3. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 4/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 700ms]
+  4. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 5/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 1373ms]
+  5. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 6/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 3.5s]
+  6. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 7/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 1322ms]
+  7. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 8/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 1734ms]
+  8. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 9/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 984ms]
+  9. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 10/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 1144ms]
+ 10. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 11/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 1215ms]
+ 11. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 12/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 864ms]
+ 12. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 13/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 1055ms]
+ 13. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 14/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 754ms]
+ 14. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 15/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 787ms]
+ 15. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 16/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 775ms]
+ 16. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 17/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 575ms]
+ 17. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 18/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 770ms]
+ 18. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 19/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 498ms]
+ 19. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 20/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 454ms]
+ 20. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 21/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 266ms]
+ 21. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 22/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 393ms]
+ 22. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 23/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 249ms]
+ 23. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 24/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 197ms]
+ 24. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 25/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 220ms]
+ 25. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 26/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 270ms]
+ 26. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 27/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 274ms]
+ 27. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 28/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 619ms]
+ 28. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 29/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 583ms]
+ 29. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+Iteration 30/30
+
+→ POST /api/card/{{cardId}}/query
+  POST http://localhost:3000/api/card/40/query [202 Accepted, 290.68kB, 447ms]
+ 30. Codigo HTTP 200 OK (esperado por el plan)
+  √  Solicitud finalizada correctamente (2xx)
+  √  status = completed (ejecucion exitosa)
+  √  data.rows es un arreglo (resultados validos)
+
+┌─────────────────────────┬────────────────────┬────────────────────┐
+│                         │           executed │             failed │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│              iterations │                 30 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│                requests │                 30 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│            test-scripts │                 30 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│      prerequest-scripts │                  0 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│              assertions │                120 │                 30 │
+├─────────────────────────┴────────────────────┴────────────────────┤
+│ total run duration: 28.5s                                         │
+├───────────────────────────────────────────────────────────────────┤
+│ total data received: 8.67MB (approx)                              │
+├───────────────────────────────────────────────────────────────────┤
+│ average response time: 814ms [min: 197ms, max: 3.5s, s.d.: 641ms] │
+└───────────────────────────────────────────────────────────────────┘
+
+[31m   # [39m[31m failure        [39m[31m detail                                             [39m
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 01.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 1    Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 02.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 2    Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 03.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 3    Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 04.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 4    Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 05.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 5    Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 06.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 6    Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 07.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 7    Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 08.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 8    Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 09.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 9    Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 10.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 10   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 11.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 11   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 12.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 12   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 13.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 13   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 14.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 14   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 15.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 15   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 16.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 16   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 17.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 17   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 18.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 18   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 19.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 19   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 20.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 20   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 21.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 21   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 22.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 22   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 23.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 23   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 24.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 24   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 25.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 25   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 26.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 26   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 27.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 27   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 28.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 28   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 29.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 29   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           
+[90m     [39m[90m                [39m[90m                                                    [39m
+ 30.  AssertionError  Codigo HTTP 200 OK (esperado por el plan)          
+      iteration: 30   Codigo real: 202: expected 202 to deeply equal 200 
+                      at assertion:0 in test-script                      
+                      inside "POST /api/card/{{cardId}}/query"           

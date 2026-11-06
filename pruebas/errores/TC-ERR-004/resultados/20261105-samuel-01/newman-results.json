@@ -1,0 +1,388 @@
+{
+  "collection": {
+    "item": [
+      {
+        "id": "390130d6-0a31-4988-8f6d-5182aa8f2219",
+        "name": "GET /api/session",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "session"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "X-Metabase-Session",
+              "value": "{{sessionId}}"
+            }
+          ],
+          "method": "GET"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "4ea85046-1232-4ee0-b18a-cafe422a354e",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"Codigo HTTP 404 o 405\",()=>pm.expect(pm.response.code).to.be.oneOf([404,405]));",
+                "pm.test(\"No hay error interno (la respuesta no es 5xx)\",()=>pm.expect(pm.response.code).to.be.below(500));",
+                "pm.test(\"Respuesta en menos de 5 s\",()=>pm.expect(pm.response.responseTime).to.be.below(5000));",
+                "pm.test(\"El cuerpo no expone trazas internas\",()=>pm.expect(pm.response.text()).to.not.match(/at (clojure|java|metabase).|Exception in/i));"
+              ],
+              "_lastExecutionId": "c1e6a1ae-2594-453d-9486-e4ade97cb63f"
+            }
+          }
+        ]
+      }
+    ],
+    "event": [],
+    "variable": [],
+    "info": {
+      "_postman_id": "ee88c755-603c-4e1f-8a1e-d8cbc651f94e",
+      "name": "TC-ERR-004 - Metodo HTTP no admitido",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    }
+  },
+  "environment": {
+    "_": {
+      "postman_variable_scope": "environment"
+    },
+    "id": "d5a6e068-e1ab-478f-9119-390e62f08e78",
+    "name": "mbqa-temporal",
+    "values": [
+      {
+        "type": "any",
+        "value": "http://localhost:3000",
+        "key": "baseUrl"
+      },
+      {
+        "type": "any",
+        "value": "1",
+        "key": "databaseId"
+      },
+      {
+        "type": "any",
+        "value": "100001",
+        "key": "dashboardIdInexistente"
+      },
+      {
+        "type": "any",
+        "value": "<SESION-REDACTADA>",
+        "key": "sessionId"
+      }
+    ]
+  },
+  "globals": {
+    "id": "f8e25665-f3dc-4b7f-ad2f-60c93f47545e",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 4,
+        "pending": 0,
+        "failed": 0
+      },
+      "testScripts": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 53,
+      "responseMin": 53,
+      "responseMax": 53,
+      "responseSd": 0,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1793898063165,
+      "completed": 1793898063357
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 1,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "8a6aa37e-ddf3-45dc-a137-9b35c9758f87",
+          "httpRequestId": "b25fd33b-4526-4290-ae3b-7464c2d56e85"
+        },
+        "item": {
+          "id": "390130d6-0a31-4988-8f6d-5182aa8f2219",
+          "name": "GET /api/session",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "X-Metabase-Session",
+                "value": "{{sessionId}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4ea85046-1232-4ee0-b18a-cafe422a354e",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Codigo HTTP 404 o 405\",()=>pm.expect(pm.response.code).to.be.oneOf([404,405]));",
+                  "pm.test(\"No hay error interno (la respuesta no es 5xx)\",()=>pm.expect(pm.response.code).to.be.below(500));",
+                  "pm.test(\"Respuesta en menos de 5 s\",()=>pm.expect(pm.response.responseTime).to.be.below(5000));",
+                  "pm.test(\"El cuerpo no expone trazas internas\",()=>pm.expect(pm.response.text()).to.not.match(/at (clojure|java|metabase).|Exception in/i));"
+                ],
+                "_lastExecutionId": "c1e6a1ae-2594-453d-9486-e4ade97cb63f"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "3000",
+            "path": [
+              "api",
+              "session"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "X-Metabase-Session",
+              "value": "<SESION-REDACTADA>"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "ae535aa9-5d5e-4ec4-9aa6-30a53db9071c",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:3000",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET"
+        },
+        "response": {
+          "id": "21cfee32-1c5e-4ba6-ad9a-b4a5da5c8fc2",
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 05 Nov 2026 17:01:03 GMT"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Last-Modified",
+              "value": "Thu, 5 Nov 2026 17:01:03 GMT"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "metabase.DEVICE=1df80591-6afe-41c9-9ad5-aa1f57592b4b; HttpOnly; Path=/; Expires=Mon, 5 Nov 2046 17:01:03 GMT; SameSite=Lax"
+            },
+            {
+              "key": "X-Permitted-Cross-Domain-Policies",
+              "value": "none"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "max-age=0, no-cache, must-revalidate, proxy-revalidate"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "font-src 'self' data:; style-src-attr 'self'; script-src 'self'  https://maps.google.com https://accounts.google.com https://www.google-analytics.com   'sha256-LA5mdST1QDA0fquG76YkazHwxyJuexVL1qE0ApUDMuU=' 'sha256-isH538cVBUY8IMlGYGbWtBwr+cGqkc4mN6nLcA7lUjE=' 'sha256-3N2Z+Nu++/yNMVHIl863JigVmt2Nr9gt2doEMJT2Wzk='; style-src 'self' 'nonce-LY6QrdqybT'    https://accounts.google.com; manifest-src 'self'; connect-src 'self' https://accounts.google.com metabase.us10.list-manage.com https://sp.metabase.com   ; img-src * 'self' data:; frame-src 'self' https://www.metabase.com/ https://metabase.com/ youtube.com *.youtube.com youtu.be *.youtu.be loom.com *.loom.com vimeo.com *.vimeo.com docs.google.com calendar.google.com airtable.com *.airtable.com typeform.com *.typeform.com canva.com *.canva.com codepen.io *.codepen.io figma.com *.figma.com grafana.com *.grafana.com miro.com *.miro.com excalidraw.com *.excalidraw.com notion.com *.notion.com atlassian.com *.atlassian.com trello.com *.trello.com asana.com *.asana.com gist.github.com linkedin.com *.linkedin.com twitter.com *.twitter.com x.com *.x.com; default-src 'none'; media-src www.metabase.com; child-src 'self' https://accounts.google.com;  frame-ancestors 'none';"
+            },
+            {
+              "key": "x-metabase-version",
+              "value": "v0.64.1"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=utf-8"
+            },
+            {
+              "key": "Expires",
+              "value": "Tue, 03 Jul 2001 06:00:00 GMT"
+            },
+            {
+              "key": "Content-Length",
+              "value": "31"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              34,
+              69,
+              108,
+              32,
+              101,
+              110,
+              100,
+              112,
+              111,
+              105,
+              110,
+              116,
+              32,
+              100,
+              101,
+              32,
+              65,
+              80,
+              73,
+              32,
+              110,
+              111,
+              32,
+              101,
+              120,
+              105,
+              115,
+              116,
+              101,
+              46,
+              34
+            ]
+          },
+          "cookie": [],
+          "responseTime": 53,
+          "responseSize": 31
+        },
+        "id": "390130d6-0a31-4988-8f6d-5182aa8f2219",
+        "assertions": [
+          {
+            "assertion": "Codigo HTTP 404 o 405",
+            "skipped": false
+          },
+          {
+            "assertion": "No hay error interno (la respuesta no es 5xx)",
+            "skipped": false
+          },
+          {
+            "assertion": "Respuesta en menos de 5 s",
+            "skipped": false
+          },
+          {
+            "assertion": "El cuerpo no expone trazas internas",
+            "skipped": false
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 31
+    },
+    "failures": [],
+    "error": null
+  }
+}

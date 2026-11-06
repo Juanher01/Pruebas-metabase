@@ -35,6 +35,8 @@ Siga este orden: cada paso usa lo creado en el anterior. Marque la casilla al te
 
 Tiempo estimado: entre 60 y 90 minutos la primera vez.
 
+> **Atajo opcional para los pasos 5 a 8:** `powershell -ExecutionPolicy Bypass -File .\scripts\preparar-recursos-qa.ps1` crea, con la cuenta admin del `.env`, las dos colecciones (con sus permisos), las 5 preguntas y los 2 dashboards descritos en §3, §4 y §5. Es idempotente: si un recurso ya existe, lo omite. Con `-SoloMostrar` solo informa lo que falta. No sustituye la verificación visual de §5.1 (pasos 12 a 15) ni la de §5.3 con el usuario normal. Se usó en la instalación de Samuel el 2026-11-05.
+
 ---
 
 ## 1. Instancia y Sample Database
@@ -66,6 +68,8 @@ Verificación:
 Si una columna no existe con ese nombre, **no cree la pregunta que la usa**: registre la diferencia y avise al compañero.
 
 ### 1.3 Registrar los valores de referencia
+
+> **Aviso (verificado el 2026-11-05 en la instalación de Samuel):** su Sample Database es **SQLite**, y en ella `PUBLIC.ORDERS` falla con `no such table`. Si le ocurre lo mismo, quite el prefijo `PUBLIC.` de las consultas (`FROM ORDERS`). Anote el cambio en `observaciones` de `valores-referencia.csv`. Ver [CONTRATOS-API-V0.64.1.md §3.2](CONTRATOS-API-V0.64.1.md#32-la-sample-database-de-esta-instalación-es-sqlite).
 
 1. **Nuevo → Consulta SQL** (*New → SQL query*). El botón **Nuevo** está arriba a la derecha.
 2. Si Metabase pide elegir una base de datos, elija **Sample Database**.

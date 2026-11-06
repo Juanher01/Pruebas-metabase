@@ -1,0 +1,22 @@
+{
+    "caso":  "TC-REN-005",
+    "ejecucion":  "20261105-samuel-02",
+    "fuente":  "resultados.jtl (JMeter)",
+    "metodo_percentil":  "nearest-rank",
+    "solicitudes":  156,
+    "fallidas":  0,
+    "tasa_error_pct":  0,
+    "min_ms":  206,
+    "max_ms":  5467,
+    "media_ms":  1845.7,
+    "mediana_ms":  1899,
+    "desv_estandar_ms":  1123.7,
+    "p90_ms":  3317,
+    "p95_ms":  3865,
+    "p99_ms":  4684,
+    "duracion_s":  61.54,
+    "throughput_req_s":  2.535,
+    "codigos_http":  {
+                         "202":  156
+                     }
+}
