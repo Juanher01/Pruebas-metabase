@@ -19,6 +19,7 @@
 | Ejecución | Fecha | Integrante | Estado | Carpeta de resultados |
 |---|---|---|---|---|
 | 20261105-samuel-01 | 2026-11-05 | Samuel | No aprobado (P95 2870 ms cumple; HTTP 202) | `resultados/20261105-samuel-01/` |
+| 20261105-samuel-01 (reevaluación) | 2026-11-19 | Juan | Aprobado (criterio HTTP 202 del equipo; sin nueva ejecución) | `resultados/20261105-samuel-01/` |
 
 ## 2. Objetivo de la prueba
 
@@ -61,19 +62,19 @@ El P95 del tiempo de respuesta debe ser inferior a 6000 ms, con una tasa de erro
 
 ## 8. Estado de la prueba
 
-**No aprobado**
+**Aprobado**
 
 ## 9. Justificación del resultado
 
-Se esperaba P95 < 6000 ms, tasa de errores 0 % y código 200. El P95 (2870 ms) y la tasa de errores (0 %) cumplen; el código HTTP (202) no coincide con el 200 del plan, por lo que el caso se marca No aprobado (hallazgo H-001). Si el equipo acepta el 202, el caso cumpliría todos los criterios.
+Se esperaba P95 < 6000 ms y tasa de errores 0 %. El P95 (2870 ms) y la tasa de errores (0 %; las 50 muestras pasan las aserciones `status = completed` y `data.rows`) cumplen. El código HTTP obtenido fue 202 en las 50. El plan indica 200, pero Metabase v0.64.1 responde a las consultas en *streaming* con 202; por decisión del equipo (2026-11-05, [CONFIGURACION-QA.md §7](../../../docs/CONFIGURACION-QA.md#observaciones-que-deben-confirmarse-en-la-ejecución-piloto)) en estos endpoints se acepta como éxito HTTP 200 o 202 siempre que el cuerpo tenga `status = "completed"`, como ocurre aquí. Reevaluado el 2026-11-19 con la evidencia existente, sin repetir la ejecución ni modificar los resultados nativos.
 
 ## 10. Hallazgos
 
-H-001 (HTTP 202 en lugar de 200).
+Ninguno. El código HTTP 202 no es un hallazgo: es una diferencia del plan con la versión instalada, documentada en `docs/CONFIGURACION-QA.md` §7.
 
 ## 11. Conclusión
 
-Con 5 usuarios concurrentes el servicio no mostró errores y el P95 quedó holgadamente bajo el SLO. La única diferencia con lo esperado es el código HTTP 202.
+Con 5 usuarios concurrentes el servicio no mostró errores y el P95 quedó holgadamente bajo el SLO. Cumple todos los criterios del caso.
 
 ## 12. Información técnica de ejecución
 

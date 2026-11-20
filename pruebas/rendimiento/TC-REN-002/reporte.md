@@ -67,11 +67,11 @@ Al menos 9 de las 10 cargas deben completar la presentación de todas las visual
 
 ## 9. Justificación del resultado
 
-Se esperaba que al menos 9 de las 10 cargas tardaran menos de 6000 ms y que las 10 finalizaran correctamente. Las 10 finalizaron correctamente en las tres ejecuciones, pero el criterio de tiempo se cumplió solo en la -02 (9/10), mientras que en la -01 (6/10) y la vigente -03 (8/10) no. Como el resultado no es reproducible y la mayoría de ejecuciones no cumple, el caso se marca No aprobado (hallazgo H-003).
+Se esperaba que al menos 9 de las 10 cargas tardaran menos de 6000 ms y que las 10 finalizaran correctamente. Las 10 finalizaron correctamente en las tres ejecuciones, pero el criterio de tiempo se cumplió solo en la -02 (9/10), mientras que en la -01 (6/10) y la vigente -03 (8/10) no. Como el resultado no es reproducible y la mayoría de ejecuciones no cumple, el caso se marca No aprobado (hallazgo H-002).
 
 ## 10. Hallazgos
 
-H-003 (el SLO de 6000 ms para la carga del dashboard no se cumple de forma consistente).
+H-002 (el SLO de 6000 ms para la carga del dashboard no se cumple de forma consistente).
 
 ## 11. Conclusión
 

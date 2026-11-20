@@ -19,6 +19,7 @@
 | Ejecución | Fecha | Integrante | Estado | Carpeta de resultados |
 |---|---|---|---|---|
 | 20261105-samuel-01 | 2026-11-05 | Samuel | No aprobado (P95 1734 ms cumple; HTTP 202) | `resultados/20261105-samuel-01/` |
+| 20261105-samuel-01 (reevaluación) | 2026-11-19 | Juan | Aprobado (criterio HTTP 202 del equipo; sin nueva ejecución) | `resultados/20261105-samuel-01/` |
 
 ## 2. Objetivo de la prueba
 
@@ -61,19 +62,19 @@ El 100 % de las solicitudes debe finalizar correctamente y el P95 del tiempo de 
 
 ## 8. Estado de la prueba
 
-**No aprobado**
+**Aprobado**
 
 ## 9. Justificación del resultado
 
-Se esperaba 100 % de solicitudes finalizadas correctamente, P95 < 4000 ms y código 200. El 100 % finalizó correctamente y el P95 (1734 ms) cumple el SLO; el código HTTP (202) no coincide con el 200 del plan, por lo que el caso se marca No aprobado (hallazgo H-001). Si el equipo acepta el 202, el caso cumpliría todos los criterios de rendimiento.
+Se esperaba 100 % de solicitudes finalizadas correctamente y P95 < 4000 ms. Las 30 finalizaron correctamente (`status = completed` y `data.rows` en todas) y el P95 (1734 ms) cumple el SLO. El código HTTP obtenido fue 202 en las 30. El plan indica 200, pero Metabase v0.64.1 responde a las consultas en *streaming* con 202; por decisión del equipo (2026-11-05, [CONFIGURACION-QA.md §7](../../../docs/CONFIGURACION-QA.md#observaciones-que-deben-confirmarse-en-la-ejecución-piloto)) en estos endpoints se acepta como éxito HTTP 200 o 202 siempre que el cuerpo tenga `status = "completed"`, como ocurre aquí. Por eso la aserción "Codigo HTTP 200 OK (esperado por el plan)", que falla en `newman-results.json`, no determina el resultado. Reevaluado el 2026-11-19 con la evidencia existente, sin repetir la ejecución ni modificar los resultados nativos.
 
 ## 10. Hallazgos
 
-H-001 (HTTP 202 en lugar de 200).
+Ninguno. El código HTTP 202 no es un hallazgo: es una diferencia del plan con la versión instalada, documentada en `docs/CONFIGURACION-QA.md` §7.
 
 ## 11. Conclusión
 
-El servicio es estable ante 30 solicitudes secuenciales (P95 1734 ms). La única diferencia con lo esperado es el código HTTP 202.
+El servicio es estable ante 30 solicitudes secuenciales (P95 1734 ms). Cumple todos los criterios del caso.
 
 ## 12. Información técnica de ejecución
 

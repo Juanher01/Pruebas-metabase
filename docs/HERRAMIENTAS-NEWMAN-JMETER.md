@@ -93,7 +93,7 @@ El script de ejecución lee `configuracion/recursos-locales.json`, generado con 
 | TC-REN-004 | 5 | 10 iteraciones por usuario (50 solicitudes) | Ramp-up: **pendiente de definición** (el plan no lo indica); regístrelo |
 | TC-REN-005 | 5 | 60 segundos (*Specify thread lifetime*) | Ejecutar primero la línea base y después la ejecución comparada |
 
-- **Aserción de código HTTP:** pendiente de la decisión del piloto, porque el plan espera 200 y la fuente de v0.64.1 sugiere 202 ([CONFIGURACION-QA.md §7](CONFIGURACION-QA.md#observaciones-que-deben-confirmarse-en-la-ejecución-piloto)).
+- **Aserción de código HTTP:** en los endpoints de consulta se acepta 200 o 202 con `status = "completed"`, por decisión del equipo del 2026-11-05 ([CONFIGURACION-QA.md §7](CONFIGURACION-QA.md#observaciones-que-deben-confirmarse-en-la-ejecución-piloto)): el plan espera 200 y v0.64.1 responde 202.
 - **Antes de guardar el `.jmx`, quite o desactive** los *listeners* de la interfaz (*View Results Tree*, *Summary Report*...). No active el guardado de cabeceras ni de cuerpos (`jmeter.save.saveservice.requestHeaders`, `samplerData`, `responseData`): los JTL por defecto no los incluyen, y así deben quedarse.
 
 ---

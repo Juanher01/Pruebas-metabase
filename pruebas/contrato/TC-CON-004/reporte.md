@@ -20,6 +20,7 @@
 |---|---|---|---|---|
 | 20261105-samuel-01 | 2026-11-05 | Samuel | No válida (defecto del script de apoyo) | `resultados/20261105-samuel-01/` |
 | 20261105-samuel-02 | 2026-11-05 | Samuel | No aprobado | `resultados/20261105-samuel-02/` |
+| 20261105-samuel-02 (reevaluación) | 2026-11-19 | Juan | Aprobado (criterio HTTP 202 del equipo; sin nueva ejecución) | `resultados/20261105-samuel-02/` |
 
 ## 2. Objetivo de la prueba
 
@@ -64,19 +65,19 @@ La respuesta JSON contiene la estructura de resultados esperada, incluyendo data
 
 ## 8. Estado de la prueba
 
-**No aprobado**
+**Aprobado**
 
 ## 9. Justificación del resultado
 
-La estructura (`data.rows`, `data.cols`, coherencia con la consulta) coincide con lo esperado. El código HTTP **no** coincide: se esperaba 200 y se obtuvo 202. Como el resultado esperado del plan incluye el código HTTP, el caso se marca No aprobado. El comportamiento es consistente con el código fuente de v0.64.1 (respuestas en streaming con 202), por lo que probablemente es una discrepancia del plan con la versión y no un defecto de Metabase; ver el hallazgo.
+La estructura (`data.rows`, `data.cols`, coherencia con la consulta) coincide con lo esperado: en la ejecución vigente (-02) pasan todas las aserciones de estructura y `status = completed`. El código HTTP obtenido fue 202. El plan indica 200, pero Metabase v0.64.1 responde a las consultas en *streaming* con 202; por decisión del equipo (2026-11-05, [CONFIGURACION-QA.md §7](../../../docs/CONFIGURACION-QA.md#observaciones-que-deben-confirmarse-en-la-ejecución-piloto)) en estos endpoints se acepta como éxito HTTP 200 o 202 siempre que el cuerpo tenga `status = "completed"`, como ocurre aquí. La única aserción que falla en `newman-results.json` es "Codigo HTTP 200 OK (esperado por el plan)", que por tanto no determina el resultado. Reevaluado el 2026-11-19 con la evidencia existente, sin repetir la ejecución ni modificar los resultados nativos.
 
 ## 10. Hallazgos
 
-H-001: la consulta de una pregunta responde 202 en lugar de 200 (afecta también a TC-FUN-010, TC-REN-001, 003, 004 y 005).
+Ninguno. El código HTTP 202 no es un hallazgo: es una diferencia del plan con la versión instalada, documentada en `docs/CONFIGURACION-QA.md` §7. Afecta también a TC-FUN-010 y TC-REN-001, 003, 004 y 005.
 
 ## 11. Conclusión
 
-La estructura de resultados es correcta, pero el código HTTP real (202) difiere del esperado por el plan (200). El equipo debe decidir y documentar si se acepta 202 como código de éxito (con `status = completed`) antes de la ejecución formal del resto de casos; este reporte no modifica el resultado esperado del plan.
+La estructura de resultados es correcta y la consulta termina con `status = completed`. El código HTTP real (202) difiere del indicado por el plan (200), diferencia que el equipo aceptó como desviación documentada; el resultado esperado del plan no se modificó.
 
 ## 12. Información técnica de ejecución
 

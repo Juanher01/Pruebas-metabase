@@ -71,7 +71,7 @@ El plan deja abiertas estas decisiones y manda registrarlas. Se tomaron el 2026-
 | Caché de consultas (`ignore_cache`) | Todas las consultas se envían con `{"ignore_cache": true}` | Cada solicitud mide la ejecución real de la consulta; la caché de Metabase está desactivada por defecto, así que el valor solo lo hace explícito |
 | Sesión de los usuarios virtuales (TC-REN-004 y 005) | Una sesión compartida por los 5 usuarios | Simple y sin autenticaciones dentro de la medición |
 | Ramp-up (TC-REN-004 y 005) | 5 s | El plan no lo indica; igual en línea base y comparada |
-| Código HTTP de las consultas | Se mantiene el 200 del plan como criterio, y se registra el 202 real | La decisión de aceptar 202 es del equipo (hallazgo H-001) |
+| Código HTTP de las consultas | Se acepta 200 o 202 con `status = completed` y se registra el código real | Decisión del equipo del 2026-11-05 ([CONFIGURACION-QA.md §7](CONFIGURACION-QA.md#observaciones-que-deben-confirmarse-en-la-ejecución-piloto); es un error del plan, no un hallazgo) |
 | Umbrales (SLO) | Sin cambios | Los resultados abajo sirven para ratificarlos |
 | Percentil | *nearest-rank*; además se cita el de JMeter (interpolado) | Ver [HERRAMIENTAS-NEWMAN-JMETER.md §3.2](HERRAMIENTAS-NEWMAN-JMETER.md#32-métricas-de-tc-ren-003-a-partir-de-newman) |
 | Medición del dashboard (TC-REN-002) | Desde el inicio de la navegación hasta que las 3 consultas terminan, las 3 tarjetas muestran su visualización y el título de la pestaña deja de decir "n/3 cargado" | Es objetivo y repetible; el plan pide "visualizaciones completamente cargadas" |
@@ -86,16 +86,16 @@ Equipo: AMD Ryzen 5 4600H (6 núcleos / 12 hilos, 7,4 GiB de RAM); Docker Deskto
 
 | Caso | Estado | Criterio de rendimiento | Código HTTP |
 |---|---|---|---|
-| TC-REN-001 | No aprobado | Medición: 3659 / 2028 / **1133 ms** (3 ejecuciones; SLO 3000 ms cumplido en 2 de 3) | 202 (esperado 200) |
+| TC-REN-001 | Aprobado | Medición: 3659 / 2028 / **1133 ms** (3 ejecuciones; SLO 3000 ms cumplido en 2 de 3) | 202 (aceptado) |
 | TC-REN-002 | No aprobado | Cargas < 6000 ms: 6/10, 9/10 y **8/10** (SLO ≥ 9/10 cumplido en 1 de 3) | N/A |
-| TC-REN-003 | No aprobado | **P95 = 1734 ms** (SLO < 4000), 30/30 completadas | 202 (esperado 200) |
-| TC-REN-004 | No aprobado | **P95 = 2870 ms** (SLO < 6000), 0 % de errores | 202 (esperado 200) |
-| TC-REN-005 | No aprobado | Base 2,38 req/s; comparada 2,53 req/s; degradación **−6,4 %** (tolerancia 10 %), 0 % de errores | 202 (esperado 200) |
+| TC-REN-003 | Aprobado | **P95 = 1734 ms** (SLO < 4000), 30/30 completadas | 202 (aceptado) |
+| TC-REN-004 | Aprobado | **P95 = 2870 ms** (SLO < 6000), 0 % de errores | 202 (aceptado) |
+| TC-REN-005 | Aprobado | Base 2,38 req/s; comparada 2,53 req/s; degradación **−6,4 %** (tolerancia 10 %), 0 % de errores | 202 (aceptado) |
 
 ### Lectura de los resultados
 
-1. **TC-REN-003, 004 y 005 cumplen su criterio de rendimiento**; quedan No aprobados solo por el código HTTP 202 (hallazgo H-001). Si el equipo acepta 202 como éxito, pasan a Aprobado sin repetir la medición.
-2. **TC-REN-002 no cumple su SLO de forma consistente** (hallazgo H-003): el dashboard carga en 3,2 a 5,2 s en régimen estable, pero las dos primeras cargas de cada serie tardan más (hasta 9,9 s). **TC-REN-001** mostró el mismo efecto: la primera ejecución, tras un periodo de inactividad, midió 3659 ms (hallazgo H-002).
+1. **TC-REN-001, 003, 004 y 005 cumplen su criterio de rendimiento** (TC-REN-001 en su ejecución vigente). Estaban No aprobados solo por el código HTTP 202, que es un error del plan y no un hallazgo; tras la decisión del equipo de aceptar 202 con `status = completed`, se reevaluaron como Aprobados el 2026-11-19 sin repetir la medición.
+2. **TC-REN-002 no cumple su SLO de forma consistente** (hallazgo H-002): el dashboard carga en 3,2 a 5,2 s en régimen estable, pero las dos primeras cargas de cada serie tardan más (hasta 9,9 s). **TC-REN-001** mostró el mismo efecto: la primera ejecución, tras un periodo de inactividad, midió 3659 ms (hallazgo H-001).
 3. Los tiempos mejoran con las ejecuciones sucesivas (calentamiento de la JVM y de la caché de la base de datos de ejemplo). Para decidir los SLO conviene fijar un protocolo de calentamiento: por ejemplo, descartar las primeras cargas o ejecutar una de preparación en cada caso, como ya exige el plan para TC-REN-001.
 4. La consulta de P1 devuelve 2000 filas y unos 290 KB; es "sencilla" en lógica, pero no ligera. Si el SLO de 3000 ms se pensó para una consulta más pequeña, debe revisarse.
 

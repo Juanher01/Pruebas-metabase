@@ -87,13 +87,13 @@ Después de cada ejecución: revisar `resultados/<id-ejecucion>/newman-report.ht
 | TC-CON-001 | Aprobado | 200; esquema válido; 3 visualizaciones y 1 filtro |
 | TC-CON-002 | Aprobado | 200; tipos correctos |
 | TC-CON-003 | Aprobado | 200 y 200; 46 campos comunes equivalentes |
-| TC-CON-004 | **No aprobado** | Estructura correcta, pero **HTTP 202 en vez de 200** (hallazgo H-001) |
+| TC-CON-004 | Aprobado | Estructura correcta; HTTP 202 aceptado por decisión del equipo (error del plan, no hallazgo) |
 
-### 3.1 Código HTTP 202 (hallazgo H-001)
+### 3.1 Código HTTP 202 (diferencia del plan)
 
-El piloto **confirmó** lo previsto en [CONFIGURACION-QA.md §7](CONFIGURACION-QA.md#observaciones-que-deben-confirmarse-en-la-ejecución-piloto): `POST /api/card/{id}/query` y `POST /api/dataset` responden **202 Accepted** con `status = "completed"`. El plan espera 200. Como la colección exige el 200 del plan, TC-CON-004 resulta **No aprobado**.
+El piloto **confirmó** lo previsto en [CONFIGURACION-QA.md §7](CONFIGURACION-QA.md#observaciones-que-deben-confirmarse-en-la-ejecución-piloto): `POST /api/card/{id}/query` y `POST /api/dataset` responden **202 Accepted** con `status = "completed"`. El plan espera 200. Como la colección exige el 200 del plan, TC-CON-004 resultó inicialmente **No aprobado**.
 
-**Decisión pendiente del equipo** (el resultado esperado del plan no se modificó): aceptar 202 como código de éxito de las consultas, validando además `status = "completed"`. Si se acepta, debe documentarse en el informe y en `observaciones` de TC-FUN-010, TC-CON-004, TC-REN-001, 003, 004 y 005, y se repite TC-CON-004 con la aserción ajustada.
+**Decisión del equipo (2026-11-05)** (el resultado esperado del plan no se modificó): en las consultas se acepta como éxito HTTP 200 o 202, siempre que el cuerpo tenga `status = "completed"` ([CONFIGURACION-QA.md §7](CONFIGURACION-QA.md#observaciones-que-deben-confirmarse-en-la-ejecución-piloto)). Con ese criterio, TC-CON-004 se reevaluó como **Aprobado** el 2026-11-19 con la evidencia de la ejecución `20261105-samuel-02`, sin repetirla: la única aserción que fallaba era la del código 200.
 
 ### 3.2 La Sample Database de esta instalación es SQLite
 

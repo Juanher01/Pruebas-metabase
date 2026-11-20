@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resultados QA Metabase</title>
+<style>
+  /* Dashboard de una columna: resumen arriba, detalle abajo. */
+  :root {
+    --bg: #f5f7fa; --panel: #ffffff; --fg: #17202c; --muted: #5b6676; --line: #dde3ea; --grid: #e9edf2;
+    --ok: #17804a; --bad: #c2372d; --warn: #b26b00; --neutral: #8a94a3;
+    --s1: #2f6fd6; --s2: #8a5cd6; --s3: #0f8f8a; --pop: #ffffff; --shadow: 0 8px 24px rgba(23, 32, 44, .14);
+    --serif: "Georgia", "Times New Roman", serif; --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #11161d; --panel: #18202a; --fg: #e8edf3; --muted: #9aa6b5; --line: #2a3542; --grid: #232d39;
+      --ok: #45c486; --bad: #ff6b60; --warn: #f2b14a; --neutral: #7c8796; --s1: #6ea0ff; --s2: #b495ff; --s3: #3fc9c2;
+      --pop: #202a36; --shadow: 0 8px 24px rgba(0, 0, 0, .45); color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--sans); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding-block: 32px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 36px; }
+  .wrap > *, .section > *, .card > * { min-width: 0; max-width: 100%; }
+  h1, h2, h3, p { margin: 0; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 4.2vw, 2.7rem); line-height: 1.1; text-wrap: balance; }
+  h2 { font-size: 1.3rem; font-weight: 600; text-wrap: balance; }
+  h3 { font-size: 1rem; font-weight: 600; }
+  .eyebrow { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .muted { color: var(--muted); } .small { font-size: .85rem; }
+  .lead { font-size: 1.12rem; max-width: 62rem; } .lead b { font-variant-numeric: tabular-nums; }
+  .section { display: flex; flex-direction: column; gap: 14px; }
+  .section > header { display: flex; flex-direction: column; gap: 4px; max-width: 62rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 16px; }
+  code { font-size: .9em; }
+
+  .verdict { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
+  .seal { width: 124px; aspect-ratio: 1; border-radius: 50%; border: 3px solid var(--ok); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .seal strong { font-family: var(--serif); font-weight: 400; font-size: 2.7rem; line-height: 1; color: var(--ok); }
+  .seal span { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--warn); font-weight: 600; }
+  .verdict ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 4px; }
+  @media (max-width: 560px) { .verdict { grid-template-columns: 1fr; } }
+
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 16px; }
+  .kpi .label { font-size: .75rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+  .kpi .value { font-family: var(--serif); font-size: 2.8rem; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .kpi .sub { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .kpi.ok .value { color: var(--ok); } .kpi.warn .value { color: var(--warn); } .kpi.bad .value { color: var(--bad); }
+  .kpi .meter { height: 6px; border-radius: 3px; background: var(--grid); overflow: hidden; } .kpi .meter > div { height: 100%; }
+
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 999px; font-size: .78rem; font-weight: 600; white-space: nowrap; border: 1px solid currentColor; }
+  .chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .chip.ok { color: var(--ok); } .chip.bad { color: var(--bad); } .chip.warn { color: var(--warn); } .chip.neutral { color: var(--neutral); }
+
+  .donut { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
+  .legend { display: flex; flex-direction: column; gap: 6px; font-variant-numeric: tabular-nums; }
+  .legend .row { display: flex; gap: 8px; align-items: center; } .sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+  .catbars { display: flex; flex-direction: column; gap: 14px; }
+  .catrow { display: grid; grid-template-columns: minmax(0, 12rem) 1fr auto; gap: 12px; align-items: center; }
+  .track { height: 14px; border-radius: 7px; background: var(--grid); display: flex; overflow: hidden; } .track > div { height: 100%; }
+  .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  @media (max-width: 480px) { .catrow { grid-template-columns: 1fr auto; } .catrow .track { grid-column: 1 / -1; grid-row: 2; } }
+
+  .map { display: flex; flex-direction: column; gap: 16px; position: relative; }
+  .tiles { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tile { font: inherit; font-size: .8rem; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 5.8rem; padding: 10px 8px; border-radius: 10px; cursor: pointer; color: var(--fg);
+    border: 1px solid var(--ok); background: color-mix(in srgb, var(--ok) 14%, transparent); transition: transform .12s; }
+  .tile.bad { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 18%, transparent); }
+  .tile[aria-pressed="true"], .tile:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+  @media (prefers-reduced-motion: no-preference) { .tile:hover { transform: translateY(-2px); } }
+  .detail { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 10px 24px; margin: 0; }
+  .detail dt { font-size: .78rem; color: var(--muted); } .detail dd { margin: 0; overflow-wrap: anywhere; } .wide { grid-column: 1 / -1; }
+  .top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .bigid { font-family: var(--serif); font-size: 1.7rem; line-height: 1; }
+
+  .bullets { display: flex; flex-direction: column; gap: 22px; }
+  .bullet { display: grid; grid-template-columns: minmax(0, 16rem) 1fr; gap: 16px; align-items: center; }
+  .bar { position: relative; height: 26px; border-radius: 6px; background: var(--grid); margin-top: 20px; }
+  .fill { position: absolute; inset: 0 auto 0 0; border-radius: 6px; opacity: .88; }
+  .mark { position: absolute; top: -20px; bottom: -4px; border-left: 2px dashed var(--muted); }
+  .mark span { position: absolute; top: -2px; left: 5px; white-space: nowrap; font-size: .75rem; color: var(--muted); } .mark.flip span { left: auto; right: 7px; }
+  .val { position: absolute; top: 50%; transform: translateY(-50%); font-size: .8rem; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  @media (max-width: 560px) { .bullet { grid-template-columns: 1fr; } }
+
+  .chart { position: relative; min-height: 270px; } .chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .chart text { fill: var(--muted); font-size: 11px; font-family: var(--sans); }
+  .serieslegend { display: flex; flex-wrap: wrap; gap: 14px; font-size: .8rem; color: var(--muted); } .serieslegend span { display: inline-flex; gap: 6px; align-items: center; }
+  .tip { position: absolute; z-index: 5; pointer-events: none; max-width: min(320px, 90%); padding: 8px 10px; border-radius: 8px; background: var(--pop); border: 1px solid var(--line); box-shadow: var(--shadow); font-size: .8rem; line-height: 1.4; }
+  .tip strong { display: block; } .tip span { color: var(--muted); display: block; }
+
+  .findings { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 16px; }
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  th { text-align: left; font-size: .75rem; font-weight: 600; color: var(--muted); padding: 10px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; } tr:last-child td { border-bottom: 0; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; } td.id { font-weight: 600; white-space: nowrap; }
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .filters label { font-size: .8rem; color: var(--muted); }
+  select { font: inherit; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--fg); }
+  footer { font-size: .8rem; color: var(--muted); max-width: 62rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="section">
+    <span class="eyebrow">Metabase Open Source v0.64.1 · Plan de pruebas v1.0 · Datos generados el <span id="generado">—</span></span>
+    <h1>Resultados de la evaluación QA de Metabase</h1>
+    <p class="lead" id="lead">—</p>
+  </header>
+
+  <section class="card verdict" aria-label="Recomendación">
+    <div class="seal"><strong>Go</strong><span>Condicionado</span></div>
+    <div class="section">
+      <h2>Recomendación del informe final: Go condicionado</h2>
+      <p class="muted">Las funcionalidades principales cumplen lo esperado y no hay defectos críticos ni altos. La recomendación se limita al alcance y al ambiente del plan.</p>
+      <ul class="small">
+        <li>Condición: ejecutar y registrar las verificaciones complementarias de seguridad e integración antes del cierre del 26 de noviembre.</li>
+        <li>Seguimiento: la carga del dashboard en frío no cumple de forma consistente su umbral de 6000 ms.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="kpis" id="kpis" aria-label="Indicadores"></section>
+
+  <section class="section">
+    <header><h2>Panorama de resultados</h2><p class="muted">La tasa de aprobación cuenta solo los casos con resultado definitivo (aprobado o no aprobado).</p></header>
+    <div class="grid2">
+      <div class="card"><h3>Distribución de estados</h3><div class="donut" id="donut"></div></div>
+      <div class="card"><h3>Aprobados por categoría</h3><div class="catbars" id="catbars"></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <header><h2>Mapa de los 29 casos</h2><p class="muted">Cada recuadro es un caso. Selecciónelo para ver su escenario, la ejecución vigente y el resultado obtenido.</p></header>
+    <div class="card"><div class="map" id="mapa"></div></div>
+    <div class="card" aria-live="polite"><dl class="detail" id="detalle"></dl></div>
+  </section>
+
+  <section class="section">
+    <header><h2>Rendimiento frente a los umbrales del plan</h2><p class="muted">Ejecución vigente de cada caso. La línea discontinua es el umbral y el color indica si se cumple. Consultas sin caché (<code>ignore_cache</code>); percentiles por rango más cercano.</p></header>
+    <div class="card"><div class="bullets" id="bullets"></div></div>
+    <div class="grid2">
+      <div class="card"><h3>TC-REN-002: tiempo de carga del dashboard en cada ejecución</h3>
+        <p class="small muted">Tiempo de carga completa (3 visualizaciones) en cada una de las 10 cargas de las tres ejecuciones. La franja sombreada supera los 6000 ms.</p>
+        <p class="small" id="ren002-nota">—</p>
+        <div class="chart" id="ren002"></div></div>
+      <div class="card"><h3>TC-REN-003: el servicio se estabiliza tras las primeras solicitudes</h3>
+        <p class="small muted">Tiempo de respuesta de las 30 consultas secuenciales, con el P95 obtenido y el umbral de P95.</p>
+        <div class="chart" id="ren003"></div></div>
+    </div>
+    <div class="tablewrap"><table aria-label="Métricas de cada ejecución de rendimiento">
+      <thead><tr><th>Caso</th><th>Ejecución</th><th>Rol</th><th class="n">Solicitudes</th><th class="n">Media (ms)</th><th class="n">Mediana (ms)</th><th class="n">P95 (ms)</th><th class="n">Máximo (ms)</th><th class="n">Throughput (req/s)</th><th class="n">Errores (%)</th></tr></thead>
+      <tbody id="t-rend"></tbody></table></div>
+  </section>
+
+  <section class="section">
+    <header><h2>Hallazgos confirmados</h2><p class="muted">Ambos son de rendimiento en arranque en frío y se reprodujeron en tres ejecuciones; todas las cargas y consultas terminaron con datos correctos. El código HTTP 202 de las consultas no es un hallazgo: es una diferencia del plan con la versión instalada.</p></header>
+    <div class="findings" id="hallazgos"></div>
+  </section>
+
+  <section class="section">
+    <header><h2>Criterios de finalización del plan</h2><p class="muted">Estado de cada criterio según el informe final.</p></header>
+    <div class="tablewrap"><table aria-label="Criterios de finalización"><thead><tr><th>Criterio</th><th>Estado</th><th>Resultado</th></tr></thead><tbody id="t-crit"></tbody></table></div>
+  </section>
+
+  <section class="section">
+    <header><h2>Verificaciones complementarias</h2><p class="muted">El plan las describe sin identificador y no cuentan entre los 29 casos, pero forman parte de los criterios de finalización.</p></header>
+    <div class="tablewrap"><table aria-label="Verificaciones complementarias"><thead><tr><th>Categoría</th><th>Verificación</th><th>Qué comprueba</th><th>Casos relacionados</th><th>Estado</th></tr></thead><tbody id="t-verif"></tbody></table></div>
+  </section>
+
+  <section class="section">
+    <header><h2>Detalle de los 29 casos</h2></header>
+    <div class="filters">
+      <label for="f-cat">Categoría</label>
+      <select id="f-cat"><option value="">Todas</option><option>Funcionales</option><option>Validación de entradas</option><option>Manejo de errores</option><option>Contrato y consistencia</option><option>Rendimiento</option></select>
+      <label for="f-est">Estado</label>
+      <select id="f-est"><option value="">Todos</option><option>Aprobado</option><option>No aprobado</option></select>
+    </div>
+    <div class="tablewrap"><table aria-label="Casos de prueba"><thead><tr><th>Caso</th><th>Categoría</th><th>Escenario</th><th>Herramienta</th><th>Ejecución vigente</th><th>Estado</th></tr></thead><tbody id="t-casos"></tbody></table></div>
+  </section>
+
+  <footer>Fuentes: <code>reportes-generales/matriz-trazabilidad.csv</code>, <code>registro-hallazgos.csv</code>, <code>metricas.json</code> y mediciones nativas de TC-REN, <code>verificaciones-complementarias.csv</code> e <code>INFORME-FINAL.md</code>. Instalación A: casos funcionales y de validación; instalación B: manejo de errores, contrato y rendimiento. Se regenera con <code>node scripts/generar-dashboard.js</code>.</footer>
+</div>
+
+<script>
+'use strict';
+const DATA = /*__DATOS__*/null;
+
+// ---------- utilidades ----------
+const fmt = (v, dec = 0) => {
+  if (v === null || v === undefined || v === '' || Number.isNaN(+v)) return '—';
+  const [e, d] = Math.abs(+v).toFixed(dec).split('.');
+  return (+v < 0 ? '−' : '') + e.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + (d ? ',' + d : '');
+};
+const ms = (v) => fmt(v) + ' ms', pct = (v, d = 1) => fmt(v, d) + ' %';
+const tono = (s) => { s = String(s || '').toLowerCase();
+  if (s.startsWith('no aprobado') || s.startsWith('no cumpl') || s.startsWith('crít') || s.startsWith('alta')) return 'bad';
+  if (s.startsWith('aprobado') || s.startsWith('cumpl') || s === 'vigente') return 'ok';
+  if (s.startsWith('baja') || s === 'anterior' || s === 'línea base') return 'neutral';
+  return 'warn'; };
+const h = (tag, attrs = {}, ...kids) => { const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) { if (k === 'class') el.className = v; else if (k === 'text') el.textContent = v; else if (k === 'style') el.style.cssText = v; else el.setAttribute(k, v); }
+  for (const k of kids) if (k != null) el.append(k); return el; };
+const chip = (text, t) => h('span', { class: 'chip ' + (t || tono(text)), text });
+const SVG = 'http://www.w3.org/2000/svg';
+const s = (tag, attrs = {}) => { const el = document.createElementNS(SVG, tag); for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v); return el; };
+const tipFor = (box) => { const t = h('div', { class: 'tip' }); t.hidden = true; box.append(t);
+  return { show(ev, title, lines) { t.replaceChildren(h('strong', { text: title }), ...lines.map((l) => h('span', { text: l }))); t.hidden = false;
+      const r = box.getBoundingClientRect(), src = ev.currentTarget.getBoundingClientRect();
+      const x = (ev.clientX || src.left + src.width / 2) - r.left, y = (ev.clientY || src.top) - r.top;
+      t.style.left = Math.max(0, Math.min(r.width - t.offsetWidth, x - t.offsetWidth / 2)) + 'px'; t.style.top = Math.max(0, y - t.offsetHeight - 12) + 'px'; },
+    hide() { t.hidden = true; } }; };
+const niceMax = (v) => { const p = Math.pow(10, Math.floor(Math.log10(v))); const f = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].find((x) => x * p >= v); return f * p; };
+
+// ---------- cálculos con las fórmulas del plan ----------
+const C = DATA.casos;
+const cuenta = (e) => C.filter((c) => c.estado === e).length;
+const R = { total: C.length, aprobados: cuenta('Aprobado'), no_aprobados: cuenta('No aprobado'), bloqueados: cuenta('Bloqueado'), no_ejecutados: cuenta('No ejecutado') };
+R.ejecutados = R.aprobados + R.no_aprobados + R.bloqueados;
+R.cobertura = R.ejecutados / R.total * 100;
+R.tasa = R.aprobados / (R.aprobados + R.no_aprobados) * 100;
+const CATS = ['Funcionales', 'Validación de entradas', 'Manejo de errores', 'Contrato y consistencia', 'Rendimiento'];
+const porCat = CATS.map((categoria) => { const c = C.filter((x) => x.categoria === categoria);
+  return { categoria, casos: c.length, aprobados: c.filter((x) => x.estado === 'Aprobado').length, no_aprobados: c.filter((x) => x.estado === 'No aprobado').length }; });
+const H = DATA.hallazgos, sev = (p) => H.filter((x) => String(x.severidad).toLowerCase().startsWith(p)).length;
+const HR = { abiertos: H.filter((x) => x.estado === 'Abierto').length, criticos_altos: sev('crít') + sev('alta'), medios: sev('media'), bajos: sev('baja') };
+const V = DATA.verificaciones, pendientes = V.filter((v) => v.estado === 'No ejecutado').length;
+const RD = DATA.rendimiento, vig = (c) => RD.find((r) => r.caso === c && r.rol === 'vigente');
+const base5 = RD.find((r) => r.caso === 'TC-REN-005' && r.rol === 'línea base');
+const v2 = vig('TC-REN-002');
+const umbrales = [
+  { caso: 'TC-REN-001', ind: 'Tiempo de la consulta', valor: vig('TC-REN-001').p95, umbral: 3000, u: 'ms', menor: true },
+  { caso: 'TC-REN-002', ind: 'Cargas del dashboard bajo 6000 ms', valor: DATA.cargas.filter((k) => k.ejecucion === v2.ejecucion && k.ms < 6000).length, umbral: 9, u: 'de 10', menor: false },
+  { caso: 'TC-REN-003', ind: 'P95 en 30 solicitudes', valor: vig('TC-REN-003').p95, umbral: 4000, u: 'ms', menor: true },
+  { caso: 'TC-REN-004', ind: 'P95 con 5 usuarios', valor: vig('TC-REN-004').p95, umbral: 6000, u: 'ms', menor: true },
+  { caso: 'TC-REN-005', ind: 'Throughput frente a la línea base', valor: vig('TC-REN-005').throughput / base5.throughput * 100, umbral: 90, u: '%', menor: false },
+].map((f) => ({ ...f, cumple: f.menor ? f.valor < f.umbral : f.valor >= f.umbral }));
+const fu = (v, u) => u === 'ms' ? ms(v) : u === '%' ? pct(v) : fmt(v) + ' ' + u;
+const rendOk = porCat.find((p) => p.categoria === 'Rendimiento');
+
+// ---------- cabecera e indicadores ----------
+document.getElementById('generado').textContent = DATA.generado.split('-').reverse().join('/');
+const b = (t) => h('b', { text: t });
+document.getElementById('lead').replaceChildren(b(fmt(R.aprobados)), ' de ', b(fmt(R.total)), ' casos aprobados, una tasa de aprobación del ', b(pct(R.tasa)),
+  '. Hay ', b(fmt(HR.abiertos)), ' hallazgos abiertos (', HR.criticos_altos === 0 ? 'ninguno crítico ni alto' : fmt(HR.criticos_altos) + ' críticos o altos',
+  ') y ', b(fmt(pendientes)), ' verificaciones complementarias pendientes.');
+const meter = (p, color) => h('div', { class: 'meter' }, h('div', { style: `width:${Math.min(100, p)}%;background:${color}` }));
+const kpi = (cls, label, value, sub, m) => h('div', { class: 'card kpi ' + cls }, h('span', { class: 'label', text: label }), h('span', { class: 'value', text: value }), m, h('span', { class: 'sub', text: sub }));
+document.getElementById('kpis').append(
+  kpi('ok', 'Cobertura de ejecución', pct(R.cobertura, 0), `${fmt(R.ejecutados)} de ${fmt(R.total)} casos · objetivo 95 %`, meter(R.cobertura, 'var(--ok)')),
+  kpi('ok', 'Tasa de aprobación', pct(R.tasa), `${fmt(R.aprobados)} aprobados · ${fmt(R.no_aprobados)} no aprobado`, meter(R.tasa, 'var(--ok)')),
+  kpi('', 'Rendimiento dentro del umbral', `${fmt(rendOk.aprobados)} / ${fmt(rendOk.casos)}`, 'casos de rendimiento aprobados', meter(rendOk.aprobados / rendOk.casos * 100, 'var(--s1)')),
+  kpi('warn', 'Hallazgos abiertos', fmt(HR.abiertos), `Media ${fmt(HR.medios)} · Baja ${fmt(HR.bajos)} · Crítica o alta ${fmt(HR.criticos_altos)}`),
+  kpi('warn', 'Verificaciones pendientes', `${fmt(pendientes)} / ${fmt(V.length)}`, 'seguridad funcional e integración sin ejecutar', meter(pendientes / V.length * 100, 'var(--warn)')));
+
+// ---------- donut ----------
+(() => {
+  const partes = [['Aprobado', R.aprobados, 'var(--ok)'], ['No aprobado', R.no_aprobados, 'var(--bad)'], ['Bloqueado', R.bloqueados, 'var(--warn)'], ['No ejecutado', R.no_ejecutados, 'var(--neutral)']];
+  const S = 180, r0 = 90, r1 = 62, svg = s('svg', { viewBox: `0 0 ${S} ${S}`, width: S, height: S, role: 'img', 'aria-label': `${R.aprobados} aprobados y ${R.no_aprobados} no aprobado de ${R.total} casos` });
+  svg.style.width = S + 'px';
+  let a = -Math.PI / 2; const tot = partes.reduce((t, p) => t + p[1], 0), gap = 0.03;
+  for (const [, v, c] of partes) { if (!v) continue; const a2 = a + v / tot * 2 * Math.PI, a0 = a + gap / 2, a1 = a2 - gap / 2, large = a1 - a0 > Math.PI ? 1 : 0;
+    const P = (r, t) => `${S / 2 + r * Math.cos(t)} ${S / 2 + r * Math.sin(t)}`;
+    svg.append(s('path', { d: `M${P(r0, a0)} A${r0} ${r0} 0 ${large} 1 ${P(r0, a1)} L${P(r1, a1)} A${r1} ${r1} 0 ${large} 0 ${P(r1, a0)}Z`, style: `fill:${c}` })); a = a2; }
+  const t1 = s('text', { x: S / 2, y: S / 2 + 4, 'text-anchor': 'middle', style: 'font-family:var(--serif);font-size:30px;fill:var(--fg)' }); t1.textContent = pct(R.tasa);
+  const t2 = s('text', { x: S / 2, y: S / 2 + 24, 'text-anchor': 'middle' }); t2.textContent = 'aprobación';
+  svg.append(t1, t2);
+  document.getElementById('donut').append(svg, h('div', { class: 'legend' }, ...partes.map(([k, v, c]) => h('div', { class: 'row' }, h('span', { class: 'sw', style: `background:${c}` }), h('span', { text: k }), b(fmt(v))))));
+})();
+
+// ---------- barras por categoría ----------
+document.getElementById('catbars').append(...porCat.map((d) => h('div', { class: 'catrow' }, h('span', { text: d.categoria }),
+  h('div', { class: 'track', role: 'img', 'aria-label': `${d.categoria}: ${d.aprobados} de ${d.casos} aprobados`, style: `width:${d.casos / 10 * 100}%` },
+    h('div', { style: `width:${d.aprobados / d.casos * 100}%;background:var(--ok)` }), h('div', { style: `width:${d.no_aprobados / d.casos * 100}%;background:var(--bad)` })),
+  h('span', { class: 'num' }, b(fmt(d.aprobados)), ' de ' + fmt(d.casos)))));
+
+// ---------- mapa y detalle ----------
+let sel = (C.find((c) => c.estado !== 'Aprobado') || C[0]).id;
+const detalle = () => { const c = C.find((x) => x.id === sel), dl = document.getElementById('detalle');
+  const item = (k, v, wide) => h('div', wide ? { class: 'wide' } : {}, h('dt', { text: k }), h('dd', { text: v || '—' }));
+  dl.replaceChildren(h('div', { class: 'wide top' }, h('span', { class: 'bigid', text: c.id }), chip(c.estado)), item('Escenario', c.escenario, true),
+    item('Categoría', c.categoria), item('Herramienta', c.herramienta), item('Ejecución vigente', c.ejecucion), item('Instalación', c.instalacion),
+    item('Código HTTP esperado (plan)', c.codigo), item('Resultado obtenido', c.resultado, true)); };
+(() => { const box = document.getElementById('mapa'), tip = tipFor(box);
+  for (const cat of CATS) { const tiles = h('div', { class: 'tiles' });
+    for (const c of C.filter((x) => x.categoria === cat)) {
+      const t = h('button', { type: 'button', class: 'tile ' + (c.estado === 'Aprobado' ? '' : 'bad'), 'aria-pressed': String(c.id === sel), 'aria-label': `${c.id}: ${c.estado}`, text: c.id.replace('TC-', '') });
+      const lines = [c.escenario, `${c.estado} · ${c.herramienta}`, `Ejecución ${c.ejecucion}`];
+      t.addEventListener('pointerenter', (e) => tip.show(e, c.id, lines)); t.addEventListener('pointerleave', tip.hide);
+      t.addEventListener('focus', (e) => tip.show(e, c.id, lines)); t.addEventListener('blur', tip.hide);
+      t.addEventListener('click', () => { sel = c.id; box.querySelectorAll('.tile').forEach((x) => x.setAttribute('aria-pressed', String(x === t))); detalle(); });
+      tiles.append(t); }
+    box.append(h('div', { class: 'section' }, h('span', { class: 'eyebrow', text: cat }), tiles)); }
+  detalle(); })();
+
+// ---------- umbrales ----------
+document.getElementById('bullets').append(...umbrales.map((d) => { const max = Math.max(d.valor, d.umbral) * 1.25, pos = d.valor / max * 100;
+  const val = h('span', { class: 'val', text: fu(d.valor, d.u) });
+  if (pos > 55) { val.style.right = (100 - pos + 1.5) + '%'; val.style.color = 'var(--panel)'; } else val.style.left = (pos + 1.5) + '%';
+  const mk = h('div', { class: 'mark' + (d.umbral / max > .6 ? ' flip' : ''), style: `left:${d.umbral / max * 100}%` }, h('span', { text: 'Umbral ' + (d.menor ? '< ' : '≥ ') + fu(d.umbral, d.u) }));
+  return h('div', { class: 'bullet' },
+    h('div', {}, h('div', { class: 'top' }, b(d.caso), chip(d.cumple ? 'Cumple' : 'No cumple', d.cumple ? 'ok' : 'bad')), h('span', { class: 'small muted', text: d.ind + (d.menor ? ' · mejor si es menor' : ' · mejor si es mayor') })),
+    h('div', { class: 'bar', role: 'img', 'aria-label': `${d.caso}: ${fu(d.valor, d.u)}; umbral ${fu(d.umbral, d.u)}` },
+      h('div', { class: 'fill', style: `width:${pos}%;background:${d.cumple ? 'var(--ok)' : 'var(--bad)'}` }), mk, val)); }));
+
+// ---------- gráficas de líneas ----------
+const lineChart = (id, { series, xs, xLabel, limit, limitLabel, refs = [], tipTitle, label }) => {
+  const box = document.getElementById(id);
+  const draw = () => {
+    box.replaceChildren(); const W = Math.max(300, box.clientWidth || 520), Hh = 260, m = { t: 16, r: 14, b: 36, l: 54 };
+    const all = series.flatMap((se) => se.pts.map((p) => p.y));
+    const ymax = niceMax(Math.max(limit, ...all) * 1.06), X = (v) => m.l + (v - xs[0]) / (xs[xs.length - 1] - xs[0]) * (W - m.l - m.r), Y = (v) => m.t + (1 - v / ymax) * (Hh - m.t - m.b);
+    const svg = s('svg', { viewBox: `0 0 ${W} ${Hh}`, role: 'img', 'aria-label': label });
+    svg.append(s('rect', { x: m.l, y: Y(ymax), width: W - m.l - m.r, height: Y(limit) - Y(ymax), style: 'fill:var(--bad);opacity:.08' }));
+    for (let i = 0; i <= 5; i++) { const v = ymax / 5 * i;
+      svg.append(s('line', { x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), style: 'stroke:var(--grid)' }));
+      const t = s('text', { x: m.l - 8, y: Y(v) + 4, 'text-anchor': 'end' }); t.textContent = fmt(v); svg.append(t); }
+    const step = Math.max(1, Math.ceil(xs.length / Math.floor((W - m.l - m.r) / 40)));
+    xs.forEach((v, i) => { if (i % step && i !== xs.length - 1) return; const t = s('text', { x: X(v), y: Hh - m.b + 16, 'text-anchor': 'middle' }); t.textContent = v; svg.append(t); });
+    const xl = s('text', { x: (m.l + W - m.r) / 2, y: Hh - 2, 'text-anchor': 'middle' }); xl.textContent = xLabel; svg.append(xl);
+    const ref = (v, txt, color, dash) => { svg.append(s('line', { x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), style: `stroke:${color};stroke-width:1.5;stroke-dasharray:${dash}` }));
+      const t = s('text', { x: W - m.r, y: Y(v) - 6, 'text-anchor': 'end' }); t.textContent = txt; svg.append(t); };
+    ref(limit, limitLabel, 'var(--bad)', '5 4'); refs.forEach((r) => ref(r.v, r.txt, 'var(--muted)', '2 3'));
+    const tip = tipFor(box);
+    series.forEach((se) => {
+      const d = se.pts.map((p, i) => (i ? 'L' : 'M') + X(p.x) + ' ' + Y(p.y)).join(' ');
+      if (se.area) svg.append(s('path', { d: d + ` L${X(se.pts[se.pts.length - 1].x)} ${Y(0)} L${X(se.pts[0].x)} ${Y(0)}Z`, style: `fill:${se.color};opacity:.12` }));
+      svg.append(s('path', { d, style: `fill:none;stroke:${se.color};stroke-width:${se.strong ? 2.6 : 1.6};opacity:${se.strong ? 1 : .6}` }));
+      for (const p of se.pts) { const c = s('circle', { cx: X(p.x), cy: Y(p.y), r: se.strong ? 4.5 : 3.5, style: `fill:${se.color};stroke:var(--panel);stroke-width:1.5;cursor:default` });
+        c.addEventListener('pointerenter', (e) => tip.show(e, tipTitle(se, p), [ms(p.y) + (p.y >= limit ? ' · supera el umbral' : ' · bajo el umbral') + (p.extra ? ' · ' + p.extra : '')]));
+        c.addEventListener('pointerleave', tip.hide); svg.append(c); }
+    });
+    box.prepend(svg);
+    if (series.length > 1) box.append(h('div', { class: 'serieslegend' }, ...series.map((se) => h('span', {}, h('span', { class: 'sw', style: `background:${se.color}` }), se.name))));
+  };
+  draw(); let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(draw, 120); });
+};
+(() => { const ej = [...new Set(DATA.cargas.map((k) => k.ejecucion))], cols = ['var(--s2)', 'var(--s3)', 'var(--s1)'];
+  lineChart('ren002', { xs: Array.from({ length: 10 }, (_, i) => i + 1), xLabel: 'Número de carga', limit: 6000, limitLabel: 'Umbral 6.000 ms',
+    label: 'Tiempo de carga del dashboard en las 10 cargas de las tres ejecuciones de TC-REN-002',
+    tipTitle: (se, p) => `Carga ${p.x} · ${se.short}`,
+    series: ej.map((e, i) => { const pts = DATA.cargas.filter((k) => k.ejecucion === e).sort((a, b2) => a.carga - b2.carga).map((k) => ({ x: k.carga, y: k.ms }));
+      const vigente = e === v2.ejecucion;
+      return { pts, color: cols[i % 3], strong: vigente, short: 'ejecución ' + e.slice(-2), name: `Ejecución ${e.slice(-2)}${vigente ? ' (vigente)' : ''}: ${pts.filter((p) => p.y < 6000).length} de 10 bajo el umbral` }; }) });
+  document.getElementById('ren002-nota').textContent = ej.map((e) => {
+    const pts = DATA.cargas.filter((k) => k.ejecucion === e), lenta = pts.reduce((a, k) => (k.ms > a.ms ? k : a));
+    const sobre = pts.filter((k) => k.ms >= 6000).map((k) => k.carga);
+    return `Ejecución ${e.slice(-2)}: la más lenta fue la carga ${lenta.carga} (${ms(lenta.ms)})` + (sobre.length === 0 ? '; ninguna superó el umbral' : sobre.length === 1 ? `; solo esa superó el umbral` : `; superaron el umbral las cargas ${sobre.slice(0, -1).join(', ')} y ${sobre[sobre.length - 1]}`);
+  }).join('. ') + '.';
+  const p95 = vig('TC-REN-003').p95;
+  lineChart('ren003', { xs: DATA.solicitudes.map((x) => x.n), xLabel: 'Número de solicitud', limit: 4000, limitLabel: 'Umbral de P95: 4.000 ms',
+    refs: [{ v: p95, txt: 'P95 obtenido: ' + ms(p95) }], label: 'Tiempo de respuesta de las 30 solicitudes de TC-REN-003',
+    tipTitle: (se, p) => `Solicitud ${p.x}`,
+    series: [{ pts: DATA.solicitudes.map((x) => ({ x: x.n, y: x.ms, extra: 'HTTP ' + x.codigo })), color: 'var(--s1)', strong: true, area: true, name: 'TC-REN-003' }] });
+})();
+
+// ---------- tablas ----------
+const fila = (...cells) => h('tr', {}, ...cells.map((c) => c instanceof Node ? h('td', {}, c) : h('td', typeof c === 'object' ? { class: c.cls, text: c.t } : { text: c })));
+document.getElementById('t-rend').append(...RD.map((r) => fila({ cls: 'id', t: r.caso }, r.ejecucion, chip(r.rol), { cls: 'n', t: fmt(r.solicitudes) },
+  { cls: 'n', t: fmt(r.media, 1) }, { cls: 'n', t: fmt(r.mediana, 1) }, { cls: 'n', t: fmt(r.p95) }, { cls: 'n', t: fmt(r.max) },
+  { cls: 'n', t: r.throughput == null ? '—' : fmt(r.throughput, 3) }, { cls: 'n', t: fmt(r.errores, 1) })));
+document.getElementById('hallazgos').append(...H.map((x) => h('article', { class: 'card' },
+  h('div', { class: 'top' }, h('span', { class: 'bigid', text: x.id }), chip('Severidad ' + String(x.severidad).toLowerCase(), tono(x.severidad)), chip(x.estado), b(x.caso)),
+  h('span', { class: 'small muted', text: x.componente }), h('p', { text: x.descripcion }),
+  h('dl', { class: 'detail' }, h('div', { class: 'wide' }, h('dt', { text: 'Esperado' }), h('dd', { text: x.esperado })), h('div', { class: 'wide' }, h('dt', { text: 'Obtenido' }), h('dd', { text: x.obtenido }))))));
+document.getElementById('t-crit').append(...DATA.criterios.map((c) => fila(c.criterio, chip(c.estado), c.resultado)));
+document.getElementById('t-verif').append(...V.map((v) => fila(v.categoria, { cls: 'id', t: v.verificacion }, v.descripcion, v.casos || '—', chip(v.estado))));
+const tablaCasos = () => { const fc = document.getElementById('f-cat').value, fe = document.getElementById('f-est').value;
+  const vis = C.filter((c) => (!fc || c.categoria === fc) && (!fe || c.estado === fe));
+  document.getElementById('t-casos').replaceChildren(...(vis.length ? vis.map((c) => fila({ cls: 'id', t: c.id }, c.categoria, c.escenario, c.herramienta, c.ejecucion, chip(c.estado)))
+    : [h('tr', {}, h('td', { colspan: '6', class: 'muted', text: 'Ningún caso cumple los filtros.' }))])); };
+document.getElementById('f-cat').addEventListener('change', tablaCasos); document.getElementById('f-est').addEventListener('change', tablaCasos); tablaCasos();
+</script>
+</body>
+</html>

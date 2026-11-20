@@ -11,7 +11,7 @@
 | Responsable asignado | Samuel (reasignado por el equipo el 2026-11-05; el plan v1.0 asignaba: Samuel y Juan) |
 | Fecha programada (cronograma del plan) | 2026-11-12 |
 | Código HTTP esperado (plan) | 404 Not Found / 405 Method Not Allowed |
-| Estado | **No ejecutado** |
+| Estado | **Aprobado**: ejecución `20261105-samuel-01`, ver [reporte.md](reporte.md) |
 
 ## Objetivo
 

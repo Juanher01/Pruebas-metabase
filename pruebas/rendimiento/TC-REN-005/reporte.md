@@ -20,6 +20,7 @@
 |---|---|---|---|---|
 | 20261105-samuel-01 | 2026-11-05 | Samuel | Línea base (2,382 req/s) | `resultados/20261105-samuel-01/` |
 | 20261105-samuel-02 | 2026-11-05 | Samuel | No aprobado (106,4 % de la línea base cumple; HTTP 202) | `resultados/20261105-samuel-02/` |
+| 20261105-samuel-02 (reevaluación) | 2026-11-19 | Juan | Aprobado (criterio HTTP 202 del equipo; sin nueva ejecución) | `resultados/20261105-samuel-02/` |
 
 ## 2. Objetivo de la prueba
 
@@ -62,19 +63,19 @@ Throughput igual o superior al 90 % de la línea base obtenida previamente bajo 
 
 ## 8. Estado de la prueba
 
-**No aprobado**
+**Aprobado**
 
 ## 9. Justificación del resultado
 
-Se esperaba un throughput ≥ 90 % de la línea base, 0 % de errores y código 200. El throughput comparado equivale al 106,4 % de la línea base y no hubo errores; el código HTTP (202) no coincide con el 200 del plan, por lo que el caso se marca No aprobado (hallazgo H-001). Si el equipo acepta el 202, el caso cumpliría todos los criterios.
+Se esperaba un throughput ≥ 90 % de la línea base y 0 % de errores. El throughput comparado equivale al 106,4 % de la línea base y no hubo errores (las 298 muestras, línea base incluida, pasan las aserciones `status = completed` y `data.rows`). El código HTTP obtenido fue 202 en todas. El plan indica 200, pero Metabase v0.64.1 responde a las consultas en *streaming* con 202; por decisión del equipo (2026-11-05, [CONFIGURACION-QA.md §7](../../../docs/CONFIGURACION-QA.md#observaciones-que-deben-confirmarse-en-la-ejecución-piloto)) en estos endpoints se acepta como éxito HTTP 200 o 202 siempre que el cuerpo tenga `status = "completed"`, como ocurre aquí. Reevaluado el 2026-11-19 con la evidencia existente, sin repetir la ejecución ni modificar los resultados nativos.
 
 ## 10. Hallazgos
 
-H-001 (HTTP 202 en lugar de 200).
+Ninguno. El código HTTP 202 no es un hallazgo: es una diferencia del plan con la versión instalada, documentada en `docs/CONFIGURACION-QA.md` §7.
 
 ## 11. Conclusión
 
-No se observó degradación del throughput respecto de la línea base (la comparada fue incluso un 6,4 % mayor, dentro de la variación normal entre ejecuciones). La única diferencia con lo esperado es el código HTTP 202.
+No se observó degradación del throughput respecto de la línea base (la comparada fue incluso un 6,4 % mayor, dentro de la variación normal entre ejecuciones). Cumple todos los criterios del caso.
 
 ## 12. Información técnica de ejecución
 

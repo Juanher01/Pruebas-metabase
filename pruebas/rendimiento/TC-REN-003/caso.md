@@ -11,7 +11,7 @@
 | Responsable asignado | Samuel (reasignado por el equipo el 2026-11-05; el plan v1.0 asignaba: Juan) |
 | Fecha programada (cronograma del plan) | 2026-11-18 |
 | Código HTTP esperado (plan) | 200 OK |
-| Estado | **No ejecutado** |
+| Estado | **Aprobado** (el código HTTP 202 con `status = completed` se acepta como éxito: el 200 del plan no corresponde a Metabase v0.64.1, ver `docs/CONFIGURACION-QA.md` §7): ejecución `20261105-samuel-01`, ver [reporte.md](reporte.md) |
 
 ## Objetivo
 

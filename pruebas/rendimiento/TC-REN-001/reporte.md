@@ -21,6 +21,7 @@
 | 20261105-samuel-01 | 2026-11-05 | Samuel | No aprobado (Medicion 3659 ms > 3000 ms; HTTP 202) | `resultados/20261105-samuel-01/` |
 | 20261105-samuel-02 | 2026-11-05 | Samuel | No aprobado (Medicion 2028 ms; HTTP 202) | `resultados/20261105-samuel-02/` |
 | 20261105-samuel-03 | 2026-11-05 | Samuel | No aprobado (Medicion 1133 ms; HTTP 202) | `resultados/20261105-samuel-03/` |
+| 20261105-samuel-03 (reevaluación) | 2026-11-19 | Juan | Aprobado (criterio HTTP 202 del equipo; sin nueva ejecución) | `resultados/20261105-samuel-03/` |
 
 ## 2. Objetivo de la prueba
 
@@ -64,19 +65,21 @@ Tiempo de respuesta inferior a 3000 ms, con ejecución exitosa y resultados vál
 
 ## 8. Estado de la prueba
 
-**No aprobado**
+**Aprobado**
 
 ## 9. Justificación del resultado
 
-Se esperaba un tiempo < 3000 ms con ejecución exitosa y resultados válidos, y el código 200. En la ejecución vigente (-03) el tiempo (1133 ms) y la validez de los resultados cumplen; el código HTTP obtenido (202) no coincide con el 200 del plan, por lo que el caso se marca No aprobado (hallazgo H-001). Además, el tiempo no es estable entre ejecuciones (3659 / 2028 / 1133 ms): la primera ejecución tras inactividad superó el SLO (hallazgo H-002). Si el equipo acepta el 202 como código de éxito, el criterio de tiempo se cumpliría en la ejecución vigente, pero se recomienda ratificar el SLO a la vista de esta variabilidad.
+Se esperaba un tiempo < 3000 ms con ejecución exitosa y resultados válidos. En la ejecución vigente (-03) el tiempo (1133 ms) cumple el SLO, y las solicitudes terminaron con `status = completed` y `data.rows` presente. El código HTTP obtenido fue 202. El plan indica 200, pero Metabase v0.64.1 responde a las consultas en *streaming* con 202; por decisión del equipo (2026-11-05, [CONFIGURACION-QA.md §7](../../../docs/CONFIGURACION-QA.md#observaciones-que-deben-confirmarse-en-la-ejecución-piloto)) en estos endpoints se acepta como éxito HTTP 200 o 202 siempre que el cuerpo tenga `status = "completed"`, como ocurre aquí. Reevaluado el 2026-11-19 con la evidencia existente, sin repetir la ejecución ni modificar los resultados nativos.
+
+El tiempo no es estable entre ejecuciones (3659 / 2028 / 1133 ms): la primera, tras un periodo de inactividad, superó el SLO (hallazgo H-001). Esa observación se mantiene abierta y se recomienda ratificar el SLO a la vista de esta variabilidad.
 
 ## 10. Hallazgos
 
-H-001 (HTTP 202 en lugar de 200) y H-002 (primera medición tras inactividad por encima del SLO de 3000 ms y variabilidad entre ejecuciones).
+H-001 (primera medición tras inactividad por encima del SLO de 3000 ms y variabilidad entre ejecuciones): se mantiene abierto como observación. El código HTTP 202 no es un hallazgo: es una diferencia del plan con la versión instalada, documentada en `docs/CONFIGURACION-QA.md` §7.
 
 ## 11. Conclusión
 
-La consulta de P1 responde en el rango de 1,1 a 3,7 s según el estado del servicio; solo la primera ejecución, en frío, incumplió el SLO. El caso no se aprueba por el código 202.
+La consulta de P1 responde en el rango de 1,1 a 3,7 s según el estado del servicio; solo la primera ejecución, en frío, incumplió el SLO. La ejecución vigente cumple el criterio del caso; la variabilidad en frío queda registrada en H-001.
 
 ## 12. Información técnica de ejecución
 
